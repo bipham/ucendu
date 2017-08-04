@@ -1,0 +1,88 @@
+/*************************************************
+	Created by: Anh Pham;
+	Date: 29/04/2017;
+	Style CSS for web - client
+	Version: 01;
+ *************************************************/
+@media (max-width: 992px) {
+
+}
+
+@media (max-width: 850px) {
+
+}
+
+@media (max-width: 768px) {
+
+}
+
+@media (max-width: 500px) {
+
+}
+
+@media (min-width: 500px) {
+    .col-md-3.product-item {
+        -webkit-box-flex: 0;
+        -webkit-flex: 0 0 48%;
+        -ms-flex: 0 0 48%;
+        flex: 0 0 48%;
+        max-width: 48%;
+    }
+    .container {
+        width: 90%;
+    }
+    header .container {
+        width: 60%;
+    }
+    .col-footer-custom {
+        width: auto;
+        max-width: 50%;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 768px) {
+    .col-md-3.lesson-item {
+        -webkit-box-flex: 0;
+        -webkit-flex: 0 0 23%;
+        -ms-flex: 0 0 23%;
+        flex: 0 0 23%;
+        max-width: 23%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .col-md-3.lesson-item {
+        -webkit-box-flex: 0;
+        -webkit-flex: 0 0 23%;
+        -ms-flex: 0 0 23%;
+        flex: 0 0 23%;
+        max-width: 23%;
+    }
+}
+
+@media (min-width: 1650px) {
+    .col-md-3.lesson-item {
+        -webkit-box-flex: 0;
+        -webkit-flex: 0 0 23%;
+        -ms-flex: 0 0 23%;
+        flex: 0 0 23%;
+        max-width: 23%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 850px) {
+
+}
+
+@media (min-width: 768px ) and (max-width: 992px) {
+    .container {
+        width: 96%;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+    .container {
+        width: 96%;
+    }
+}

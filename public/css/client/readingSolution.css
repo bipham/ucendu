@@ -1,0 +1,97 @@
+.item-cmt {
+    border: 1px solid #d2d2d2;
+    padding: 5px;
+    width: 100%;
+    background: rgba(233, 235, 238, 0.25);
+    margin-bottom: 5px;
+    overflow: auto;
+    min-height: 90px;
+}
+
+/*.item-cmt.seen-noti {*/
+    /*background: white;*/
+/*}*/
+
+.img-avatar {
+    display: inline-block;
+    float: left;
+    margin-right: 10px;
+    height: 100%;
+    padding: 5px;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.img-avatar:before {
+    height: 100%;
+    /*display: inline-block;*/
+    vertical-align: middle;
+    content: ' ';
+}
+
+.avatar-custom {
+    width: 65px;
+    height: 65px;
+    border: 1px solid #ccc;
+    max-width: 100%;
+    margin: 0 auto;
+    max-height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.item-cmt-content {
+    color: #474B54;
+}
+
+.img-time-cmt {
+    width: 16px;
+    height: 16px;
+    margin-right: 3px;
+}
+
+.time-ago-cmt {
+    font-size: 13px;
+    color: #90949c;
+}
+
+.collapse-custom {
+    margin: 20px 0;
+}
+
+.item-cmt-header {
+    color: #365899;
+    font-weight: 600;
+}
+
+.item-sub-cmt {
+    margin-left: 5%;
+    width: 95%;
+}
+
+.list-cmt-area {
+    width: 100%;
+    margin: 0 0 15px 0;
+}
+
+.list-cmt-area:last-child {
+    margin-bottom: 0;
+}
+
+.keywords-area {
+    border: 1px dashed;
+}
+
+.collage-comments.show .comments-area {
+    padding: 10px;
+    border: 1px solid #b9b5b5;
+    /*max-height: 500px;*/
+    overflow: auto;
+}
+
+input.reply-cmt {
+    width: calc(92% - 30px);
+    height: 42px;
+    margin-top: 5px;
+}
