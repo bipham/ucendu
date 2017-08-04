@@ -68,6 +68,7 @@ Route::group(['domain'=>'ucendu.dev', 'middleware' => 'auth'], function () {
     Route::group(['prefix'=>'reading'],function () {
         Route::get('',['as'=>'reading','uses'=>'Client\ReadingLessonController@index']);
         Route::get('readingLesson/{lesson}',['as'=>'reading.readingLesson','uses'=>'Client\ReadingLessonController@readingLessonDetail']);
+        Route::get('readingTypeQuestion/{typeQuestion}',['as'=>'reading.readingTypeQuestion','uses'=>'Client\ReadingLessonController@readingTypeQuestion']);
         Route::get('readingTypeLesson/{typeLesson}',['as'=>'reading.readingTypeLesson','uses'=>'Client\ReadingLessonController@readingTypeLesson']);
     });
 });

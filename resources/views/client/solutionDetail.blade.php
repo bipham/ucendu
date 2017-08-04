@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{asset('public/css/client/readingSolution.css')}}">
 @endsection
 @section('content')
+    @include('utils.toolbarReadingLesson')
     <div class="container lesson-detail-page page-custom">
         <input type="hidden" name="_token" value="{!!csrf_token()!!}">
         <div class="row lesson-detail">

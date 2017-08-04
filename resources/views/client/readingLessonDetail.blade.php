@@ -12,25 +12,26 @@
     {!! $lesson_detail->title !!}
 @endsection
 @section('content')
+    @include('utils.toolbarReadingLesson')
+
     @section('titleTypeLesson')
-        <?php
-            if ($type_lesson == 1):
-        ?>
-        {!! $lesson_detail->title !!} - {!! $type_question->name !!}
+            {!! $lesson_detail->title !!}
+    @endsection
 
-        <?php
-            elseif ($type_lesson == 2):
-        ?>
-        {!! $lesson_detail->title !!} - Mix Test
-
-        <?php
-            else:
-        ?>
-        {!! $lesson_detail->title !!} - Full Test
-
-        <?php
-            endif;
-        ?>
+    @section('typeLessonHeader')
+        @if ($type_lesson == 1)
+            <span class="badge badge-success type-lesson-header">
+                {!! $type_question->name !!}
+            </span>
+        @elseif ($type_lesson == 2)
+            <span class="badge badge-warning type-lesson-header">
+               Mix Test
+            </span>
+        @elseif ($type_lesson == 3)
+            <span class="badge badge-danger type-lesson-header">
+                Full Test
+            </span>
+        @endif
     @endsection
 
     @section('readingIntro')
@@ -49,11 +50,19 @@
             <div class="list-reading-thumbnail">
                 <div class="row list-lesson-thumbnail">
                     @foreach($practice_lessons as $practice_lesson)
-                        <?php
-                        $detailTypeQuestionOfQuiz =  $readingTypeQuestionOfQuizModel->getDetailQuizByQuizId($practice_lesson->quiz_id);
-//                        dd($detailTypeQuestionOfQuiz);
-                        ?>
-                            @include('utils.contentGrid',['lesson' => $practice_lesson, 'detailTypeQuestionOfQuiz' => json_decode($detailTypeQuestionOfQuiz)])
+                        @if($type_lesson == 1)
+                            <?php
+                            $detailTypeQuestionOfQuiz =  $readingTypeQuestionOfQuizModel->getDetailQuizByQuizId($practice_lesson->quiz_id);
+    //                        dd($detailTypeQuestionOfQuiz);
+                            ?>
+                        @else
+                            <?php
+                            $detailTypeQuestionOfQuiz =  $readingTypeQuestionOfQuizModel->getDetailQuizByQuizId($practice_lesson->id);
+                            //                        dd($detailTypeQuestionOfQuiz);
+                            ?>
+                        @endif
+
+                        @include('utils.contentGrid',['lesson' => $practice_lesson, 'detailTypeQuestionOfQuiz' => json_decode($detailTypeQuestionOfQuiz)])
                     @endforeach
                 </div>
             </div>
@@ -65,10 +74,17 @@
             <div class="list-reading-thumbnail">
                 <div class="row list-lesson-thumbnail">
                     @foreach($test_lessons as $test_lesson)
-                        <?php
-                        $detailTypeQuestionOfQuiz =  $readingTypeQuestionOfQuizModel->getDetailQuizByQuizId($test_lesson->quiz_id);
-                        //                        dd($detailTypeQuestionOfQuiz);
-                        ?>
+                        @if($type_lesson == 1)
+                            <?php
+                            $detailTypeQuestionOfQuiz =  $readingTypeQuestionOfQuizModel->getDetailQuizByQuizId($test_lesson->quiz_id);
+                            //                        dd($detailTypeQuestionOfQuiz);
+                            ?>
+                        @else
+                            <?php
+                            $detailTypeQuestionOfQuiz =  $readingTypeQuestionOfQuizModel->getDetailQuizByQuizId($test_lesson->id);
+                            //                        dd($detailTypeQuestionOfQuiz);
+                            ?>
+                        @endif
                         @include('utils.contentGrid',['lesson' => $test_lesson, 'detailTypeQuestionOfQuiz' => json_decode($detailTypeQuestionOfQuiz)])
                     @endforeach
                 </div>

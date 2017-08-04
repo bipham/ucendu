@@ -11,18 +11,57 @@
         <div class="img-thumbnail-inner">
             <img class="img-middle-responsive" src="{{ asset('storage/upload/images/img-feature/' . $lesson->image_feature) }}" alt="IELTS">
         </div>
+        <div class="frame-hover-lesson w3-animate-top">
+            {{--<div class="button-area-lesson-item">--}}
+                {{--<span class="btn favorite-lesson btn-for-lesson" title="Chi tiết">--}}
+                    {{--<a class="button-view" href="#">--}}
+                        {{--<i class="fa fa-eye" aria-hidden="true"></i>--}}
+                        {{--<!-- <i class="fa fa-heart" aria-hidden="true"></i> -->--}}
+                    {{--</a>--}}
+                {{--</span>--}}
+                {{--<span class="btn favorite-lesson btn-for-lesson" title="Xem sau">--}}
+                    {{--<a class="button-fav" href="#">--}}
+                            {{--<i class="fa fa-heart-o fa-lg" aria-hidden="true"></i>--}}
+                    {{--</a>--}}
+                {{--</span>--}}
+            {{--</div>--}}
+            <div class="over-view-lesson">
+                <div class="total-question-over-view">
+                    <h5 class="title-total-question-ov inline-class">
+                        Total questions:
+                    </h5>
+                    <span class="pull-right number-total-ov badge badge-success inline-class">
+                        {!! $lesson->total_questions !!}
+                    </span>
+                </div>
+                <div class="detail-number-type-over-view">
+                    <ul class="list-type-question-ov">
+                        @foreach($detailTypeQuestionOfQuiz as $detailTypeQuestion)
+                            <li class="type-question-ov">
+                                <h6 class="title-type-question-ov inline-class">
+                                    {!! $detailTypeQuestion->name !!}
+                                </h6>
+                                <span class="number-type-ov badge badge-primary inline-class pull-right">
+                                    {!! $detailTypeQuestion->total_questions !!}
+                                </span>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="card-block card-body-product">
-        <div class="name-product">
+        <div class="name-lesson">
             <?php
                 $title_lesson = str_replace(" ","-", $lesson->title);
             ?>
             <a href="{{route('reading.readingLesson', 'lesson' . $lesson->lesson_id . '-' . $title_lesson)}}">
-                <h4 class="card-title title-product">{!! $lesson->title !!}</h4>
+                <h4 class="card-title title-lesson">{!! $lesson->title !!}</h4>
             </a>
         </div>
         <div class="info-cate-time-lesson">
-            <span class="card-cate-product pull-left">
+            <span class="card-cate-lesson pull-left">
                 <a href="#">{!! $lesson->name !!}</a>
             </span>
             <span class="time-ago-lesson pull-right">
@@ -55,11 +94,26 @@
     <div class="card-footer card-footer-product">
         <span class="type-lesson-overview pull-left">
             @if ($lesson->type_lesson == 1)
-                {!! $detailTypeQuestionOfQuiz[0]->name !!}
+                <?php
+                $title_type_question = str_replace(" ","-", $detailTypeQuestionOfQuiz[0]->name);
+                ?>
+                <span class="badge badge-success type-lesson-header">
+                    <a class="type-lesson-link" href="{{route('reading.readingTypeQuestion', 'typeQuestion' . $lesson->type_lesson . '-' . $title_type_question)}}">
+                        {!! $detailTypeQuestionOfQuiz[0]->name !!}
+                    </a>
+                </span>
             @elseif ($lesson->type_lesson == 2)
-                Mix Test
+                <span class="badge badge-warning type-lesson-header">
+                    <a class="type-lesson-link" href="{{route('reading.readingTypeLesson', 'typeLesson2-mix-test')}}">
+                        Mix Test
+                    </a>
+                </span>
             @elseif ($lesson->type_lesson == 3)
-                Full Test
+                <span class="badge badge-danger type-lesson-header">
+                    <a class="type-lesson-link" href="{{route('reading.readingTypeLesson', 'typeLesson3-full-test')}}">
+                        Full Test
+                    </a>
+                </span>
             @endif
         </span>
         <span class="btn-download-lesson pull-right">

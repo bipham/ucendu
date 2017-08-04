@@ -24,6 +24,7 @@
     @yield('css')
 </head>
 <body>
+<div class="overlay"></div>
 @include('layout.header')
 @include('layout.menuHeaderReading')
 <div role="main" class="main main-page">

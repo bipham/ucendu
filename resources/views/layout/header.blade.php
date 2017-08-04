@@ -22,7 +22,7 @@
                        <a class="nav-link" href="{{url('/')}}">ABOUT US</a>
                    </li>
                    <li class="nav-item">
-                       <a class="nav-link" href="{{url('/readingPost')}}">CONTACT US</a>
+                       <a class="nav-link" href="{{url('/')}}">CONTACT US</a>
                    </li>
                </ul>
            </div>
@@ -34,7 +34,7 @@
                        <a class="nav-link" href="{{url('/')}}">Home</a>
                    </li>
                    <li class="nav-item">
-                       <a class="nav-link" href="{{url('/readingPost')}}">Reading</a>
+                       <a class="nav-link" href="{{url('/reading')}}">Reading</a>
                    </li>
                    <li class="nav-item">
                        <a class="nav-link" href="#">Progress</a>

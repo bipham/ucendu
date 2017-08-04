@@ -5,7 +5,7 @@
  * Date: 7/18/2017
  * Time: 4:42 PM
  */
-//dd($lessons);
+//dd($practice_lessons);
 ?>
 @extends('layout.master')
 @section('meta-title')
