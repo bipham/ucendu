@@ -1,29 +1,34 @@
-# jQuery Splitter
+# jquery.splitter.js
 
-jQuery Splitter is plugin that split your content with movable splitter between them.
+Simple splitter for jquery
 
-# Example
+[DEMO](http://shunjikonishi.github.io/jquery-splitter/demo.html)
 
-```javascript
-$('#foo').split({
-    orientation: 'horizontal',
-    limit: 10,
-    position: '50%' // if there is no percentage it interpret it as pixels
-});
+## Install
+
+``` bash
+npm install jquery-simple-splitter
 ```
 
-# Demo
+## Usage
+Simple horizontal split is like this.
 
-<http://jquery.jcubic.pl/splitter.php>
+``` javascript
+<script>
+$(function() {
+  $("#workspace").splitter({
+    "orientation": "horizontal",
+    "limit": 100
+  });
+});
+</script>
+```
 
-# Patch Contributors
+The target element must have only two elements. And must not have other.
 
-* Robert Tupelo-Schneck
-* Taras Strypko
-* [Yury Plashenkov](https://github.com/plashenkov)
+See [demo.html](demo.html)
 
-# Lincense
-
-Copyright (C) 2010-2013 Jakub Jankiewicz &lt;<http://jcubic.pl>&gt;
-
-Released under the terms of the [GNU Lesser General Public License](http://www.gnu.org/licenses/lgpl.html)
+## Settings
+- orientation - "horizontal" or "vertical". If omitted, default is "horizontal"
+- limit - int. Minimum size of left(top) element.
+- keepLeft - boolean. When window resized, keep left(top) size or not.

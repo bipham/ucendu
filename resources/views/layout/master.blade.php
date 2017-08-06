@@ -14,9 +14,11 @@
     <title>@yield('meta-title', 'Reading English') - Reading English</title>
     <link rel="stylesheet" href="{{asset('public/libs/bootstrap/css/bootstrap.min.css')}}"/>
     <link rel="stylesheet" href="{{asset('public/libs/font-awesome/css/font-awesome.min.css')}}"/>
+    <link rel="stylesheet" href="{{asset('public/css/client/readingLessonDetail.css')}}">
     <link rel="stylesheet" href="{{asset('public/css/client/responsive.css')}}"/>
     <link rel="stylesheet" href="{{asset('public/css/my-style.css')}}"/>
     <link rel="stylesheet" href="{{asset('public/libs/toolbar/jquery.toolbar.css')}}" />
+    {{--<link rel="stylesheet" href="{{asset('public/libs/jcubic-splitter/css/jquery.splitter.css')}}" />--}}
     <script>
         var current_user = {!! json_encode(Auth::user()) !!};
         {{--var current_user_name = {!! json_encode((array)Auth::user()->id) !!};--}}
@@ -41,6 +43,9 @@
 <script src="{{asset('public/libs/bootstrap/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('public/libs/highlight/TextHighlighter.min.js')}}"></script>
 <script src="{{asset('public/libs/bootbox/bootbox.min.js')}}"></script>
+{{--<script src="{{asset('public/libs/jcubic-splitter/js/jquery.splitter.js')}}"></script>--}}
+{{--<script src="{{asset('public/libs/splitter/jquery.splitter.js')}}"></script>--}}
+<script src="{{asset('public/libs/splitter/jquery-resizable.js')}}"></script>
 <script src="//cdn.rawgit.com/julmot/mark.js/master/dist/jquery.mark.min.js"></script>
 <script src="{{asset('public/libs/toolbar/jquery.toolbar.js')}}"></script>
 <script src="{{asset('public/js/my-script.js')}}"></script>
