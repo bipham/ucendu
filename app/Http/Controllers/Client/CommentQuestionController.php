@@ -56,8 +56,8 @@ class CommentQuestionController extends Controller
                     $readingCommentNotificationModel->createNewCommentNotification($question_id, $related_user->user_id);
                 }
             }
-            $redis = LRedis::connection();
-            $redis->publish('commentNotification', json_encode(['test'=>$result]));
+//            $redis = LRedis::connection();
+//            $redis->publish('commentNotification', json_encode(['test'=>$result]));
             return json_encode(['list_comment' => $result]);
         }
     }

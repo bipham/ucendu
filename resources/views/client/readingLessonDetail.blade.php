@@ -56,16 +56,18 @@
                         @if($type_lesson == 1)
                             <?php
                             $detailTypeQuestionOfQuiz =  $readingTypeQuestionOfQuizModel->getDetailQuizByQuizId($practice_lesson->quiz_id);
-    //                        dd($detailTypeQuestionOfQuiz);
+                            $quiz_id = $practice_lesson->quiz_id;
+//                            dd($practice_lesson);
                             ?>
                         @else
                             <?php
                             $detailTypeQuestionOfQuiz =  $readingTypeQuestionOfQuizModel->getDetailQuizByQuizId($practice_lesson->id);
                             //                        dd($detailTypeQuestionOfQuiz);
+                            $quiz_id = $practice_lesson->id;
                             ?>
                         @endif
 
-                        @include('utils.contentGrid',['lesson' => $practice_lesson, 'detailTypeQuestionOfQuiz' => json_decode($detailTypeQuestionOfQuiz)])
+                        @include('utils.contentGrid',['lesson' => $practice_lesson, 'detailTypeQuestionOfQuiz' => json_decode($detailTypeQuestionOfQuiz), 'quiz_id' => $quiz_id])
                     @endforeach
                 </div>
             </div>
@@ -81,14 +83,16 @@
                             <?php
                             $detailTypeQuestionOfQuiz =  $readingTypeQuestionOfQuizModel->getDetailQuizByQuizId($test_lesson->quiz_id);
                             //                        dd($detailTypeQuestionOfQuiz);
+                            $quiz_id = $practice_lesson->quiz_id;
                             ?>
                         @else
                             <?php
                             $detailTypeQuestionOfQuiz =  $readingTypeQuestionOfQuizModel->getDetailQuizByQuizId($test_lesson->id);
                             //                        dd($detailTypeQuestionOfQuiz);
+                            $quiz_id = $practice_lesson->id;
                             ?>
                         @endif
-                        @include('utils.contentGrid',['lesson' => $test_lesson, 'detailTypeQuestionOfQuiz' => json_decode($detailTypeQuestionOfQuiz)])
+                        @include('utils.contentGrid',['lesson' => $test_lesson, 'detailTypeQuestionOfQuiz' => json_decode($detailTypeQuestionOfQuiz), 'quiz_id' => $quiz_id])
                     @endforeach
                 </div>
             </div>

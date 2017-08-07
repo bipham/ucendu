@@ -31,9 +31,9 @@
                 @foreach($practice_lessons as $practice_lesson)
                     <?php
                     $detailTypeQuestionOfQuiz =  $readingTypeQuestionOfQuizModel->getDetailQuizByQuizId($practice_lesson->quiz_id);
-                    //                        dd($detailTypeQuestionOfQuiz);
+                    $quiz_id = $practice_lesson->quiz_id;
                     ?>
-                    @include('utils.contentGrid',['lesson' => $practice_lesson, 'detailTypeQuestionOfQuiz' => json_decode($detailTypeQuestionOfQuiz)])
+                    @include('utils.contentGrid',['lesson' => $practice_lesson, 'detailTypeQuestionOfQuiz' => json_decode($detailTypeQuestionOfQuiz), 'quiz_id' => $quiz_id])
                 @endforeach
             </div>
         </div>
@@ -47,9 +47,9 @@
                 @foreach($test_lessons as $test_lesson)
                     <?php
                     $detailTypeQuestionOfQuiz =  $readingTypeQuestionOfQuizModel->getDetailQuizByQuizId($test_lesson->quiz_id);
-                    //                        dd($detailTypeQuestionOfQuiz);
+                    $quiz_id = $practice_lesson->quiz_id;
                     ?>
-                    @include('utils.contentGrid',['lesson' => $test_lesson, 'detailTypeQuestionOfQuiz' => json_decode($detailTypeQuestionOfQuiz)])
+                    @include('utils.contentGrid',['lesson' => $test_lesson, 'detailTypeQuestionOfQuiz' => json_decode($detailTypeQuestionOfQuiz), 'quiz_id' => $quiz_id])
                 @endforeach
             </div>
         </div>

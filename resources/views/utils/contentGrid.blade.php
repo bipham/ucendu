@@ -73,13 +73,13 @@
         </div>
         <div class="btn-lesson-overview-area">
             <span class="btn-inline">
-                <a href="{{route('reading.readingLesson', 'lesson' . $lesson->lesson_id . '-' . $title_lesson)}}" class="btn btn-outline-primary">
+                <a href="{{route('reading.readingLesson', 'lesson' . $lesson->lesson_id . '-' . $title_lesson)}}" class="btn btn-outline-primary btn-test-overview">
                    <i class="fa fa-play" aria-hidden="true"></i>
                     Take Test
                 </a>
             </span>
             <span class="btn-inline">
-                <a href="{{route('reading.readingLesson', 'lesson' . $lesson->lesson_id . '-' . $title_lesson)}}" class="btn btn-outline-success">
+                <a href="{{url('http://ucendu.dev/solutionLesson/' . $lesson->lesson_id . '-' . $quiz_id .  '?list_answer="emptyList"&correct_answer=[]&totalQuestion=' . $lesson->total_questions)}}" class="btn btn-outline-success btn-test-overview">
                     <i class="fa fa-key" aria-hidden="true"></i>
                     Solution
                 </a>

@@ -30,6 +30,7 @@
                             <?php
                             $detailTypeQuestionOfQuiz =  $readingTypeQuestionOfQuizModel->getDetailQuizByQuizId($practice_lesson->id);
     //                        dd($detailTypeQuestionOfQuiz);
+                            $quiz_id = $practice_lesson->id;
                             ?>
                             @include('utils.contentGrid',['lesson' => $practice_lesson, 'detailTypeQuestionOfQuiz' => json_decode($detailTypeQuestionOfQuiz)])
                     @endforeach
@@ -46,8 +47,9 @@
                             <?php
                             $detailTypeQuestionOfQuiz =  $readingTypeQuestionOfQuizModel->getDetailQuizByQuizId($test_lesson->id);
                             //                        dd($detailTypeQuestionOfQuiz);
+                            $quiz_id = $practice_lesson->id;
                             ?>
-                            @include('utils.contentGrid',['lesson' => $test_lesson, 'detailTypeQuestionOfQuiz' => json_decode($detailTypeQuestionOfQuiz)])
+                            @include('utils.contentGrid',['lesson' => $test_lesson, 'detailTypeQuestionOfQuiz' => json_decode($detailTypeQuestionOfQuiz), 'quiz_id' => $quiz_id])
                     @endforeach
                 </div>
             </div>
