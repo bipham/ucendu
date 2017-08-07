@@ -7,6 +7,10 @@ use App\Http\Controllers\Controller;
 use App\Models\ReadingQuestion;
 use App\Models\ReadingQuizz;
 use App\Models\ReadingLesson;
+use App\Models\ReadingTypeQuestion;
+use App\Models\ReadingTypeQuestionOfQuiz;
+use App\Models\ReadingCategoryLesson;
+use App\Models\ReadingCategory;
 use Request;
 
 class ResultController extends Controller
@@ -34,18 +38,33 @@ class ResultController extends Controller
     }
 
     public function getSolutionLesson($lesson_id, $quiz_id) {
-        $ReadingLessonModel = new ReadingLesson();
-        $lesson = $ReadingLessonModel->getLessonById($lesson_id);
+        $readingLessonModel = new ReadingLesson();
+        $lesson_detail = $readingLessonModel->getLessonById($lesson_id);
         $quizModel = new ReadingQuizz();
         $lesson_quiz = $quizModel->getQuizByLessonId($lesson_id);
         $totalQuestion = $_GET['totalQuestion'];
         $correct_answer = $_GET['correct_answer'];
         $list_answer = $_GET['list_answer'];
-
         $correct_answer = json_decode($correct_answer);
         $list_answer = json_decode($list_answer);
-//        dd($correct_answer);
-        return view('client.solutionDetail',compact('lesson', 'lesson_quiz', 'correct_answer', 'totalQuestion', 'list_answer'));
+        $type_lesson = $lesson_quiz->type_lesson;
+        $readingTypeQuestionModel = new ReadingTypeQuestion();
+        $readingTypeQuestionOfQuizModel = new ReadingTypeQuestionOfQuiz();
+        if ($type_lesson == 1) {
+            $type_question_id = $readingTypeQuestionOfQuizModel->getTypeQuestionIdByQuizId($lesson_quiz->id);
+            $practice_lessons = $readingLessonModel->getPracticeNewestOfTypeQuestion(8, $type_question_id);
+            $test_lessons = $readingLessonModel->getTestNewestOfTypeQuestion(8, $type_question_id);
+            $type_question = $readingTypeQuestionModel->getTypeQuestionById($type_question_id);
+        }
+        else {
+            $practice_lessons = $readingLessonModel->getPracticeNewestOfTypeLesson(8, $type_lesson);
+            $test_lessons = $readingLessonModel->getTestNewestOfTypeLesson(8, $type_lesson);
+            $type_question = '';
+        }
+        $readingCategoryLessonModel = new ReadingCategoryLesson();
+        $readingCategoryModel = new ReadingCategory();
+
+        return view('client.solutionDetail',compact('lesson_detail', 'lesson_quiz', 'correct_answer', 'totalQuestion', 'list_answer', 'practice_lessons','test_lessons', 'readingCategoryLessonModel', 'readingCategoryModel', 'type_lesson', 'type_question', 'readingTypeQuestionOfQuizModel'));
     }
 
 }

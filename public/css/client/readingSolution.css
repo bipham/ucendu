@@ -95,3 +95,70 @@ input.reply-cmt {
     height: 42px;
     margin-top: 5px;
 }
+
+.explain-area {
+    margin: 10px 0;
+}
+
+.show-answer {
+    margin-bottom: 10px;
+}
+
+.key-answer {
+    background: white;
+    color: red;
+    font-weight: 900;
+}
+
+.solution-tools {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.btn-locate-highlight {
+    color: #f0ad4e !important;
+}
+
+.btn-locate-highlight:hover {
+    color: #fff !important;
+}
+
+.card.card-header.comments-area-title {
+    background: #0275d8;
+    color: white;
+}
+
+.keywords-area {
+    border: 2px dashed #5bc0de;
+}
+
+.keywords-area-title {
+    background: #5bc0de;
+    color: white;
+}
+
+#replyComment {
+    padding: 5px;
+    border: 1px dashed #0275d8;
+    margin-top: 5px;
+}
+
+.no-cmt {
+    margin: 0;
+}
+
+.selected-true-icon {
+    color: #5cb85c;
+    font-size: 30px;
+    margin-left: 10px;
+}
+
+.right-panel-custom  img {
+    width: inherit;
+}
+
+.solution-detail-page {
+    margin: 0 auto;
+    width: 100% !important;
+    padding: 0;
+}

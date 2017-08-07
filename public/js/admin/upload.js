@@ -229,22 +229,32 @@ $( document ).ready(function() {
             var qorder = $(this).attr('name');
             qorder = qorder.match(/\d+/);
             var answer_key = $('.answer-' + qorder).val();
-            $(this).parent().after( '<div class="explain-area">' +
-                                        '<span>' +
-                                            '<strong>Answer ' + qorder + ': ' + answer_key + '</strong>' +
-                                        '</span>' +
-                                        '<a class="btn btn-xs btn-primary btn-locate-highlight" data-qnumber="' + qnumber +'" onclick="scrollToHighlight(' + qorder + ')">' +
-                                            '<i class="fa fa-map-marker" aria-hidden="true"></i>' +
-                                            '&nbsp;Locate' +
-                                        '</a>' +
-                                        '<a class="btn btn-xs btn-info btn-show-keywords" data-qnumber="' + qnumber +'" data-toggle="collapse" href="#keywordArea-' + qnumber + '" aria-expanded="false" aria-controls="keywordArea-' + qnumber + '" onclick="showKeywords(' + qnumber + ')">' +
-                                            '<i class="fa fa-key" aria-hidden="true"></i>' +
-                                            '&nbsp;Keywords' +
-                                        '</a>' +
-                                        '<a class="btn btn-xs btn-warning btn-show-comments" data-qnumber="' + qnumber +'" data-toggle="collapse" href="#commentArea-' + qnumber + '" aria-expanded="false" aria-controls="commentArea-' + qnumber + '" onclick="showComments(' + qnumber + ')">' +
-                                            '<i class="fa fa-question" aria-hidden="true"></i>' +
-                                            '&nbsp;Comments' +
-                                        '</a>' +
+            $(this).parent().after( '<div class="explain-area explain-' + qorder + ' explain-area-' + qnumber + '" data-qnumber="' + qnumber + '">' +
+                                        '<div class="show-answer">' +
+                                            '<button type="button" class="btn btn-danger btn-show-answer">Answer ' + qorder + ' ' +
+                                                '<div class="badge badge-pill key-answer">' +
+                                                    answer_key +
+                                                '</div>' +
+                                            '</button>' +
+                                        '</div>' +
+                                        '<div class="solution-tools locate-highlight-tool">' +
+                                            '<a class="btn btn-xs btn-outline-warning btn-locate-highlight" data-qnumber="' + qnumber +'" onclick="scrollToHighlight(' + qorder + ')">' +
+                                                '<i class="fa fa-map-marker" aria-hidden="true"></i>' +
+                                                '&nbsp;Locate' +
+                                            '</a>' +
+                                        '</div>' +
+                                        '<div class="solution-tools locate-keyword-tool">' +
+                                            '<a class="btn btn-xs btn-outline-info btn-show-keywords" data-qnumber="' + qnumber +'" data-toggle="collapse" href="#keywordArea-' + qnumber + '" aria-expanded="false" aria-controls="keywordArea-' + qnumber + '" onclick="showKeywords(' + qnumber + ')">' +
+                                                '<i class="fa fa-key" aria-hidden="true"></i>' +
+                                                '&nbsp;Keywords' +
+                                            '</a>' +
+                                        '</div>' +
+                                        '<div class="solution-tools locate-comment-tool">' +
+                                            '<a class="btn btn-xs btn-outline-primary btn-show-comments" data-qnumber="' + qnumber +'" data-toggle="collapse" href="#commentArea-' + qnumber + '" aria-expanded="false" aria-controls="commentArea-' + qnumber + '" onclick="showComments(' + qnumber + ')">' +
+                                                '<i class="fa fa-question" aria-hidden="true"></i>' +
+                                                '&nbsp;Comments' +
+                                            '</a>' +
+                                        '</div>' +
                                         '<div class="collapse collage-keywords collapse-custom" id="keywordArea-' + qnumber +'"> ' +
                                             '<div class="card card-header keywords-area-title">KEYWORDS:' +
                                             '</div>' +

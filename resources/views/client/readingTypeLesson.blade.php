@@ -73,9 +73,9 @@
     <script src="{{asset('public/js/client/lessonDetail.js')}}"></script>
     <script>
         $(function () {
-            $('#myTab a.reading-practice').tab('show');
-            $('#myTab a.reading-test-quiz').addClass('hidden');
-            $('#myTab a.reading-intro').addClass('hidden');
+            $('#myTabReading a.reading-practice').tab('show');
+            $('#myTabReading a.reading-test-quiz').addClass('hidden');
+            $('#myTabReading a.reading-intro').addClass('hidden');
         })
     </script>
 @endsection

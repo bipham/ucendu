@@ -60,9 +60,9 @@
 @section('scripts')
     <script>
         $(function () {
-            $('#myTab a.reading-practice').tab('show');
-            $('#myTab a.reading-intro').addClass('hidden');
-            $('#myTab a.reading-test-quiz').addClass('hidden');
+            $('#myTabReading a.reading-practice').tab('show');
+            $('#myTabReading a.reading-intro').addClass('hidden');
+            $('#myTabReading a.reading-test-quiz').addClass('hidden');
         })
     </script>
 @endsection

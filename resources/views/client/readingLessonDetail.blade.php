@@ -117,12 +117,6 @@
             <button type="submit" class="btn btn-danger btn-submit-quiz btn-custom">
                 Submit
             </button>
-            <button type="button" class="btn btn-danger btn-rest-quiz btn-custom">
-                Hor
-            </button>
-            <button type="button" class="btn btn-danger btn-ver-quiz btn-custom">
-                Ver
-            </button>
         </div>
     @endsection
 
@@ -133,11 +127,10 @@
     <script>
         var type_lesson = <?php print_r($type_lesson); ?>;
         $(function () {
-            $('#myTab a.reading-test-quiz').tab('show');
+            $('#myTabReading a.reading-test-quiz').tab('show');
             if (type_lesson != 1) {
-                $('#myTab a.reading-intro').addClass('hidden');
+                $('#myTabReading a.reading-intro').addClass('hidden');
             }
         });
-
     </script>
 @endsection

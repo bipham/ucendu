@@ -120,7 +120,7 @@ function showComments(i) {
                     +  username
                     + '</div>'
                     + '<div class="item-cmt-body">'
-                    + '<input type="text" class="reply-cmt reply-cmt-' + i + '" data-reply-cmt-id="0" data-question-id = "' + i + '">'
+                    + '<input type="text" placeholder=" Write your comment ..." class="reply-cmt reply-cmt-' + i + '" data-reply-cmt-id="0" data-question-id = "' + i + '">'
                     + '</div>'
                     + '<div class="item-time-cmt">'
                     + '</div>'

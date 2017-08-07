@@ -134,10 +134,13 @@
     .splitter {
         flex: 0 0 auto;
         width: 18px;
-        background: url(/images/vsizegrip.png) center center no-repeat #535353;
+        /*background: url(/images/vsizegrip.png) center center no-repeat #535353;*/
         min-height: calc(100vh - 185px);
         cursor: col-resize;
         display: block;
+        background-color: #AAA;
+        /* border-radius: 10px; */
+        background-image: -webkit-linear-gradient(90deg, rgba(0, 0, 0, .2) 25%, transparent 25%, transparent 50%, rgba(0, 0, 0, .2) 50%, rgba(0, 0, 0, .2) 75%, transparent 75%, transparent);
     }
 
     .left-panel-custom {
@@ -152,8 +155,9 @@
     }
 
     .right-panel-custom {
-        width: 50%;
-        height: calc(100vh - 185px);
+        /*width: 50%;*/
+        max-height: 90vh;
+        min-height: 80vh;
         float: left;
         padding-bottom: 0;
     }

@@ -97,12 +97,3 @@ function getAllAnswer() {
         }
     });
 }
-
-$(".panel-left").resizable({
-    handleSelector: ".splitter",
-    resizeHeight: true
-});
-$(".panel-top").resizable({
-    handleSelector: ".splitter-horizontal",
-    resizeWidth: false
-});
