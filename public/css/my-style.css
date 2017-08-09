@@ -186,15 +186,22 @@ div#toolbar-open {
 	width: 60px;
 	height: 60px;
 	border-radius: 50%;
-	background: #5bc0de;
+	/* background: #5bc0de; */
 	font-weight: bold;
 	left: 5px;
 	position: relative;
 	top: 100px;
-	color: #464a4c;
+	/* color: #464a4c; */
 	text-align: center;
 	cursor: pointer;
+	padding: 0;
+	border: 2px solid;
+}
 
+.transform-open-toolbar-active#toolbar-open {
+	background: #5bc0de;
+	color: #464a4c;
+	border: none;
 }
 
 .toolbar-content {
@@ -738,8 +745,8 @@ h1,h2,h3,h4,h5,h6 {
 	width: 100%;
 	height: 40vh;
 	overflow: auto;
-	max-height: 80vh;
-	min-height: 20vh;
+	max-height: 70vh;
+	min-height: 30vh;
 	max-width: 100%;
 	min-width: 100%;
 }
@@ -747,7 +754,8 @@ h1,h2,h3,h4,h5,h6 {
 .right-panel-custom {
 	background: aliceblue;
 	padding: 10px;
-	/*height: 50vh;*/
+	max-height: 70vh;
+	min-height: 30vh;
 	overflow: hidden;
 	padding-bottom: 70px;
 	position: relative;
@@ -844,7 +852,7 @@ footer.navbar-fixed-bottom {
 }
 
 .badge.badge-danger.countdown-time {
-	display: block;
+	display: none;
 	max-width: 70px;
 	margin: 0 auto;
 	font-size: 16px;
@@ -866,4 +874,67 @@ footer.navbar-fixed-bottom {
 .overlay-lesson-active {
 	visibility: hidden;
 	opacity: 0;
+}
+
+#myTabReading {
+	height: 65px;
+	background: white;
+	font-weight: 600;
+	color: #222;
+	border-bottom: 1px solid #449d44;
+}
+
+#myTabReading.reading-header-fixed {
+	z-index: 99999;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	padding-left: calc( 2.5% + 15px );
+	padding-right: calc( 2.5% + 15px );
+}
+
+.btn-inline {
+	margin: 0 10px;
+}
+
+.logo-reading-menu {
+	display: none;
+	margin-right: 50px;
+	width: auto;
+	height: 100%;
+}
+
+.reading-header-fixed .logo-reading-menu {
+	display: flex;
+}
+
+.img-logo-reading-menu {
+	width: 70px;
+}
+
+.modal-dialog {
+	top: 10%;
+}
+
+.modal {
+	z-index: 99999;
+}
+
+.result-test {
+	font-weight: 600;
+	color: red;
+}
+
+.title-auto-submit {
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+
+.submit-manual {
+	text-align: center;
+}
+
+#readingSubmitQuizModal .modal-body {
+	text-align: center;
 }

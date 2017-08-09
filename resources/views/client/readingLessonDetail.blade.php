@@ -100,6 +100,7 @@
     @endsection
 
     @section('readingTestQuiz')
+        @include('utils.readingLessonTestTools',['lesson_detail' => $lesson_detail, 'lesson_quiz' => $lesson_quiz])
         <div class="container lesson-detail-page page-custom">
             <input type="hidden" name="_token" value="{!!csrf_token()!!}">
             <div class="lesson-detail panel-container">
@@ -112,13 +113,28 @@
                 </div>
                 <div class="right-panel-custom panel-right panel-bottom @if ($lesson_quiz->limit_time == 0) active-quiz @endif" id="quiz-test-area" data-quizId="{!! $lesson_quiz->id !!}" data-limit-time="{!! $lesson_quiz->limit_time !!}">
                     {!! $lesson_quiz->content_quiz !!}
-                    <button type="submit" class="btn btn-danger btn-submit-quiz btn-custom">
-                        Submit
-                    </button>
+                    <div class="reading-end-lesson end-lesson-area">
+                        <h4 class="title-end-lesson">
+                            --- End of the Test ---
+                        </h4>
+                        <h5 class="recomment-submit-lesson">
+                            Please Submit to view your score, solution and explanations.
+                        </h5>
+                        <button type="submit" class="btn btn-danger btn-submit-quiz btn-custom">
+                            Submit
+                        </button>
+                        <div class="found-mistake">
+                            <a href="#" class="send-mistake">
+                                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                Found a mistake? Let us know!
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 <div class="overlay-lesson @if ($lesson_quiz->limit_time == 0) overlay-lesson-active @endif">
                     <img src="http://ucendu.dev/public/imgs/original/cover-1.jpg" alt="Logo" class="img-overlay-quiz">
                     <div class="reading-guide-test">
+                        <div class="badge badge-primary countdown-time-overview"></div>
                         <h4 class="reading-title-start">
                             Are you ready?
                         </h4>
@@ -147,32 +163,48 @@
         var limit_time = <?php print_r($lesson_quiz->limit_time); ?>;
         var show_time_quiz = limit_time/60;
         if (show_time_quiz > 0) {
-            $('.countdown-time').html(show_time_quiz + ' mins');
+            if (show_time_quiz == 1) {
+                $('.countdown-time-overview').html(show_time_quiz + ' min');
+            }
+            else {
+                $('.countdown-time-overview').html(show_time_quiz + ' mins');
+            }
         }
         else {
-            $('.countdown-time').remove();
+            $('.countdown-time-overview').remove();
         }
 
         $('.btn-reading-start-test').click(function () {
-            var limit_time_quiz = new Date().getTime() + limit_time*1000;
+            var limit_time_quiz = new Date().getTime() + 3*1000;
             $('.overlay-lesson').addClass('overlay-lesson-active');
             $('.right-panel-custom').addClass('active-quiz');
+            $('html,body').animate({
+                scrollTop: 0
+            }, 500);
+            $('.countdown-time').css('display', 'block');
             $('.countdown-time').countdown(limit_time_quiz, function(event) {
                 $(this).html(event.strftime('%M:%S'))
+            })
                 .on('finish.countdown', function(event) {
+//                    console.log('aaaaa');
+                    var result_quiz = getAnsweredQuestionOverview();
                     var dialog = bootbox.dialog({
-                        title: 'Het thoi gian, he thong tu dong gui ket qua len trong 3s, vui long cho....',
-                        message: '<p><i class="fa fa-spin fa-spinner"></i> Submitting...</p>',
+                        title: 'End time!',
+                        message:    '<h5 class="title-auto-submit">You answered <span class="result-test">' + result_quiz + '</span> questions</h5>' +
+                                    '<p><i class="fa fa-spin fa-spinner"></i> Your result is submitting...</p>',
     //                    size: 'large',
                         closeButton: false
                     });
                     dialog.init(function(){
+                        $('.menu-left-stick').addClass('hidden');
+                        $('.reading-tool-lesson-quiz').addClass('hidden');
                         setTimeout(function(){
                             submitReadingTest();
                         }, 3000);
                     });
-                })
-            });
+
+                });
+            $('.reading-tool-lesson-quiz').removeClass('hidden');
         });
     </script>
 @endsection

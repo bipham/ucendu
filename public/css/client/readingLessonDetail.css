@@ -1,7 +1,7 @@
 .lesson-detail-page {
     margin: 0 auto;
-    width: 100% !important;
-    padding: 0;
+    /*width: 100% !important;*/
+    /*padding: 0;*/
 }
 
 .reading-guide-test {
@@ -24,4 +24,85 @@ h4.reading-title-start {
 
 img.img-overlay-quiz {
     height: 100%;
+}
+
+.countdown-time-overview {
+    display: block;
+    font-size: 40px;
+    width: 200px;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+.reading-end-lesson.end-lesson-area {
+    border-top: 2px solid orange;
+    border-bottom: 2px solid orange;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 40px;
+}
+
+.title-end-lesson {
+    color: rgba(70, 74, 76, 0.86);
+    margin-bottom: 20px;
+}
+
+.recomment-submit-lesson {
+    margin-bottom: 20px;
+}
+
+.btn-submit-quiz {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.send-mistake {
+    color: #0275d8;
+}
+
+.reading-tool-lesson-quiz {
+    position: fixed;
+    z-index: 99999;
+    bottom: 10%;
+    right: 0;
+}
+
+.btn-tool-sidebar {
+    display: block;
+    margin-bottom: 20px;
+    width: 60px;
+    height: 60px;
+    border: 2px solid;
+    border-radius: 50%;
+    font-size: 12px;
+    padding: 13px 0;
+    font-weight: 600;
+}
+
+/*.btn-tool-sidebar.btn-test-overview {*/
+    /*padding: 10px 0;*/
+    /*font-size: 12px;*/
+/*}*/
+
+.icon-reading-tool-sidebar {
+    display: block;
+    font-size: 15px;
+    margin-top: 3px;
+    font-weight: 600;
+}
+
+.review-question-quiz {
+    margin-bottom: 20px;
+}
+
+.answered-question-review:disabled {
+    background: antiquewhite;
+}
+
+.answered-question-review.answered:disabled {
+    background: rgb(162, 236, 162);
+}
+
+.btn-focus-question {
+    cursor: pointer;
 }

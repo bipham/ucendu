@@ -9,7 +9,7 @@
 <div class="menu-left-stick left-position reading-menu-left">
     <div class="toolbar-inner">
         <div class="toolbar-scroll">
-            <div class="open-toolbar transform-open-toolbar" id="toolbar-open">
+            <div class="open-toolbar transform-open-toolbar btn-outline-info" id="toolbar-open">
                 <div class="btn-open">
                     <strong class="title-toolbar">Menu </strong>
                     <i class="fa fa-folder icon-toolbar icon-toolbar-close" aria-hidden="true"></i>

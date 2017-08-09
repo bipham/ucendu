@@ -10,6 +10,13 @@
     <div class="container">
         <div class="menu menu-reading">
             <ul class="nav nav-tabs" id="myTabReading" role="tablist">
+                <li class="logo-reading-menu img-thumbnail-middle">
+                    <div class="img-thumbnail-inner">
+                        <a href="http://ucendu.dev" class="brand-web">
+                            <img src="http://ucendu.dev/public/imgs/original/logo.jpg" alt="Logo" class="img-custom img-middle-responsive img-logo-reading-menu">
+                        </a>
+                    </div>
+                </li>
                 <li class="nav-item title-lesson-header">
                     <h4 class="title-type-lesson">
                         @yield('titleTypeLesson')
@@ -38,25 +45,6 @@
                     </a>
                 </li>
             </ul>
-
-            <!-- Tab panes -->
-            <div class="tab-content">
-                <div class="tab-pane" id="readingIntro" role="tabpanel">
-                    @yield('readingIntro')
-                </div>
-                <div class="tab-pane" id="practice" role="tabpanel">
-                    @yield('readingPractice')
-                </div>
-                <div class="tab-pane" id="readingTestLesson" role="tabpanel">
-                    @yield('readingTest')
-                </div>
-                <div class="tab-pane" id="readingTestQuiz" role="tabpanel">
-                    @yield('readingTestQuiz')
-                </div>
-                <div class="tab-pane" id="readingSolutionQuiz" role="tabpanel">
-                    @yield('readingSolutionQuiz')
-                </div>
-            </div>
         </div>
     </div>
 </div>

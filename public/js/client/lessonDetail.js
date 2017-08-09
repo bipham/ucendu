@@ -16,11 +16,27 @@ $('.btn-submit-quiz').click(function () {
 });
 
 $('.question-quiz').on('change', function () {
-   alert('ad');
+   var answered_val = $(this).val();
+   var question_order = $(this).attr('name').match(/\d+/);
+   $('.answered-question-' + question_order).val(answered_val);
+   if ($('.answered-question-' + question_order).val() != '') {
+       $('.answered-question-' + question_order).addClass('answered');
+   }
+   else {
+       $('.answered-question-' + question_order).removeClass('answered');
+   }
 });
 
 $('.question-quiz').on('keyup', function () {
-    alert('ad');
+    var answered_val = $(this).val();
+    var question_order = $(this).attr('name').match(/\d+/);
+    $('.answered-question-' + question_order).val(answered_val);
+    if ($('.answered-question-' + question_order).val() != '') {
+        $('.answered-question-' + question_order).addClass('answered');
+    }
+    else {
+        $('.answered-question-' + question_order).removeClass('answered');
+    }
 });
 
 function bitest() {
@@ -110,3 +126,39 @@ function submitReadingTest() {
         }
     });
 }
+
+function focusQuestion(i) {
+    $('#readingReviewQuizModal').modal('hide');
+    $('#readingReviewQuizModal').on('hidden.bs.modal', function (e) {
+        // do something...
+        $('.right-panel-custom').animate({
+            scrollTop: $(".question-"+i).offset().top - 150
+        },1);
+
+        // $('html,body').animate({
+        //     scrollTop: body.offset().top - 150
+        // },500);
+
+        $(".question-"+i)[0].focus();
+    });
+}
+
+function getAnsweredQuestionOverview() {
+    var total_question = 0;
+    var answered_question = 0;
+    $('.review-question-quiz').each(function(index){
+        total_question += 1;
+        var answered_class = $(this).find('.answered-question-review');
+        if (answered_class.hasClass('answered')) {
+            answered_question += 1;
+        }
+    });
+    var result = answered_question + "/" + total_question;
+    return result;
+}
+
+$('.btn-submit-modal').click(function () {
+    var result_quiz = getAnsweredQuestionOverview();
+    $('.result-test').html(result_quiz);
+});
+

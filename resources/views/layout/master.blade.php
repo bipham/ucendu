@@ -30,6 +30,7 @@
 @include('layout.header')
 @include('layout.menuHeaderReading')
 <div role="main" class="main main-page">
+    @include('layout.tabContentReading')
 
     @yield('top-information')
 

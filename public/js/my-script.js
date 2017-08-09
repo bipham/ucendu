@@ -22,3 +22,17 @@ $(".panel-top").resizable({
     handleSelector: ".splitter-horizontal",
     resizeWidth: false
 });
+
+jQuery("document").ready(function($){
+
+    var nav = $('#myTabReading');
+
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 140) {
+            nav.addClass("reading-header-fixed");
+        } else {
+            nav.removeClass("reading-header-fixed");
+        }
+    });
+
+});
