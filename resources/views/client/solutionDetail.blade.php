@@ -83,13 +83,13 @@
                             <?php
                             $detailTypeQuestionOfQuiz =  $readingTypeQuestionOfQuizModel->getDetailQuizByQuizId($test_lesson->quiz_id);
                             //                        dd($detailTypeQuestionOfQuiz);
-                            $quiz_id = $practice_lesson->quiz_id;
+                            $quiz_id = $test_lesson->quiz_id;
                             ?>
                         @else
                             <?php
                             $detailTypeQuestionOfQuiz =  $readingTypeQuestionOfQuizModel->getDetailQuizByQuizId($test_lesson->id);
                             //                        dd($detailTypeQuestionOfQuiz);
-                            $quiz_id = $practice_lesson->id;
+                            $quiz_id = $test_lesson->id;
                             ?>
                         @endif
                         @include('utils.contentGrid',['lesson' => $test_lesson, 'detailTypeQuestionOfQuiz' => json_decode($detailTypeQuestionOfQuiz), 'quiz_id' => $quiz_id])
@@ -131,7 +131,7 @@
                 </div>
                 <div class="splitter-horizontal">
                 </div>
-                <div class="right-panel-custom panel-right panel-bottom" id="solution-area" data-quizId="{!! $lesson_quiz->id !!}">
+                <div class="right-panel-custom panel-right panel-bottom active-quiz" id="solution-area" data-quizId="{!! $lesson_quiz->id !!}">
                     {!! $lesson_quiz->content_answer_quiz !!}
                 </div>
             </div>
@@ -146,6 +146,7 @@
         var type_lesson = <?php print_r($type_lesson); ?>;
         $(function () {
             $('#myTabReading a.reading-solution-quiz').tab('show');
+            $('#myTabReading a.reading-test-quiz').addClass('hidden');
             if (type_lesson != 1) {
                 $('#myTabReading a.reading-intro').addClass('hidden');
             }

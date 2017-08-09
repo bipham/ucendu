@@ -26,11 +26,16 @@
                     <a class="nav-link reading-test-lesson" data-toggle="tab" href="#readingTestLesson" role="tab">Test Lessons</a>
                 </li>
                 <li class="nav-item tab-reading-control">
-                    <a class="nav-link reading-test-quiz" data-toggle="tab" href="#readingTestQuiz" role="tab">Test Quiz</a>
+                    <a class="nav-link reading-test-quiz" data-toggle="tab" href="#readingTestQuiz" role="tab">
+                        Test Quiz
+                        <div class="badge badge-danger countdown-time"></div>
+                    </a>
                 </li>
                 <li class="nav-item tab-reading-control">
-                    <a class="nav-link reading-solution-quiz" data-toggle="tab" href="#readingSolutionQuiz" role="tab">Solution</a>
-                    <span class="badge badge-pill badge-default result-overview"></span>
+                    <a class="nav-link reading-solution-quiz" data-toggle="tab" href="#readingSolutionQuiz" role="tab">
+                        Solution
+                        <div class="badge badge-pill badge-info result-overview"></div>
+                    </a>
                 </li>
             </ul>
 

@@ -149,7 +149,7 @@ header#header .header-top {
 }
 
 .tab-content {
-	padding: 20px 0;
+	padding: 20px 0 0 0;
 }
 
 .main.main-page {
@@ -593,22 +593,22 @@ ul.primary-header-custom li.nav-item:before {
 	font-weight: 600;
 }
 
-/*.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {*/
-	/*border-color: #449D44 #449D44 #fff;*/
-	/*height: 100%;*/
-	/*padding: 10px;*/
-/*}*/
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+	border-color: #449D44 #449D44 #fff;
+	height: 100%;
+	padding: 10px;
+}
 .nav-tabs .nav-item .nav-link, .nav-tabs .nav-link {
 	padding: 10px 10px 0 10px;
-	height: 35px;
-	border: none;
+	height: 100%;
+	/*border: none;*/
 }
 
-/*.nav-tabs .nav-link {*/
-	/*border: 2px solid transparent;*/
-	/*border-top-right-radius: 10px;*/
-	/*border-top-left-radius: 10px;*/
-/*}*/
+.nav-tabs .nav-link {
+	border: 2px solid transparent;
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+}
 
 .title-toolbar {
 	font-size: 10px;
@@ -684,7 +684,7 @@ h1,h2,h3,h4,h5,h6 {
 /*}*/
 
 .type-lesson-header {
-	font-size: 15px;
+	font-size: 11px;
 	margin: 3px 0;
 }
 
@@ -745,17 +745,21 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .right-panel-custom {
+	background: aliceblue;
 	padding: 10px;
-	height: 50vh;
-	overflow: auto;
+	/*height: 50vh;*/
+	overflow: hidden;
 	padding-bottom: 70px;
-	/* max-width: 100%; */
-	/* min-width: 100%; */
+	position: relative;
 	width: 100%;
 }
 
+.right-panel-custom.active-quiz {
+	overflow: auto;
+}
+
 footer.navbar-fixed-bottom {
-	margin-top: 20px;
+	/*margin-top: 20px;*/
 }
 
 .panel-container img {
@@ -830,18 +834,36 @@ footer.navbar-fixed-bottom {
 	transparent)
 }
 
-.tab-reading-control.active {
-	border: 2px solid #449D44;
-	border-top-right-radius: 7px;
-	border-top-left-radius: 7px;
-	border-color: #449D44 #449D44 #fff;
+.result-overview {
+	display: none;
+	font-size: 13px;
 }
 
-.tab-reading-control {
-	text-align: center;
+.nav-link.active .result-overview {
+	display: block;
 }
 
-.tab-reading-control:hover {
-	border: 2px solid;
-	border-color: #eceeef #eceeef #ddd;
+.badge.badge-danger.countdown-time {
+	display: block;
+	max-width: 70px;
+	margin: 0 auto;
+	font-size: 16px;
+}
+
+.overlay-lesson {
+	opacity: 1;
+	z-index: 99998;
+	visibility: visible;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.94);
+	left: 0;
+	top: 0;
+	transition: opacity 0.3s;
+}
+
+.overlay-lesson-active {
+	visibility: hidden;
+	opacity: 0;
 }

@@ -47,7 +47,7 @@
                 @foreach($test_lessons as $test_lesson)
                     <?php
                     $detailTypeQuestionOfQuiz =  $readingTypeQuestionOfQuizModel->getDetailQuizByQuizId($test_lesson->quiz_id);
-                    $quiz_id = $practice_lesson->quiz_id;
+                    $quiz_id = $test_lesson->quiz_id;
                     ?>
                     @include('utils.contentGrid',['lesson' => $test_lesson, 'detailTypeQuestionOfQuiz' => json_decode($detailTypeQuestionOfQuiz), 'quiz_id' => $quiz_id])
                 @endforeach
@@ -64,6 +64,7 @@
         $(function () {
             $('#myTabReading a.reading-intro').tab('show');
             $('#myTabReading a.reading-test-quiz').addClass('hidden');
+            $('#myTabReading a.reading-solution-quiz').addClass('hidden');
         })
     </script>
 @endsection

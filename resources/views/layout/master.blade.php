@@ -43,8 +43,6 @@
 <script src="{{asset('public/libs/bootstrap/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('public/libs/highlight/TextHighlighter.min.js')}}"></script>
 <script src="{{asset('public/libs/bootbox/bootbox.min.js')}}"></script>
-{{--<script src="{{asset('public/libs/jcubic-splitter/js/jquery.splitter.js')}}"></script>--}}
-{{--<script src="{{asset('public/libs/splitter/jquery.splitter.js')}}"></script>--}}
 <script src="{{asset('public/libs/splitter/jquery-resizable.js')}}"></script>
 <script src="//cdn.rawgit.com/julmot/mark.js/master/dist/jquery.mark.min.js"></script>
 <script src="{{asset('public/libs/toolbar/jquery.toolbar.js')}}"></script>

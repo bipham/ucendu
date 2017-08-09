@@ -63,6 +63,7 @@
             $('#myTabReading a.reading-practice').tab('show');
             $('#myTabReading a.reading-intro').addClass('hidden');
             $('#myTabReading a.reading-test-quiz').addClass('hidden');
+            $('#myTabReading a.reading-solution-quiz').addClass('hidden');
         })
     </script>
 @endsection
