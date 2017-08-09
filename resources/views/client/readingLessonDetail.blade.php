@@ -112,6 +112,9 @@
                 </div>
                 <div class="right-panel-custom panel-right panel-bottom @if ($lesson_quiz->limit_time == 0) active-quiz @endif" id="quiz-test-area" data-quizId="{!! $lesson_quiz->id !!}" data-limit-time="{!! $lesson_quiz->limit_time !!}">
                     {!! $lesson_quiz->content_quiz !!}
+                    <button type="submit" class="btn btn-danger btn-submit-quiz btn-custom">
+                        Submit
+                    </button>
                 </div>
                 <div class="overlay-lesson @if ($lesson_quiz->limit_time == 0) overlay-lesson-active @endif">
                     <img src="http://ucendu.dev/public/imgs/original/cover-1.jpg" alt="Logo" class="img-overlay-quiz">
@@ -123,9 +126,6 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-danger btn-submit-quiz btn-custom">
-                Submit
-            </button>
         </div>
     @endsection
 
