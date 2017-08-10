@@ -15,7 +15,7 @@
 //        $orderNotiNoRead = $orderNotiModel->getAllOrderNotificationNoRead(Auth::id());
 //        $orderNotiNoRead = sizeof($orderNotiNoRead);
 //        $totalMatchNoti = $stockNotiNoRead + $orderNotiNoRead;
-        $readingCommentNotificationModel = new App\Models\ReadingCommentNotification();
+//        $readingCommentNotificationModel = new App\Models\ReadingCommentNotification();
 
         ?>
         <li class="img-avatar-header img-status-header">
