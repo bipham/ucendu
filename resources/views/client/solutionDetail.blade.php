@@ -100,29 +100,16 @@
     @endsection
 
     @section('readingTestQuiz')
-        <div class="container lesson-detail-page page-custom">
-            <input type="hidden" name="_token" value="{!!csrf_token()!!}">
-            <div class="lesson-detail panel-container">
-                <div class="left-panel-custom panel-left panel-top" id="lesson-content-area" data-lessonid="{!! $lesson_detail->id !!}">
-                    {!! $lesson_detail->content_lesson !!}
-                </div>
-                <div class="splitter">
-                </div>
-                <div class="splitter-horizontal">
-                </div>
-                <div class="right-panel-custom panel-right panel-bottom" id="quiz-test-area" data-quizId="{!! $lesson_quiz->id !!}">
-                    {!! $lesson_quiz->content_quiz !!}
-                </div>
-            </div>
-            <button type="submit" class="btn btn-danger btn-submit-quiz btn-custom">
-                Submit
-            </button>
-        </div>
+
     @endsection
 
     @section('readingSolutionQuiz')
         <div class="container solution-detail-page page-custom">
+            @include('utils.readingSolutionTables', ['lesson_detail' => $lesson_detail, 'lesson_quiz' => $lesson_quiz, 'correct_answers' => $correct_answer, 'list_answered' => $list_answer])
             <input type="hidden" name="_token" value="{!!csrf_token()!!}">
+            <h4 class="title-solution-detail-section">
+                Solution Detail
+            </h4>
             <div class="solution-detail panel-container">
                 <div class="left-panel-custom panel-left panel-top" id="lesson-highlight-area" data-lessonid="{!! $lesson_detail->id !!}">
                     {!! $lesson_detail->content_highlight !!}
@@ -142,6 +129,7 @@
 
 @section('scripts')
     <script src="{{asset('public/js/client/solutionDetail.js')}}"></script>
+    <script src="{{asset('public/libs/chart/Chart.min.js')}}"></script>
     <script type="text/javascript">
         var type_lesson = <?php print_r($type_lesson); ?>;
         $(function () {
@@ -152,9 +140,6 @@
             }
         });
         var correct_answers = <?php print_r(json_encode($correct_answer)); ?>;
-        jQuery.each( correct_answers, function( index, correct_answer ) {
-            $('.explain-area-' + correct_answer + ' .show-answer').append('<i class="fa selected-true-icon fa-check-circle-o" aria-hidden="true"></i>');
-        });
         var totalQuestion = <?php print_r(json_encode($totalQuestion)); ?>;
         if (totalQuestion != 0) {
             var number_correct_answer = correct_answers.length;
@@ -164,16 +149,29 @@
         $('.question-quiz').each(function () {
             var qnumber = $(this).data('qnumber');
             var qorder = $(this).attr('name');
+            var solution_key = $('.explain-area-' + qnumber + ' .key-answer').html();
+            console.log('a: ' + solution_key);
             qorder = qorder.match(/\d+/);
             var answer_key = list_answer[qnumber];
+            if (answer_key) {
+                $('.name-answered-' + qorder).html('Your choice');
+                $('.view-your-choice-' + qorder).html(answer_key);
+            }
+            $('.view-solution-question-' + qorder).html(solution_key);
+
+            if(jQuery.inArray(qnumber, correct_answers) !== -1) {
+                $('.question-table-' + qorder + ' .selected-false-icon').addClass('hidden');
+                $('.question-table-' + qorder + ' .selected-true-icon').removeClass('hidden');
+            }
+
             if ($(this).hasClass('question-radio')) {
                 if (answer_key) {
-                    $('input[value=' + answer_key + '].question-' + qorder,'#pr-quiz').prop( "checked", true);
+                    $('input[value=' + answer_key + '].question-' + qorder,'#solution-area').prop( "checked", true);
                 }
             }
             else if ($(this).hasClass('question-checkbox')) {
                 if (answer_key) {
-                    $('input[value=' + answer_key + '].question-' + qorder,'#pr-quiz').prop( "checked", true);
+                    $('input[value=' + answer_key + '].question-' + qorder,'#solution-area').prop( "checked", true);
                 }
             }
             else if ($(this).hasClass('question-input')) {
@@ -184,6 +182,54 @@
             else if ($(this).hasClass('question-select')) {
                 if (answer_key) {
                     $(this).val(answer_key);;
+                }
+            }
+        });
+        $('.explain-area').each(function () {
+            var qnumber = $(this).data('qnumber');
+            if(jQuery.inArray(qnumber, correct_answers) !== -1) {
+                $('.explain-area-' + qnumber + ' .show-answer').append('<i class="fa selected-true-icon fa-check-circle-o" aria-hidden="true"></i>');
+            }
+            else {
+                $('.explain-area-' + qnumber + ' .show-answer').append('<i class="fa selected-false-icon fa-times-circle-o" aria-hidden="true"></i>');
+            }
+        });
+
+        //Canvas Chart:
+        var ctx = document.getElementById("myChartReadingScore").getContext('2d');
+        var total_q = $('.stats-total-question .stats-value').html();
+        var correct_q = $('.stats-correct .stats-value').html();
+        var incorrect_q = $('.stats-incorrect .stats-value').html();
+        var unanswered_q = $('.stats-unanswered .stats-value').html();
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["Total", "Correct", "Incorrect", "No choice"],
+                datasets: [{
+                    label: '# Total questions',
+                    data: [total_q, correct_q, incorrect_q, unanswered_q],
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(255,99,132,1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
                 }
             }
         });

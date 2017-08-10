@@ -20,9 +20,12 @@ function scrollToHighlight(i) {
     $('.highlight-' + i).addClass('highlighting');
     var qnumber = $('#lesson-highlight-area .highlight-' + i).data('qnumber');
     var idClass = 'hl-answer-' + qnumber;
-    $('html,body').animate({
-            scrollTop: $("#"+idClass).offset().top - 20
-        }, 500);
+    // $('html,body').animate({
+    //         scrollTop: $("#"+idClass).offset().top - 20
+    //     }, 500);
+    $('.left-panel-custom').animate({
+        scrollTop: $("#"+idClass).position().top - 155
+    }, 500);
     // $('.highlight-' + i).focus();
 }
 

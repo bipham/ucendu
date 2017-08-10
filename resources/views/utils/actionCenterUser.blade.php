@@ -6,6 +6,7 @@
  * Time: 10:56 PM
  */
 ?>
+@if(Auth::check())
 <ul class="navbar-nav navbar-custom-header primary-header-custom navbar-info-custom">
         <?php
 //        $stockNotiModel = new App\Models\StockNotification();
@@ -40,3 +41,4 @@
                 </div>
             </li>
 </ul>
+    @endif

@@ -120,7 +120,7 @@
                         <h5 class="recomment-submit-lesson">
                             Please Submit to view your score, solution and explanations.
                         </h5>
-                        <button type="submit" class="btn btn-danger btn-submit-quiz btn-custom">
+                        <button type="submit" class="btn btn-danger btn-submit-modal btn-custom" data-toggle="modal" data-target="#readingSubmitQuizModal">
                             Submit
                         </button>
                         <div class="found-mistake">
