@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th8 07, 2017 lúc 05:22 CH
+-- Thời gian đã tạo: Th8 10, 2017 lúc 03:06 SA
 -- Phiên bản máy phục vụ: 10.1.21-MariaDB
 -- Phiên bản PHP: 5.6.30
 
@@ -129,8 +129,6 @@ INSERT INTO `reading_category_lessons` (`id`, `lesson_id`, `cate_id`, `status`, 
 (18, 18, 2, 1, '2017-07-28 05:17:46', '2017-07-28 05:17:46'),
 (19, 19, 2, 1, '2017-07-28 05:25:13', '2017-07-28 05:25:13'),
 (20, 20, 1, 1, NULL, NULL),
-(21, 19, 3, 1, '2017-08-07 07:02:53', '2017-08-07 07:02:53'),
-(22, 20, 3, 1, '2017-08-07 07:07:44', '2017-08-07 07:07:44'),
 (23, 21, 2, 1, '2017-08-07 09:31:01', '2017-08-07 09:31:01'),
 (24, 22, 3, 1, '2017-08-07 09:31:46', '2017-08-07 09:31:46'),
 (25, 23, 3, 1, '2017-08-07 13:20:40', '2017-08-07 13:20:40'),
@@ -163,7 +161,10 @@ INSERT INTO `reading_comment_notifications` (`id`, `question_id`, `user_id`, `ty
 (3, 43, 2, 'userCommentNotification', 0, NULL, '2017-08-02 17:55:58', '2017-08-02 17:55:58'),
 (4, 43, 2, 'userCommentNotification', 0, NULL, '2017-08-02 17:56:51', '2017-08-02 17:56:51'),
 (5, 43, 2, 'userCommentNotification', 0, NULL, '2017-08-02 17:58:01', '2017-08-02 17:58:01'),
-(6, 43, 2, 'userCommentNotification', 0, NULL, '2017-08-02 17:58:44', '2017-08-02 17:58:44');
+(6, 43, 2, 'userCommentNotification', 0, NULL, '2017-08-02 17:58:44', '2017-08-02 17:58:44'),
+(7, 54, 10, 'userCommentNotification', 0, NULL, '2017-08-09 15:04:49', '2017-08-09 15:04:49'),
+(8, 54, 2, 'userCommentNotification', 0, NULL, '2017-08-09 16:24:19', '2017-08-09 16:24:19'),
+(9, 54, 2, 'userCommentNotification', 0, NULL, '2017-08-09 16:24:28', '2017-08-09 16:24:28');
 
 -- --------------------------------------------------------
 
@@ -367,7 +368,13 @@ INSERT INTO `reading_question_and_answers` (`id`, `question_id`, `user_id`, `rep
 (66, 47, 10, 0, 'hihi', 1, 1, '2017-08-07 13:37:34', '2017-08-07 13:37:34'),
 (67, 46, 10, 0, 'helo', 1, 1, '2017-08-07 13:56:26', '2017-08-07 13:56:26'),
 (68, 46, 10, 65, 'asd', 1, 1, '2017-08-07 13:56:28', '2017-08-07 13:56:28'),
-(69, 46, 10, 65, '243', 1, 1, '2017-08-07 13:56:30', '2017-08-07 13:56:30');
+(69, 46, 10, 65, '243', 1, 1, '2017-08-07 13:56:30', '2017-08-07 13:56:30'),
+(70, 54, 10, 61, 'hello', 1, 1, '2017-08-08 16:04:19', '2017-08-08 16:04:19'),
+(71, 54, 10, 57, 'gjhj g h', 1, 1, '2017-08-09 13:59:06', '2017-08-09 13:59:06'),
+(72, 54, 10, 0, 'klj', 1, 1, '2017-08-09 13:59:12', '2017-08-09 13:59:12'),
+(73, 54, 2, 0, 'hello', 1, 1, '2017-08-09 15:04:49', '2017-08-09 15:04:49'),
+(74, 54, 10, 0, 'addasd', 1, 1, '2017-08-09 16:24:19', '2017-08-09 16:24:19'),
+(75, 54, 10, 0, 'dasd', 1, 1, '2017-08-09 16:24:28', '2017-08-09 16:24:28');
 
 -- --------------------------------------------------------
 
@@ -692,7 +699,7 @@ ALTER TABLE `reading_category_lessons`
 -- AUTO_INCREMENT cho bảng `reading_comment_notifications`
 --
 ALTER TABLE `reading_comment_notifications`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT cho bảng `reading_lessons`
 --
@@ -712,7 +719,7 @@ ALTER TABLE `reading_questions`
 -- AUTO_INCREMENT cho bảng `reading_question_and_answers`
 --
 ALTER TABLE `reading_question_and_answers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 --
 -- AUTO_INCREMENT cho bảng `reading_quizzs`
 --
