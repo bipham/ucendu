@@ -21,4 +21,12 @@ class ReadingCommentNotification extends Model
         $newCommentNotification->save();
         return $newCommentNotification;
     }
+
+    public function getTotalNumberCommentNotificationNoRead($user_id) {
+        $total = $this->where('user_id', $user_id)
+            ->where('type_noti', 'userCommentNotification')
+            ->where('read', 0)
+            ->get();
+        return $totalStockNotiNoRead;
+    }
 }

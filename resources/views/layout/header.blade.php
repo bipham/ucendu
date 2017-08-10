@@ -10,6 +10,7 @@
     <div class="container">
        <div class="header-top">
             <div class="left-custom pull-left">
+                @include('utils.actionCenterUser')
             </div>
            <div class="center-class logo-webstite">
                <a href="{{url('/')}}" class="brand-web">
