@@ -175,7 +175,7 @@
         }
 
         $('.btn-reading-start-test').click(function () {
-            var limit_time_quiz = new Date().getTime() + 3*1000;
+            var limit_time_quiz = new Date().getTime() + limit_time*1000;
             $('.overlay-lesson').addClass('overlay-lesson-active');
             $('.right-panel-custom').addClass('active-quiz');
             $('html,body').animate({

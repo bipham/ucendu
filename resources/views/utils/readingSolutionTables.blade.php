@@ -12,18 +12,18 @@
         Your Exam Performance
     </h2>
     <div class="align-center reading-score-overview">
-        <h4 class="title-lesson-overview">
-            Solution for:
-            <span class="title-lesson-solution">
-                {!! $lesson_detail->title !!}
-            </span>
-        </h4>
-        <h3 class="your-score">
-            Your Band Score:
-            <span class="reading-score">
+        {{--<h4 class="title-lesson-overview">--}}
+            {{--Solution for:--}}
+            {{--<span class="title-lesson-solution">--}}
+                {{--{!! $lesson_detail->title !!}--}}
+            {{--</span>--}}
+        {{--</h4>--}}
+        {{--<h3 class="your-score">--}}
+            {{--Your Band Score:--}}
+            {{--<span class="reading-score">--}}
 
-            </span>
-        </h3>
+            {{--</span>--}}
+        {{--</h3>--}}
         <div class="progress reading-solution-score-progress">
             <?php
                 $number_correct = sizeof($correct_answers);

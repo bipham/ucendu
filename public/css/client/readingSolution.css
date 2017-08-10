@@ -113,6 +113,7 @@ input.reply-cmt {
 .solution-tools {
     display: inline-block;
     margin-right: 10px;
+    margin-bottom: 10px;
 }
 
 .btn-locate-highlight {
@@ -292,4 +293,12 @@ canvas#myChartReadingScore {
     margin-bottom: 50px;
     font-size: 45px;
     color: green;
+}
+
+.question-table-name {
+    min-width: 70px;
+}
+
+.question-table .input-group-btn {
+    width: calc( 100% - 60px );
 }
