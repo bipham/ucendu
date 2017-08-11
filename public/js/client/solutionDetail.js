@@ -272,3 +272,16 @@ function enterComment(e) {
 }
 
 $(document).on("keypress","input.reply-cmt",enterComment);
+
+$('.btn-show-answered').click(function () {
+    var q_index = $(this).data('qorder');
+    $('.left-panel-custom').animate({
+        scrollTop: $(".explain-" + q_index).position().top - 155
+    }, 500);
+
+    $('html,body').animate({
+        scrollTop: $(".solution-detail").position().top
+    }, 500);
+
+
+});

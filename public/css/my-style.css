@@ -1057,3 +1057,8 @@ Action Center User
 .view-key-answer {
 	font-weight: 900;
 }
+
+.panel-container {
+	border: 2px solid green;
+	border-radius: 10px;
+}

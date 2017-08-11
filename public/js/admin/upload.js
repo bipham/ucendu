@@ -229,7 +229,7 @@ $( document ).ready(function() {
             var qorder = $(this).attr('name');
             qorder = qorder.match(/\d+/);
             var answer_key = $('.answer-' + qorder).val();
-            $(this).parent().after( '<div class="explain-area explain-' + qorder + ' explain-area-' + qnumber + '" data-qnumber="' + qnumber + '">' +
+            $(this).parent().after( '<div class="explain-area explain-' + qorder + ' explain-area-' + qnumber + '" data-qnumber="' + qnumber + '" data-qorder="' + qorder + '">' +
                                         '<div class="show-answer">' +
                                             '<button type="button" class="btn btn-danger btn-show-answer">Answer ' + qorder + ' ' +
                                                 '<div class="badge badge-pill key-answer">' +

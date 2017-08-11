@@ -29,7 +29,13 @@
                 $number_correct = sizeof($correct_answers);
                 $percent_correct = $number_correct/($lesson_quiz->total_questions);
                 $percent_friendly = number_format( $percent_correct * 100, 0 );
-                $unanswered_number = $lesson_quiz->total_questions - count((array)$list_answered);
+                if ($list_answered == 'emptyList') {
+                    $answered_number = 0;
+                }
+                else {
+                    $answered_number = count((array)$list_answered);
+                }
+                $unanswered_number = $lesson_quiz->total_questions - $answered_number;
                 $incorrect_number = $lesson_quiz->total_questions - $unanswered_number - $number_correct;
             ?>
             <div class="progress-bar bg-success reading-score-progress" style="width: {!! $percent_friendly !!}%" role="progressbar" aria-valuenow="{!! $percent_friendly !!}" aria-valuemin="0" aria-valuemax="100">
@@ -68,11 +74,11 @@
         </h4>
         <div class="row list-answered">
             @for($i=1; $i < $lesson_quiz->total_questions + 1; $i++)
-                <div class="col-md-3 answered-score answered-score-{!! $i !!}">
+                <div class="col-md-3 answered-score answered-score-{!! $i !!}" data-qorder="{!! $i !!}">
                     <div class="input-group question-table question-table-{!! $i !!}">
                         <span class="input-group-addon question-table-name">Q.{!! $i !!}</span>
                         <span class="input-group-btn">
-                            <button type="button" class="btn btn-outline-secondary btn-show-answered show-answered-{!! $i !!}">
+                            <button type="button" class="btn btn-outline-secondary btn-show-answered show-answered-{!! $i !!}" data-qorder="{!! $i !!}">
                         <span class="name-answered name-answered-{!! $i !!}">
                             No choice
                         </span>
