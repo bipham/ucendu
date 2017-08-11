@@ -19,6 +19,14 @@ class TypeQuestionController extends Controller
 //        return "hello";
     }
 
+    public function getCreateNewTypeQuestion() {
+        return view('admin.readingCreateNewTypeQuestion');
+    }
+
+    public function postCreateNewTypeQuestion() {
+
+    }
+
     public function getTypeQuestion() {
         if (Request::ajax()) {
             $readingTypeQuestionModel = new ReadingTypeQuestion();

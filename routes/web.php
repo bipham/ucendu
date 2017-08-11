@@ -25,28 +25,22 @@ Route::post('login',['as'=>'postLogin','uses'=>'Auth\LoginController@postLogin']
 
 Route::group(['domain' => 'admin.ucendu.dev', 'middleware' => 'auth'], function () {
     Route::get('/', function () {
-        return 'hello';
+        return view('welcome');
     });
+
     Route::get('uploadReadingLesson',['as'=>'getUploadReadingLesson','uses'=>'Admin\ReadingLessonController@getUploadReadingLesson']);
     Route::post('uploadReadingLesson',['as'=>'postUploadReadingLesson','uses'=>'Admin\ReadingLessonController@postUploadReadingLesson']);
+
+    Route::get('createNewTypeQuestion',['as'=>'getCreateNewTypeQuestion','uses'=>'Admin\TypeQuestionController@getCreateNewTypeQuestion']);
+    Route::post('createNewTypeQuestion',['as'=>'postCreateNewTypeQuestion','uses'=>'Admin\TypeQuestionController@postCreateNewTypeQuestion']);
 
     Route::get('createNewUser',['as'=>'getCreateNewUser','uses'=>'Admin\UserController@getCreateNewUser']);
     Route::post('createNewUser',['as'=>'postCreateNewUser','uses'=>'Admin\UserController@postCreateNewUser']);
 
     Route::get('createNewCate',['as'=>'createNewCate','uses'=>'Admin\CateController@createNewCate']);
-    Route::get('createNewTypeQuiz',['as'=>'createNewTypeQuiz','uses'=>'Admin\TypeQuestionController@createNewTypeQuiz']);
+//    Route::get('createNewTypeQuiz',['as'=>'createNewTypeQuiz','uses'=>'Admin\TypeQuestionController@createNewTypeQuiz']);
     Route::get('getTypeQuestion',['as'=>'getTypeQuestion','uses'=>'Admin\TypeQuestionController@getTypeQuestion']);
 });
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('home', function () {
-    return view('welcome');
-});
-
-
 
 /*********************************************************
  *
@@ -57,6 +51,10 @@ Route::get('home', function () {
  *
  *********************************************************/
 Route::group(['domain'=>'ucendu.dev', 'middleware' => 'auth'], function () {
+    Route::get('/', function () {
+        return view('welcome');
+    });
+
     Route::get('resultReading',['as'=>'resultReading','uses'=>'Client\ResultController@getResultQuiz']);
     Route::get('solutionLesson/{lesson_id}-{quiz_id}',['as'=>'solutionLesson','uses'=>'Client\ResultController@getSolutionLesson']);
     Route::get('showComments/{question_id_custom}',['as'=>'showComments','uses'=>'Client\CommentQuestionController@getComments']);

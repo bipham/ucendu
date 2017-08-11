@@ -10,7 +10,7 @@ class CreateUsersTable extends Migration
      * Run the migrations.
      *
      * @return void
-     * 0 - user, 1 - admin, 2 - support
+     * 0 - admin, 1 - user, 2 - support
      */
     public function up()
     {
@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('username', 60)->unique();
             $table->string('email')->unique();
             $table->string('password', 60);
-            $table->tinyInteger('level')->default(0);
+            $table->tinyInteger('level')->default(1);
             $table->string('fullname')->nullable();
             $table->string('address')->nullable();
             $table->string('city',100)->nullable();

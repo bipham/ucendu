@@ -18,7 +18,20 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            return redirect('/home');
+            $host = explode('.', $request->getHttpHost());
+            $role = $host[0];
+            $user = Auth::user();
+            if ($role == 'admin' && $user->level == 0) {
+                return redirect('/');
+            }
+            elseif ($role == 'admin' && $user->level != 0) {
+                Auth::logout();
+                $message = ['flash_level'=>'warning message-custom','flash_message'=>'You not have permission!!!'];
+                return back()->with($message);
+            }
+            else {
+                return redirect('/reading');
+            }
         }
 
         return $next($request);

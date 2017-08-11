@@ -6,14 +6,6 @@
  * Time: 4:19 PM
  */
 ?>
-<?php
-/**
- * Created by PhpStorm.
- * User: nobikun1412
- * Date: 11-Jun-17
- * Time: 18:49
- */
-?>
 
 @extends('layout.master')
 @section('meta-title')
@@ -39,8 +31,8 @@
                     </div>
                     <div class="form-group">
                         <select class="form-control" id="levelUser" name="level" >
-                            <option value="0">User</option>
-                            <option value="1">Admin</option>
+                            <option value="1">User</option>
+                            <option value="0">Admin</option>
                             <option value="2">Supporter</option>
                         </select>
                     </div>
