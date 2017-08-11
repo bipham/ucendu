@@ -7,7 +7,7 @@ $.ajaxSetup({
     }
 });
 var baseUrl = document.location.origin;
-var ajaxUrlResult = baseUrl + '/resultReading';
+var ajaxUrlResult = baseUrl + '/reading/resultReading';
 var list_answer = {};
 var quizId = $('#quiz-test-area').data('quizid');
 var lessonId = $('#lesson-content-area').data('lessonid');
@@ -108,7 +108,7 @@ function submitReadingTest() {
         success: function (data) {
             console.log('sucess:', data);
             var numberCorrect = data.correct_answer.length;
-            location.href= baseUrl + '/solutionLesson/' + lessonId + '-' + quizId + '?list_answer=' + JSON.stringify(list_answer) + '&correct_answer=' + JSON.stringify(data.correct_answer) + '&totalQuestion=' + data.totalQuestion;
+            location.href= baseUrl + '/reading/solutionLesson/' + lessonId + '-' + quizId + '?list_answer=' + JSON.stringify(list_answer) + '&correct_answer=' + JSON.stringify(data.correct_answer) + '&totalQuestion=' + data.totalQuestion;
             // bootbox.alert({
             //     message: "Result: " + numberCorrect + "/" + data.totalQuestion,
             //     callback: function(){

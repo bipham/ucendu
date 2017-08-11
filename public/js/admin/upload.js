@@ -357,7 +357,7 @@ $( document ).ready(function() {
                     message: "Create post success!",
                     backdrop: true,
                     callback: function(){
-                        location.href= 'http://ucendu.dev/reading';
+                        location.href= baseUrl + '/reading';
                     }
                 });
             },

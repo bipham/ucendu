@@ -30,7 +30,7 @@ function scrollToHighlight(i) {
 }
 
 function showComments(i) {
-    var ajaxUrlShowComments = 'http://ucendu.dev/showComments/' + i;
+    var ajaxUrlShowComments = baseUrl + '/showComments/' + i;
     console.log('ajaxUrlShowComments: ' + ajaxUrlShowComments);
     $.ajax({
         type: "GET",
@@ -54,7 +54,7 @@ function showComments(i) {
                             $('#commentArea-' + i + ' .comments-area').append('<div class="row list-cmt-area list-cmt-' + cmt_id + '" data-cmt-id="' + cmt_id + '">' +
                                 '<div class="item-cmt cmt-' + cmt_id + '" id="comment' + cmt_id + '" data-cmt-id="' + cmt_id + '">'
                                 + '<span class="img-avatar">'
-                                + '<img alt="" src="../storage/img/users/' + avatar + '" class="img-custom avatar-custom" />'
+                                + '<img alt="" src="/storage/img/users/' + avatar + '" class="img-custom avatar-custom" />'
                                 + '</span>'
                                 + '<span class="item-cmt-content">'
                                 + '<div class="item-cmt-header">'
@@ -65,7 +65,7 @@ function showComments(i) {
                                 + '</div>'
                                 + '<div class="item-time-cmt">'
                                 + '<span class="img-time-cmt">'
-                                + '<img alt="time-cmt" src="../public/imgs/original/time.png" class="img-time-cmt" />'
+                                + '<img alt="time-cmt" src="/public/imgs/original/time.png" class="img-time-cmt" />'
                                 + '</span>'
                                 + '<span class="time-ago-cmt">'
                                 + time_ago
@@ -81,7 +81,7 @@ function showComments(i) {
                         else {
                             $('.list-cmt-' + reply_id).append('<div class="item-cmt item-sub-cmt cmt-' + cmt_id + '" id="comment' + cmt_id + '" data-cmt-id="' + cmt_id + '">'
                                 + '<span class="img-avatar">'
-                                + '<img alt="" src="../storage/img/users/' + avatar + '" class="img-custom avatar-custom" />'
+                                + '<img alt="" src="/storage/img/users/' + avatar + '" class="img-custom avatar-custom" />'
                                 + '</span>'
                                 + '<span class="item-cmt-content">'
                                 + '<div class="item-cmt-header">'
@@ -92,7 +92,7 @@ function showComments(i) {
                                 + '</div>'
                                 + '<div class="item-time-cmt">'
                                 + '<span class="img-time-cmt">'
-                                + '<img alt="time-cmt" src="../public/imgs/original/time.png" class="img-time-cmt" />'
+                                + '<img alt="time-cmt" src="/public/imgs/original/time.png" class="img-time-cmt" />'
                                 + '</span>'
                                 + '<span class="time-ago-cmt">'
                                 + time_ago
@@ -116,7 +116,7 @@ function showComments(i) {
 
                 $('#commentArea-' + i).append('<div class="item-reply-cmt" id="replyComment">'
                     + '<span class="img-avatar">'
-                    + '<img alt="" src="../storage/img/users/' + avatar + '" class="img-custom avatar-custom" />'
+                    + '<img alt="" src="/storage/img/users/' + avatar + '" class="img-custom avatar-custom" />'
                     + '</span>'
                     + '<span class="item-cmt-content">'
                     + '<div class="item-cmt-header">'
@@ -147,7 +147,7 @@ function showComments(i) {
 }
 
 function showKeywords(i) {
-    var ajaxUrlShowKeywords = 'http://ucendu.dev/showKeywords/' + i;
+    var ajaxUrlShowKeywords = baseUrl + '/showKeywords/' + i;
     console.log('keywords: ' + i);
     $.ajax({
         type: "GET",
@@ -204,7 +204,7 @@ function enterComment(e) {
                         $('#commentArea-' + question_id_custom + ' .comments-area').append('<div class="row list-cmt-area list-cmt-' + cmt_id + '" data-cmt-id="' + cmt_id + '">' +
                             '<div class="item-cmt cmt-' + cmt_id + '" data-cmt-id="' + cmt_id + '">'
                             + '<span class="img-avatar">'
-                            + '<img alt="" src="../storage/img/users/' + avatar + '" class="img-custom avatar-custom" />'
+                            + '<img alt="" src="/storage/img/users/' + avatar + '" class="img-custom avatar-custom" />'
                             + '</span>'
                             + '<span class="item-cmt-content">'
                             + '<div class="item-cmt-header">'
@@ -215,7 +215,7 @@ function enterComment(e) {
                             + '</div>'
                             + '<div class="item-time-cmt">'
                             + '<span class="img-time-cmt">'
-                            + '<img alt="time-cmt" src="../public/imgs/original/time.png" class="img-time-cmt" />'
+                            + '<img alt="time-cmt" src="/public/imgs/original/time.png" class="img-time-cmt" />'
                             + '</span>'
                             + '<span class="time-ago-cmt">'
                             + time_ago
@@ -231,7 +231,7 @@ function enterComment(e) {
                     else {
                         $('.list-cmt-' + reply_id).append('<div class="item-cmt item-sub-cmt cmt-' + cmt_id + '" data-cmt-id="' + cmt_id + '">'
                             + '<span class="img-avatar">'
-                            + '<img alt="" src="../storage/img/users/' + avatar + '" class="img-custom avatar-custom" />'
+                            + '<img alt="" src="/storage/img/users/' + avatar + '" class="img-custom avatar-custom" />'
                             + '</span>'
                             + '<span class="item-cmt-content">'
                             + '<div class="item-cmt-header">'
@@ -242,7 +242,7 @@ function enterComment(e) {
                             + '</div>'
                             + '<div class="item-time-cmt">'
                             + '<span class="img-time-cmt">'
-                            + '<img alt="time-cmt" src="../public/imgs/original/time.png" class="img-time-cmt" />'
+                            + '<img alt="time-cmt" src="/public/imgs/original/time.png" class="img-time-cmt" />'
                             + '</span>'
                             + '<span class="time-ago-cmt">'
                             + time_ago

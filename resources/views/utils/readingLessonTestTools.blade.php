@@ -18,7 +18,7 @@
         <i class="fa fa-info icon-reading-tool-sidebar" aria-hidden="true"></i>
     </button>
 
-    <a href="{{url('http://ucendu.dev/solutionLesson/' . $lesson_detail->id . '-' . $lesson_quiz->id .  '?list_answer="emptyList"&correct_answer=[]&totalQuestion=' . $lesson_quiz->total_questions)}}" class="btn btn-success btn-tool-sidebar  btn-test-overview">
+    <a href="{{url('/reading/solutionLesson/' . $lesson_detail->id . '-' . $lesson_quiz->id .  '?list_answer="emptyList"&correct_answer=[]&totalQuestion=' . $lesson_quiz->total_questions)}}" class="btn btn-success btn-tool-sidebar  btn-test-overview">
         Solution
         <i class="fa fa-key icon-reading-tool-sidebar" aria-hidden="true"></i>
     </a>

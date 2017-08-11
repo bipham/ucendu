@@ -12,8 +12,8 @@
             <ul class="nav nav-tabs" id="myTabReading" role="tablist">
                 <li class="logo-reading-menu img-thumbnail-middle">
                     <div class="img-thumbnail-inner">
-                        <a href="http://ucendu.dev" class="brand-web">
-                            <img src="http://ucendu.dev/public/imgs/original/logo.jpg" alt="Logo" class="img-custom img-middle-responsive img-logo-reading-menu">
+                        <a href="/" class="brand-web">
+                            <img src="/public/imgs/original/logo.jpg" alt="Logo" class="img-custom img-middle-responsive img-logo-reading-menu">
                         </a>
                     </div>
                 </li>

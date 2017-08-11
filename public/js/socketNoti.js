@@ -2,13 +2,15 @@
  * Created by nobikun1412 on 27-May-17.
  */
 // Notification.requestPermission();
-var socket = io.connect('http://ucendu.dev:8890');
+var baseUrl = document.location.origin;
+var socket_connect = baseUrl + ':8890';
+var socket = io.connect(socket_connect);
 socket.on('commentNotification', function (data) {
     console.log('data: ' + data);
     var url = '#';
     var body = 'Hello';
 
-    var img_feature = '../public/imgs/original/time.png' ;
+    var img_feature = '/public/imgs/original/time.png' ;
 
     notify = new Notification(
         'encendud',

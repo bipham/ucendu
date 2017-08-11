@@ -14,7 +14,7 @@ use LRedis;
 
 class CommentQuestionController extends Controller
 {
-    public function getComments($question_id_custom) {
+    public function getComments($domain, $question_id_custom) {
         if (Request::ajax()) {
             $questionModel = new ReadingQuestion();
             $question_id = $questionModel->getQuestionIdByIdCustom($question_id_custom);
@@ -27,7 +27,7 @@ class CommentQuestionController extends Controller
         }
     }
 
-    public function getKeywords($question_id_custom) {
+    public function getKeywords($domain, $question_id_custom) {
         if (Request::ajax()) {
             $questionModel = new ReadingQuestion();
             $question_id = $questionModel->getQuestionIdByIdCustom($question_id_custom);
@@ -36,7 +36,7 @@ class CommentQuestionController extends Controller
         }
     }
 
-    public function createNewComment()
+    public function createNewComment($domain)
     {
         if (Request::ajax()) {
             $user_id = $_POST['user_id'];

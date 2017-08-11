@@ -132,7 +132,7 @@
                     </div>
                 </div>
                 <div class="overlay-lesson @if ($lesson_quiz->limit_time == 0) overlay-lesson-active @endif">
-                    <img src="http://ucendu.dev/public/imgs/original/cover-1.jpg" alt="Logo" class="img-overlay-quiz">
+                    <img src="/public/imgs/original/cover-1.jpg" alt="Logo" class="img-overlay-quiz">
                     <div class="reading-guide-test">
                         <div class="badge badge-primary countdown-time-overview"></div>
                         <h4 class="reading-title-start">

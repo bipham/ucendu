@@ -65,7 +65,8 @@ Route::group(['domain'=>'{nameDomain}', 'middleware' => 'auth'], function () {
 
     Route::group(['prefix'=>'reading'],function () {
         Route::get('',['as'=>'reading','uses'=>'Client\ReadingLessonController@index']);
-        Route::get('readingLesson/{lesson}',['as'=>'reading.readingLesson','uses'=>'Client\ReadingLessonController@readingLessonDetail']);
+//        Route::any('tai-khoan',                             array('as'=>'CustomerAccount',                  'uses'=>'Client\CustomerController@account'));
+        Route::get('readingLesson/{lesson}',                array('as'=>'reading.readingLesson',            'uses'=>'Client\ReadingLessonController@readingLessonDetail'));
         Route::get('readingTypeQuestion/{typeQuestion}',['as'=>'reading.readingTypeQuestion','uses'=>'Client\ReadingLessonController@readingTypeQuestion']);
         Route::get('readingTypeLesson/{typeLesson}',['as'=>'reading.readingTypeLesson','uses'=>'Client\ReadingLessonController@readingTypeLesson']);
         Route::get('resultReading',['as'=>'resultReading','uses'=>'Client\ResultController@getResultQuiz']);

@@ -23,8 +23,9 @@ class ReadingLessonController extends Controller
         return view('client.reading',compact('practice_lessons', 'test_lessons', 'readingTypeQuestionOfQuizModel'));
     }
 
-    public function readingLessonDetail($link_lesson)
+    public function readingLessonDetail($domain, $link_lesson)
     {
+//        dd($link_lesson);
         $lesson_id = getIdLessonFromLinkLesson($link_lesson);
         $readingLessonModel = new ReadingLesson();
         $lesson_detail = $readingLessonModel->getLessonById($lesson_id);
@@ -50,7 +51,7 @@ class ReadingLessonController extends Controller
         return view('client.readingLessonDetail',compact('lesson_detail', 'lesson_quiz', 'practice_lessons','test_lessons', 'readingCategoryLessonModel', 'readingCategoryModel', 'type_lesson', 'type_question', 'readingTypeQuestionOfQuizModel'));
     }
 
-    public function readingTypeQuestion($link_type_question)
+    public function readingTypeQuestion($domain, $link_type_question)
     {
         $type_question_id = getIdLessonFromLinkLesson($link_type_question);
         $readingLessonModel = new ReadingLesson();
@@ -62,7 +63,7 @@ class ReadingLessonController extends Controller
         return view('client.readingTypeQuestion',compact('practice_lessons', 'test_lessons', 'type_question', 'readingTypeQuestionOfQuizModel'));
     }
 
-    public function readingTypeLesson($link_type_lesson)
+    public function readingTypeLesson($domain, $link_type_lesson)
     {
         $type_lesson_id = getIdLessonFromLinkLesson($link_type_lesson);
         $readingLessonModel = new ReadingLesson();

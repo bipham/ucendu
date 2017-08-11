@@ -15,7 +15,7 @@ use Request;
 
 class ResultController extends Controller
 {
-    public function getResultQuiz() {
+    public function getResultQuiz($domain) {
         if (Request::ajax()) {
             $list_answer = $_GET['list_answer'];
             $quizId = $_GET['quizId'];
@@ -37,7 +37,8 @@ class ResultController extends Controller
         }
     }
 
-    public function getSolutionLesson($lesson_id, $quiz_id) {
+    public function getSolutionLesson($domain, $lesson_id, $quiz_id) {
+//        dd($lesson_id);
         $readingLessonModel = new ReadingLesson();
         $lesson_detail = $readingLessonModel->getLessonById($lesson_id);
         $quizModel = new ReadingQuizz();
