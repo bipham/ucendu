@@ -28,12 +28,12 @@ class UserController extends Controller
         ]);
     }
 
-    public function getCreateNewUser() {
+    public function getCreateNewUser($domain) {
 
         return view('admin.createNewUser');
     }
 
-    public function postCreateNewUser(RegisterRequest $request) {
+    public function postCreateNewUser($domain, RegisterRequest $request) {
         $account = new User();
 //        dd($request->all());
         $account->username = $request->username;
@@ -45,7 +45,7 @@ class UserController extends Controller
         $account->save();
         $message = ['flash_level'=>'success message-custom','flash_message'=>'Đăng ký thành công!'];
 //        dd($message);
-        return redirect()->Route('getCreateNewUser')->with($message);
+        return redirect('createNewUser')->with($message);
 //        return 'success'->with($message);
     }
 }

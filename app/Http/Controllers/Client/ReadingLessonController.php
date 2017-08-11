@@ -54,6 +54,7 @@ class ReadingLessonController extends Controller
     public function readingTypeQuestion($domain, $link_type_question)
     {
         $type_question_id = getIdLessonFromLinkLesson($link_type_question);
+//        dd($type_question_id);
         $readingLessonModel = new ReadingLesson();
         $practice_lessons = $readingLessonModel->getPracticeNewestOfTypeQuestion(8, $type_question_id);
         $test_lessons = $readingLessonModel->getTestNewestOfTypeQuestion(8, $type_question_id);

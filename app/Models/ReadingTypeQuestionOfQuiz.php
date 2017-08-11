@@ -50,7 +50,7 @@ class ReadingTypeQuestionOfQuiz extends Model
         return DB::table('reading_type_question_of_quizzes')
             ->leftJoin('reading_type_questions', 'reading_type_question_of_quizzes.type_question_id', '=', 'reading_type_questions.id')
             ->where('reading_type_question_of_quizzes.quiz_id', '=', $quiz_id)
-            ->select('reading_type_questions.name', 'reading_type_question_of_quizzes.total_questions')
+            ->select('reading_type_questions.name', 'reading_type_questions.id', 'reading_type_question_of_quizzes.total_questions')
             ->get();
     }
 }

@@ -20,7 +20,7 @@
             <div class="col col-md-5 text-center">
                 @include('utils.message')
                 {{--@include('errors.input')--}}
-                <form role="form" action="{!!route('postCreateNewUser')!!}" method="POST">
+                <form role="form" action="{!! url('createNewUser') !!}" method="POST">
                     <input type="hidden" name="_token" value="{!!csrf_token()!!}">
                     <h1>Tạo Tài khoản Mới</h1>
                     <div class="form-group">

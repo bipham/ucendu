@@ -16,11 +16,12 @@ class ReadingTypeQuestion extends Model
         return $this->get();
     }
 
-    public function createNewTypeQuestion ($type_name) {
+    public function createNewTypeQuestion ($type_name, $introduction) {
         $newTypeQuestion = new ReadingTypeQuestion();
         $newTypeQuestion->name = $type_name;
+        $newTypeQuestion->introduction = $introduction;
         $newTypeQuestion->save();
-        return $newTypeQuestion->id;
+        return 'success';
     }
 
     public function getTypeQuestionById ($id) {

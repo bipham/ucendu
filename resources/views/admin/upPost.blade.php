@@ -13,12 +13,13 @@
 @endsection
 @section('css')
     <link rel="stylesheet" href="{{asset('public/css/admin/upload.css')}}">
+    <link rel="stylesheet" href="{{asset('public/css/client/readingSolution.css')}}">
 {{--    <meta name="csrf-token" content="{{ csrf_token() }}" />--}}
     <script src="/public/libs/ckeditor/ckeditor.js"></script>
 @endsection
 @section('content')
     <div class="container upload-page-custom container-page-custom" data-idquestion="{!! $id_ques !!}">
-        <form role="form" action="{!!route('getUploadReadingLesson')!!}" method="POST" enctype="multipart/form-data">
+        <form role="form" action="{!!url('getUploadReadingLesson')!!}" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="_token" value="{!!csrf_token()!!}">
             <div class="row row-steps-info">
                 dsadsd

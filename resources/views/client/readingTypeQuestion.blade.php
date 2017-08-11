@@ -5,7 +5,7 @@
  * Date: 8/4/2017
  * Time: 1:39 PM
  */
-//dd($lessons);
+//dd($type_question->introduction);
 ?>
 @extends('layout.master')
 @section('meta-title')

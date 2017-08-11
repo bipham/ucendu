@@ -12,15 +12,16 @@
     Reading - Create New Type Question
 @endsection
 @section('css')
+    <link rel="stylesheet" href="{{asset('public/css/admin/admin-style.css')}}">
     <script src="/public/libs/ckeditor/ckeditor.js"></script>
 @endsection
 @section('content')
     <div class="container">
         @include('utils.message')
         {{--@include('errors.input')--}}
-        <form role="form" action="{!!route('postCreateNewTypeQuestion')!!}" method="POST">
+        <form role="form" action="{!!url('createNewTypeQuestion')!!}" method="POST">
             <input type="hidden" name="_token" value="{!!csrf_token()!!}">
-            <h1>Create New Type Question</h1>
+            <h1 class="title-new-type-action">Create New Type Question</h1>
             <div class="form-group">
                 <label for="type_question_name">
                     Name of type question
@@ -40,7 +41,7 @@
                     CKEDITOR.replace( 'introduction_type_question' );
                 </script>
             </div>
-            <button type="submit" class="btn btn-lg btn-warning">
+            <button type="button" class="btn btn-lg btn-warning btn-finish-new-type-question">
                 Create
             </button>
         </form>
@@ -48,5 +49,5 @@
 @endsection
 
 @section('scripts')
-    {{--<script src="{{asset('public/js/admin/upload.js')}}"></script>--}}
+    <script src="{{asset('public/js/admin/admin.js')}}"></script>
 @endsection

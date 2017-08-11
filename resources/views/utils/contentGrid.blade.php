@@ -98,7 +98,7 @@
                 $title_type_question = str_replace(" ","-", $detailTypeQuestionOfQuiz[0]->name);
                 ?>
                 <span class="badge badge-success type-lesson-header">
-                    <a class="type-lesson-link" href="{{url('reading/readingTypeQuestion/typeQuestion' . $lesson->type_lesson . '-' . $title_type_question)}}">
+                    <a class="type-lesson-link" href="{{url('reading/readingTypeQuestion/typeQuestion' . $detailTypeQuestionOfQuiz[0]->id . '-' . $title_type_question)}}">
                         {!! $detailTypeQuestionOfQuiz[0]->name !!}
                     </a>
                 </span>

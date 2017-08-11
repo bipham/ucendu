@@ -10,7 +10,9 @@
 <!-- Tab panes -->
 <div class="tab-content">
     <div class="tab-pane" id="readingIntro" role="tabpanel">
-        @yield('readingIntro')
+        <div class="container introduction-container">
+            @yield('readingIntro')
+        </div>
     </div>
     <div class="tab-pane" id="practice" role="tabpanel">
         @yield('readingPractice')

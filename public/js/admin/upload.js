@@ -30,6 +30,7 @@ var noti = false;
 var sandbox = document.getElementById('sandbox');
 var boolRemove = false;
 var baseUrl = document.location.origin;
+var mainUrl = baseUrl.substring(13);
 var ajaxCreateNewCate = baseUrl + '/createNewCate';
 var ajaxCreateNewTypeQuiz = baseUrl + '/createNewTypeQuiz';
 var ajaxGetListTypeQuestion = baseUrl + '/getTypeQuestion';
@@ -357,7 +358,7 @@ $( document ).ready(function() {
                     message: "Create post success!",
                     backdrop: true,
                     callback: function(){
-                        location.href= baseUrl + '/reading';
+                        location.href= 'http://' + mainUrl + '/reading';
                     }
                 });
             },
