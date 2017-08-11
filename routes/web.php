@@ -11,6 +11,8 @@
 |
 */
 
+Route::pattern('nameDomain', '(www.ucendu.dev|ucendu.dev|www.ucendu.com|ucendu.com|www.ucendu.vn|ucendu.vn)');
+
 // Authentication routes...
 Route::get('login', ['as'=>'getLogin', 'uses' => 'Auth\LoginController@getLogin']);
 Route::post('login',['as'=>'postLogin','uses'=>'Auth\LoginController@postLogin']);
@@ -23,7 +25,7 @@ Route::post('login',['as'=>'postLogin','uses'=>'Auth\LoginController@postLogin']
  *
  *********************************************************/
 
-Route::group(['domain' => 'admin.ucendu.dev', 'middleware' => 'auth'], function () {
+Route::group(['domain' => 'admin.{nameDomain}', 'middleware' => 'auth'], function () {
     Route::get('/', function () {
         return view('welcome');
     });
@@ -50,7 +52,7 @@ Route::group(['domain' => 'admin.ucendu.dev', 'middleware' => 'auth'], function 
  *
  *
  *********************************************************/
-Route::group(['domain'=>'ucendu.dev', 'middleware' => 'auth'], function () {
+Route::group(['domain'=>'{nameDomain}', 'middleware' => 'auth'], function () {
     Route::get('/', function () {
         return view('welcome');
     });
