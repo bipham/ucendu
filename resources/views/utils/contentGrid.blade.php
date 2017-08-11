@@ -56,7 +56,7 @@
             <?php
                 $title_lesson = str_replace(" ","-", $lesson->title);
             ?>
-            <a href="{{url('readingLesson/lesson' . $lesson->lesson_id . '-' . $title_lesson)}}">
+            <a href="{{url('reading/readingLesson/lesson' . $lesson->lesson_id . '-' . $title_lesson)}}">
                 <h4 class="card-title title-lesson">{!! $lesson->title !!}</h4>
             </a>
         </div>
@@ -73,13 +73,13 @@
         </div>
         <div class="btn-lesson-overview-area">
             <span class="btn-inline">
-                <a href="{{url('readingLesson/lesson' . $lesson->lesson_id . '-' . $title_lesson)}}" class="btn btn-outline-primary btn-test-overview">
+                <a href="{{url('reading/readingLesson/lesson' . $lesson->lesson_id . '-' . $title_lesson)}}" class="btn btn-outline-primary btn-test-overview">
                    <i class="fa fa-play" aria-hidden="true"></i>
                     Take Test
                 </a>
             </span>
             <span class="btn-inline">
-                <a href="{{url('solutionLesson/' . $lesson->lesson_id . '-' . $quiz_id .  '?list_answer="emptyList"&correct_answer=[]&totalQuestion=' . $lesson->total_questions)}}" class="btn btn-outline-success btn-test-overview">
+                <a href="{{url('reading/solutionLesson/' . $lesson->lesson_id . '-' . $quiz_id .  '?list_answer="emptyList"&correct_answer=[]&totalQuestion=' . $lesson->total_questions)}}" class="btn btn-outline-success btn-test-overview">
                     <i class="fa fa-key" aria-hidden="true"></i>
                     Solution
                 </a>
@@ -98,19 +98,19 @@
                 $title_type_question = str_replace(" ","-", $detailTypeQuestionOfQuiz[0]->name);
                 ?>
                 <span class="badge badge-success type-lesson-header">
-                    <a class="type-lesson-link" href="{{url('readingTypeQuestion/typeQuestion' . $lesson->type_lesson . '-' . $title_type_question)}}">
+                    <a class="type-lesson-link" href="{{url('reading/readingTypeQuestion/typeQuestion' . $lesson->type_lesson . '-' . $title_type_question)}}">
                         {!! $detailTypeQuestionOfQuiz[0]->name !!}
                     </a>
                 </span>
             @elseif ($lesson->type_lesson == 2)
                 <span class="badge badge-warning type-lesson-header">
-                    <a class="type-lesson-link" href="{{url('readingTypeLesson/typeLesson2-mix-test')}}">
+                    <a class="type-lesson-link" href="{{url('reading/readingTypeLesson/typeLesson2-mix-test')}}">
                         Mix Test
                     </a>
                 </span>
             @elseif ($lesson->type_lesson == 3)
                 <span class="badge badge-danger type-lesson-header">
-                    <a class="type-lesson-link" href="{{url('readingTypeLesson/typeLesson3-full-test')}}">
+                    <a class="type-lesson-link" href="{{url('reading/readingTypeLesson/typeLesson3-full-test')}}">
                         Full Test
                     </a>
                 </span>

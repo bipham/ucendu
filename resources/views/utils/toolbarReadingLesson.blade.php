@@ -33,7 +33,7 @@
                             ?>
                             <div class="item-type-question">
                                 <i class="fa fa-caret-right icon-left-menu-toolbar" aria-hidden="true"></i>
-                                <a class="type-lesson-link" href="{{ url('readingTypeQuestion/typeQuestion' . $type_question->id . '-' . $title_type_question) }}">
+                                <a class="type-lesson-link" href="{{ url('reading/readingTypeQuestion/typeQuestion' . $type_question->id . '-' . $title_type_question) }}">
                                     {!! $type_question->name !!}
                                 </a>
                                 {{--<span class="pull-right number-lesson badge badge-primary">--}}
@@ -51,7 +51,7 @@
 
                 <div class="mix-test">
                     <div class="toolbar-header">
-                        <a class="type-lesson-link" href="{{ url('readingTypeLesson/typeLesson2-mix-test')}}">
+                        <a class="type-lesson-link" href="{{ url('reading/readingTypeLesson/typeLesson2-mix-test')}}">
                             <h4 class="header-toolbar header-other-lesson">
                                 Mix Test
                             </h4>
@@ -63,7 +63,7 @@
 
                 <div class="full-test">
                     <div class="toolbar-header">
-                        <a class="type-lesson-link" href="{{url('readingTypeLesson/typeLesson3-full-test')}}">
+                        <a class="type-lesson-link" href="{{url('reading/readingTypeLesson/typeLesson3-full-test')}}">
                             <h4 class="header-toolbar header-other-lesson">
                                 Full Test
                             </h4>
