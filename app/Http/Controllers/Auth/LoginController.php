@@ -46,26 +46,55 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
+    public function authenticated(Request $request, $user) {
+        $result = true;
+        if (!$user->activated) {
+//            auth()->logout();
+            $result = false;
+        }
+        return $result;
+    }
+
+    public function checkStatus(Request $request, $user) {
+        $result = true;
+        if (!$user->status) {
+//            auth()->logout();
+            $result = false;
+        }
+        return $result;
+    }
+
     public function postLogin(LoginRequest $request) {
         $login = array(
             'email' => $request->email,
             'password' => $request->password
         );
+//        dd(Auth::attempt($login));
         if (!Auth::attempt($login)) {
             $message = ['flash_level'=>'danger message-custom','flash_message'=>'Thông tin email/password sai.'];
             return redirect()->back()->with($message);
-            //return view('pages.myStore');
         }
         else {
-            //return view('pages.myStore');
-            $check = $this->authenticated($request, $this->guard()->user());
-            if ($check) {
+            $checkActivated = $this->authenticated($request, $this->guard()->user());
+            $checkStatus = $this->checkStatus($request, $this->guard()->user());
+//            dd($check);
+            if ($checkActivated && $checkStatus) {
                 return redirect()->intended('/');
             }
-            else {
-                $message = ['flash_level'=>'warning message-custom','flash_message'=>'Bạn cần phải xác nhận tài khoản. Vui lòng kiểm tra email của bạn.'];
+            elseif (!$checkStatus) {
+                Auth::logout();
+                $message = ['flash_level'=>'warning message-custom','flash_message'=>'Your account is expired! Please contact admin to reactive'];
                 return redirect()->Route('getLogin')->with($message);
             }
+            elseif (!$checkActivated) {
+                $message = ['flash_level'=>'warning message-custom','flash_message'=>'Your must change password first'];
+                return redirect()->Route('getChangePassword')->with($message);
+            }
         }
+    }
+
+    public function getLogout(Request $request){
+        Auth::logout();
+        return redirect('/');
     }
 }

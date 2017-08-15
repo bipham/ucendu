@@ -17,9 +17,12 @@ Route::pattern('nameDomain', '(www.ucendu.dev|ucendu.dev|www.ucendu.com|ucendu.c
 Route::get('login', ['as'=>'getLogin', 'uses' => 'Auth\LoginController@getLogin']);
 Route::post('login',['as'=>'postLogin','uses'=>'Auth\LoginController@postLogin']);
 
+Route::get('changePassword', ['as'=>'getChangePassword', 'uses' => 'Client\UserController@getChangePassword']);
+Route::post('changePassword',['as'=>'postChangePassword','uses'=>'Client\UserController@postChangePassword']);
+
 Route::get('getNotification/{user_id}',['as'=>'getMatchNotification','uses'=>'ReadingNotificationController@getNotification'])->middleware('auth');
 
-
+Route::get('logout',['as'=>'logout','uses'=>'Auth\LoginController@getLogout'])->middleware('auth');
 
 /*********************************************************
  *
@@ -27,7 +30,7 @@ Route::get('getNotification/{user_id}',['as'=>'getMatchNotification','uses'=>'Re
  *
  *********************************************************/
 
-Route::group(['domain' => 'admin.{nameDomain}', 'middleware' => 'auth'], function () {
+Route::group(['domain' => 'admin.{nameDomain}', 'middleware' => ['adminAuth']], function () {
     Route::get('/', function () {
         return view('welcome');
     });
@@ -54,7 +57,7 @@ Route::group(['domain' => 'admin.{nameDomain}', 'middleware' => 'auth'], functio
  *
  *
  *********************************************************/
-Route::group(['domain'=>'{nameDomain}', 'middleware' => 'auth'], function () {
+Route::group(['domain'=>'{nameDomain}', 'middleware' => ['clientAuth']], function () {
     Route::get('/', function () {
         return view('welcome');
     });

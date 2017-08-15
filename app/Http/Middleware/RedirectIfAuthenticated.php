@@ -29,9 +29,6 @@ class RedirectIfAuthenticated
                 $message = ['flash_level'=>'warning message-custom','flash_message'=>'You not have permission!!!'];
                 return back()->with($message);
             }
-            else {
-                return redirect('/reading');
-            }
         }
 
         return $next($request);

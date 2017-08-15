@@ -30,7 +30,7 @@ CKEDITOR.dialog.add( 'select_quizDialog', function( editor ) {
                         type: 'select',
                         id: 'type_question',
                         label: 'Type question',
-                        items: [ [ 'A B C' ], [ '1 2 3' ], [ 'I II III' ], [ 'YES NO NOT_GIVEN' ] ],
+                        items: [ [ 'A B C' ], [ '1 2 3' ], [ 'I II III' ], [ 'YES NO NOT_GIVEN' ], [ 'TRUE FALSE NOT_GIVEN'] ],
                         'default': 'A B C'
                     }
                 ]
@@ -39,7 +39,6 @@ CKEDITOR.dialog.add( 'select_quizDialog', function( editor ) {
         onOk: function() {
             var dialog = this;
             var data_ques = $('.upload-page-custom').data('idquestion');
-            console.log(data_ques);
             var question_number = dialog.getValueOf( 'tab-basic', 'question' );
             var number_option = dialog.getValueOf( 'tab-basic', 'number_option' );
             var content_question = dialog.getValueOf( 'tab-basic', 'content_question' );
@@ -54,6 +53,9 @@ CKEDITOR.dialog.add( 'select_quizDialog', function( editor ) {
             }
             else if (type_question == 'YES NO NOT_GIVEN') {
                 option = generateYesNoGiven();
+            }
+            else if (type_question == 'TRUE FALSE NOT_GIVEN') {
+                option = generateTrueFalseGiven();
             }
             else {
                 option = generateRomanize(number_option);
@@ -88,6 +90,14 @@ function generateYesNoGiven() {
                 + '<option value="YES">YES</option>'
                 + '<option value="NO">NO</option>'
                 + '<option value="NOT GIVEN">NOT GIVEN</option>';
+    return option;
+}
+
+function generateTrueFalseGiven() {
+    var option = '<option value=""></option>'
+        + '<option value="TRUE">TRUE</option>'
+        + '<option value="FALSE">FALSE</option>'
+        + '<option value="NOT GIVEN">NOT GIVEN</option>';
     return option;
 }
 

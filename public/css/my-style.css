@@ -984,7 +984,7 @@ Action Center User
 	overflow: visible;
 	position: absolute;
 	top: 55px;
-	right: -20px;
+	/*right: -20px;*/
 	width: 450px;
 	z-index: 10000;
 	display: none;
@@ -1000,7 +1000,7 @@ Action Center User
 	border: 10px solid black;
 	border-color: transparent transparent rgba(100, 100, 100, .4);
 	top: -20px;
-	right: 50px;
+	left: 10px;
 }
 
 .notifications-header {
@@ -1142,6 +1142,13 @@ Action Center User
 
 .item-content-noti {
 	color: #474B54;
+	display: inline-block;
+	/* float: left; */
+	width: 57%;
+}
+
+.img-auto-center.img-lesson-preview {
+	float: right;
 }
 
 .img-time-noti {

@@ -12,6 +12,17 @@
         $readingCommentNotificationModel = new App\Models\ReadingCommentNotification();
         $totalNoti = $readingCommentNotificationModel->getTotalNumberCommentNotificationNoRead(Auth::id());
         ?>
+            <li class="dropdown dropdown-custom open img-status-header">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{Auth::user()->username}}
+                </button>
+                <div class="dropdown-menu profile-dropdown-custom" aria-labelledby="dropdownMenu">
+                    {{--<a class="dropdown-item" href="{!! url('profile', [Auth::user()->username]) !!}">Hồ sơ</a>--}}
+                    {{--<a class="dropdown-item" href="{{route('MyStore')}}">Cửa hàng của tôi</a>--}}
+                    {{--<hr>--}}
+                    <a class="dropdown-item" href="{!! url('logout') !!}">Log out</a>
+                </div>
+            </li>
         <li class="img-avatar-header img-status-header">
             <img alt="{!! Auth::user()->username !!}" src="{!! asset('storage/img/users') !!}/{!! Auth::user()->avatar !!}" class="img-circle img-ava-header">
         </li>

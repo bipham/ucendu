@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\DB;
+use Hash;
 
 class User extends Authenticatable
 {
@@ -39,5 +41,10 @@ class User extends Authenticatable
 
     public function getInfoBasicUserById($id) {
         return $this->where('id',$id)->select('username', 'avatar')->get()->first();
+    }
+
+    public function changePasswordUser($id, $new_password) {
+        DB::table('users')  -> where('id', $id)
+                            -> update(['password' => Hash::make($new_password), 'activated' => 1]);
     }
 }
