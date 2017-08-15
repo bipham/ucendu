@@ -142,6 +142,7 @@ input.reply-cmt {
     padding: 5px;
     border: 1px dashed #0275d8;
     margin-top: 5px;
+    background: white;
 }
 
 .no-cmt {

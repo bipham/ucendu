@@ -19,6 +19,7 @@ class CreateReadingManagerLessonsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('lesson_id')->unsigned();
             $table->foreign('lesson_id')->references('id')->on('reading_lessons')->onDelete('cascade');
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }

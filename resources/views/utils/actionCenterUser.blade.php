@@ -7,17 +7,10 @@
  */
 ?>
 @if(Auth::check())
-<ul class="navbar-nav navbar-custom-header primary-header-custom navbar-info-custom">
+<ul class="navbar-nav navbar-custom-header primary-header-custom navbar-info-custom" id="userNotiAction" data-user-id="{!! Auth::id() !!}">
         <?php
-//        $stockNotiModel = new App\Models\StockNotification();
-//        $orderNotiModel = new App\Models\OrderNotification();
-//        $stockNotiNoRead = $stockNotiModel->getAllStockNotificationNoRead(Auth::id());
-//        $stockNotiNoRead = sizeof($stockNotiNoRead);
-//        $orderNotiNoRead = $orderNotiModel->getAllOrderNotificationNoRead(Auth::id());
-//        $orderNotiNoRead = sizeof($orderNotiNoRead);
-//        $totalMatchNoti = $stockNotiNoRead + $orderNotiNoRead;
-//        $readingCommentNotificationModel = new App\Models\ReadingCommentNotification();
-
+        $readingCommentNotificationModel = new App\Models\ReadingCommentNotification();
+        $totalNoti = $readingCommentNotificationModel->getTotalNumberCommentNotificationNoRead(Auth::id());
         ?>
         <li class="img-avatar-header img-status-header">
             <img alt="{!! Auth::user()->username !!}" src="{!! asset('storage/img/users') !!}/{!! Auth::user()->avatar !!}" class="img-circle img-ava-header">
@@ -25,18 +18,24 @@
         <li class="notification-status img-status-header">
                 <i class="fa fa-globe noti-status img-status-custom" aria-hidden="true"></i>
                 <span class="print-number-noti">
-                                   {{--@if($totalMatchNoti != 0)--}}
-                    <sup class="total-noti">0</sup>
+                    @if($totalNoti != 0)
+                        <sup class="total-noti">{!! $totalNoti !!}</sup>
+                    @endif
             </span>
                 <div id="notifications-container-menu">
                     <div class="notifications-header">
-                        <h3 class="title-noti-menu">Thông báo</h3>
+                        <h3 class="title-noti-menu">Notifications</h3>
+                        <h3 class="mark-all-notis">Mark all read</h3>
                     </div>
                     <div id="notifications-body">
+                        <div class="list-noti-content">
+                            <div class="content-noti-custom" id="listNotiArea">
 
+                            </div>
+                        </div>
                     </div>
                     <div class="notifications-footer">
-                        <h3 class="see-all-notis">Đánh dấu tất cả đã đọc</h3>
+                        <h3 class="see-all-notis">See all notifications!</h3>
                     </div>
                 </div>
             </li>

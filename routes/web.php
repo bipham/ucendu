@@ -17,6 +17,8 @@ Route::pattern('nameDomain', '(www.ucendu.dev|ucendu.dev|www.ucendu.com|ucendu.c
 Route::get('login', ['as'=>'getLogin', 'uses' => 'Auth\LoginController@getLogin']);
 Route::post('login',['as'=>'postLogin','uses'=>'Auth\LoginController@postLogin']);
 
+Route::get('getNotification/{user_id}',['as'=>'getMatchNotification','uses'=>'ReadingNotificationController@getNotification'])->middleware('auth');
+
 
 
 /*********************************************************

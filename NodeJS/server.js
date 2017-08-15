@@ -12,7 +12,6 @@ io.on('connection', function (socket) {
     redisClient.subscribe('message');
     redisClient.subscribe('commentNotification');
     redisClient.on("message", function(channel, data) {
-        console.log("new message", channel, data);
         if (channel == 'commentNotification') {
             console.log("new commentNotification", channel, data);
             var dataJSON = JSON.parse(data);
@@ -23,6 +22,14 @@ io.on('connection', function (socket) {
             socket.emit('commentNotification', data);
         }
     });
+
+    socket.on('updateSocket', function (data) {
+        current_sockets['user-' + data] = socket.id;
+        console.log('socket all: ' + JSON.stringify(current_sockets));
+        var socketID = current_sockets['user-' + data];
+        console.log('update socket ....: ' + socketID);
+    });
+
 
     socket.on('disconnect', function() {
         var key = null;

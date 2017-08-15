@@ -8,6 +8,8 @@ use App\Models\ReadingQuestion;
 use App\Models\ReadingCommentNotification;
 use App\Models\ReadingLesson;
 use App\Models\ReadingQuestionAndAnswer;
+use App\Models\ReadingManagerLesson;
+use App\Models\User;
 use Request;
 use Auth;
 use LRedis;
@@ -48,16 +50,40 @@ class CommentQuestionController extends Controller
             $question_id = $readingQuestionModel->getQuestionIdByIdCustom($question_id_custom);
             $questionAndAnswerModel = new ReadingQuestionAndAnswer();
             $result = $questionAndAnswerModel->createNewComment($question_id, $user_id, $reply_id, $content_cmt);
-            $related_users = $questionAndAnswerModel->getAllRelatedUser($question_id);
             $readingCommentNotificationModel = new ReadingCommentNotification();
-            foreach ($related_users as $related_user) {
+            $related_users = $questionAndAnswerModel->getAllRelatedUser($question_id);
+//            foreach ($related_users as $related_user) {
+////                dd($related_user);
+//                if ($related_user->user_id != Auth::id()) {
+//                    $readingCommentNotificationModel->createNewCommentNotification($question_id, $related_user->user_id);
+//                }
+//            }
+            $userModel = new User();
+            $list_admin_related = $userModel->getAllAdmin();
+            foreach ($list_admin_related as $admin_detect_related) {
 //                dd($related_user);
-                if ($related_user->user_id != Auth::id()) {
-                    $readingCommentNotificationModel->createNewCommentNotification($question_id, $related_user->user_id);
+                if ($admin_detect_related->id != Auth::id()) {
+                    $readingCommentNotificationModel->createNewCommentNotification($result->id, $admin_detect_related->id);
                 }
             }
-//            $redis = LRedis::connection();
-//            $redis->publish('commentNotification', json_encode(['test'=>$result]));
+            $readingManagerLessonModel = new ReadingManagerLesson();
+            $lesson_id = $readingQuestionModel->getLessonIdByQuestionId($question_id);
+
+            $list_manager_related = $readingManagerLessonModel->getManagerLessonFromLessonId($lesson_id->lesson_id);
+            foreach ($list_manager_related as $manager_related) {
+//                dd($related_user);
+                if ($manager_related->user_id != Auth::id()) {
+                    $readingCommentNotificationModel->createNewCommentNotification($result->id, $manager_related->user_id);
+                }
+            }
+
+            $readingLessonModel = new ReadingLesson();
+            $lesson_detail_basic= $readingLessonModel->getInfoBasicLessonById($lesson_id->lesson_id);
+
+            $user_cmt = $userModel->getInfoBasicUserById(Auth::id());
+
+            $redis = LRedis::connection();
+            $redis->publish('commentNotification', json_encode(['user_cmt' => $user_cmt, 'readingLesson' => $lesson_detail_basic]));
             return json_encode(['list_comment' => $result]);
         }
     }

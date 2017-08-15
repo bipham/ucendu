@@ -104,4 +104,19 @@ class ReadingLesson extends Model
     public function getLessonById($id) {
         return $this->where('id',$id)->get()->first();
     }
+
+    public function getInfoBasicLessonById($id) {
+        return $this->where('id',$id)->select('image_feature', 'title')->get()->first();
+    }
+
+    public function getLessonByCommentId($cmt_id) {
+        return DB::table('reading_question_and_answers')
+            ->leftJoin('reading_questions', 'reading_question_and_answers.question_id', '=', 'reading_questions.id')
+            ->leftJoin('reading_quizzs', 'reading_questions.quiz_id', '=', 'reading_quizzs.id')
+            ->leftJoin('reading_lessons', 'reading_quizzs.lesson_id', '=', 'reading_lessons.id')
+            ->where('reading_question_and_answers.id', $cmt_id)
+            ->select(['reading_lessons.title', 'reading_lessons.image_feature'])
+            ->get()
+            ->first();
+    }
 }

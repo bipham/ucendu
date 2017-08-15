@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class ReadingQuestion extends Model
 {
@@ -41,6 +42,16 @@ class ReadingQuestion extends Model
                         ->where('id', $question_id)
                         ->get()
                         ->pluck('keyword');
+    }
+
+
+    public function getLessonIdByQuestionId($question_id) {
+        return DB::table('reading_questions')
+            ->leftJoin('reading_quizzs', 'reading_questions.quiz_id', '=', 'reading_quizzs.id')
+            ->where('reading_questions.id', $question_id)
+            ->select(['reading_quizzs.lesson_id'])
+            ->get()
+            ->first();
     }
 
 }

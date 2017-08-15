@@ -990,14 +990,29 @@ Action Center User
 	display: none;
 }
 
+#notifications-container-menu:before {
+	content: '';
+	display: block;
+	position: absolute;
+	width: 0;
+	height: 0;
+	color: transparent;
+	border: 10px solid black;
+	border-color: transparent transparent rgba(100, 100, 100, .4);
+	top: -20px;
+	right: 50px;
+}
+
 .notifications-header {
-	text-align: center;
-	padding: 5px 0;
+	/*text-align: center;*/
+	padding: 5px 10px;
 	border-bottom: 1px solid #aaa;
 }
 
 .title-noti-menu {
 	font-size: 15px;
+	display: inline-block;
+	font-weight: 700;
 }
 
 .notifications-footer {
@@ -1008,6 +1023,18 @@ Action Center User
 	width: 100%;
 	padding: 5px 0;
 	border-top: 1px solid #aaa;
+}
+
+.mark-all-notis {
+	color: #365899;
+	text-align: center;
+	margin: 0 auto;
+	font-size: 15px;
+	font-weight: 500;
+	cursor: pointer;
+	display: inline-block;
+	float: right;
+	line-height: 1.5;
 }
 
 .see-all-notis {
@@ -1028,6 +1055,13 @@ Action Center User
 	display: inline-block;
 	vertical-align: middle;
 	height: 100%;
+}
+
+.item-notification {
+	background: #E4E9F2;
+	border: 1px solid #d2d2d2;
+	padding: 5px;
+	width: 100%;
 }
 
 .img-ava-header {
@@ -1051,7 +1085,7 @@ Action Center User
 }
 
 .white-font-class {
-	color: white;
+	color: #0275d8;
 }
 
 .view-key-answer {
@@ -1061,4 +1095,73 @@ Action Center User
 .panel-container {
 	border: 2px solid green;
 	border-radius: 10px;
+}
+
+.item-notification.no-read {
+	border: 1px solid #d2d2d2;
+	padding: 5px;
+	width: 100%;
+}
+
+.img-auto-center {
+	display: inline-block;
+	float: left;
+	margin-right: 10px;
+	height: 100%;
+	padding: 5px;
+	text-align: center;
+	overflow: hidden;
+	position: relative;
+}
+
+.img-auto-center:before {
+	height: 100%;
+	display: inline-block;
+	vertical-align: middle;
+	content: ' ';
+}
+
+.img-user-noti-header {
+	width: 70px;
+	height: 70px;
+}
+
+.img-auto-center-inner {
+	border: 1px solid #ccc;
+	max-width: 100%;
+	margin: 0 auto;
+	max-height: 100%;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.img-lesson-preview-header {
+	width: 70px;
+	height: 70px;
+}
+
+.item-content-noti {
+	color: #474B54;
+}
+
+.img-time-noti {
+	width: 16px;
+	height: 16px;
+	margin-right: 3px;
+}
+
+.time-ago-noti {
+	font-size: 13px;
+	color: #90949c;
+}
+
+
+.list-noti-content {
+	/* padding: 0 10px; */
+	overflow: auto;
+	max-height: 420px;
+}
+
+.item-notification.seen-noti {
+	background: white;
 }

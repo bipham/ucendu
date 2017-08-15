@@ -2,12 +2,18 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+
+    protected $table = 'users';
+
     use Notifiable;
+
+    public $timestamps = true;
 
     /**
      * The attributes that are mass assignable.
@@ -15,7 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'username', 'email', 'password', 'level', 'fullname', 'adress', 'phone', 'dob', 'avatar','activated'
     ];
 
     /**
@@ -26,4 +32,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function getAllAdmin() {
+        return $this->where('level', 0)->select('id')->get();
+    }
+
+    public function getInfoBasicUserById($id) {
+        return $this->where('id',$id)->select('username', 'avatar')->get()->first();
+    }
 }
