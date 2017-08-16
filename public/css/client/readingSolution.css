@@ -79,9 +79,9 @@
     margin-bottom: 0;
 }
 
-.keywords-area {
-    border: 1px dashed;
-}
+/*.keywords-area {*/
+    /*border: 1px dashed;*/
+/*}*/
 
 .collage-comments.show .comments-area {
     padding: 10px;
@@ -129,14 +129,14 @@ input.reply-cmt {
     color: white;
 }
 
-.keywords-area {
-    border: 2px dashed #5bc0de;
-}
+/*.keywords-area {*/
+    /*border: 2px dashed #5bc0de;*/
+/*}*/
 
-.keywords-area-title {
-    background: #5bc0de;
-    color: white;
-}
+/*.keywords-area-title {*/
+    /*background: #5bc0de;*/
+    /*color: white;*/
+/*}*/
 
 #replyComment {
     padding: 5px;
@@ -302,4 +302,33 @@ canvas#myChartReadingScore {
 
 .question-table .input-group-btn {
     width: calc( 100% - 60px );
+}
+
+.keywords-show {
+    margin: 20px 0px;
+    display: inline;
+}
+
+.keywords-area-title {
+    padding: 7px;
+    color: white;
+    background-image: none;
+    background-color: #5bc0de;
+    border: 1px solid #5bc0de;
+    /*font-size: 13px;*/
+}
+
+.keywords-area {
+    font-size: 17px;
+    border: 1px solid #5bc0de;
+    padding: 5px 10px;
+    display: inline-block;
+    /*min-width: 30%;*/
+}
+
+.btn-show-answer {
+    padding: 7px;
+    font-size: 16px;
+    bottom: 2px;
+    position: relative;
 }

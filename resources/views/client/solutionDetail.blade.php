@@ -188,10 +188,10 @@
         $('.explain-area').each(function () {
             var qnumber = $(this).data('qnumber');
             if(jQuery.inArray(qnumber, correct_answers) !== -1) {
-                $('.explain-area-' + qnumber + ' .show-answer').append('<i class="fa selected-true-icon fa-check-circle-o" aria-hidden="true"></i>');
+                $('.explain-area-' + qnumber + ' .show-answer .btn-show-answer').after('<i class="fa selected-true-icon fa-check-circle-o" aria-hidden="true"></i>');
             }
             else {
-                $('.explain-area-' + qnumber + ' .show-answer').append('<i class="fa selected-false-icon fa-times-circle-o" aria-hidden="true"></i>');
+                $('.explain-area-' + qnumber + ' .show-answer .btn-show-answer').after('<i class="fa selected-false-icon fa-times-circle-o" aria-hidden="true"></i>');
             }
         });
 

@@ -237,6 +237,15 @@ $( document ).ready(function() {
                                                     answer_key +
                                                 '</div>' +
                                             '</button>' +
+                                            '<div class="keywords-show" id="keywordArea-' + qnumber +'"> ' +
+                                                '<span class="keywords-area-title">' +
+                                                    '<i class="fa fa-key" aria-hidden="true"></i>' +
+                                                    '&nbsp;Keywords' +
+                                                '</span>' +
+                                                '<span class="keywords-area">' +
+                                                    listKeyword[qnumber] +
+                                                '</span>' +
+                                            '</div>' +
                                         '</div>' +
                                         '<div class="solution-tools locate-highlight-tool">' +
                                             '<a class="btn btn-xs btn-outline-warning btn-locate-highlight" data-qnumber="' + qnumber +'" onclick="scrollToHighlight(' + qorder + ')">' +
@@ -244,24 +253,24 @@ $( document ).ready(function() {
                                                 '&nbsp;Locate' +
                                             '</a>' +
                                         '</div>' +
-                                        '<div class="solution-tools locate-keyword-tool">' +
-                                            '<a class="btn btn-xs btn-outline-info btn-show-keywords" data-qnumber="' + qnumber +'" data-toggle="collapse" href="#keywordArea-' + qnumber + '" aria-expanded="false" aria-controls="keywordArea-' + qnumber + '" onclick="showKeywords(' + qnumber + ')">' +
-                                                '<i class="fa fa-key" aria-hidden="true"></i>' +
-                                                '&nbsp;Keywords' +
-                                            '</a>' +
-                                        '</div>' +
+                                        // '<div class="solution-tools locate-keyword-tool">' +
+                                        //     '<a class="btn btn-xs btn-outline-info btn-show-keywords" data-qnumber="' + qnumber +'" data-toggle="collapse" href="#keywordArea-' + qnumber + '" aria-expanded="false" aria-controls="keywordArea-' + qnumber + '" onclick="showKeywords(' + qnumber + ')">' +
+                                        //         '<i class="fa fa-key" aria-hidden="true"></i>' +
+                                        //         '&nbsp;Keywords' +
+                                        //     '</a>' +
+                                        // '</div>' +
                                         '<div class="solution-tools locate-comment-tool">' +
                                             '<a class="btn btn-xs btn-outline-primary btn-show-comments" data-qnumber="' + qnumber +'" data-toggle="collapse" href="#commentArea-' + qnumber + '" aria-expanded="false" aria-controls="commentArea-' + qnumber + '" onclick="showComments(' + qnumber + ')">' +
                                                 '<i class="fa fa-question" aria-hidden="true"></i>' +
                                                 '&nbsp;Comments' +
                                             '</a>' +
                                         '</div>' +
-                                        '<div class="collapse collage-keywords collapse-custom" id="keywordArea-' + qnumber +'"> ' +
-                                            '<div class="card card-header keywords-area-title">KEYWORDS:' +
-                                            '</div>' +
-                                            '<div class="card card-block keywords-area">' +
-                                            '</div>' +
-                                        '</div>' +
+                                        // '<div class="collapse collage-keywords collapse-custom" id="keywordArea-' + qnumber +'"> ' +
+                                        //     '<div class="card card-header keywords-area-title">KEYWORDS:' +
+                                        //     '</div>' +
+                                        //     '<div class="card card-block keywords-area">' +
+                                        //     '</div>' +
+                                        // '</div>' +
                                         '<div class="collapse collage-comments collapse-custom" id="commentArea-' + qnumber +'"> ' +
                                             '<div class="card card-header comments-area-title">QUESTION & ANSWER:' +
                                             '</div>' +
@@ -468,7 +477,9 @@ function checkStepAnswer() {
         else {
             delete listAnswer[qnumber];
         }
-
+        if (keywords_key == '') {
+            keywords_key = 'No keyword for this question';
+        }
         listKeyword[qnumber] = keywords_key;
 
         if (type_lesson == 1) {
