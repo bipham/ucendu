@@ -17,8 +17,9 @@ class CreateReadingResultsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('quiz_id')->unsigned();
-            $table->integer('correct_answer');
+            $table->string('correct_answer');
             $table->string('list_answered')->nullable();
+            $table->integer('highest_correct');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('quiz_id')->references('id')->on('reading_quizzs')->onDelete('cascade');
             $table->timestamps();
