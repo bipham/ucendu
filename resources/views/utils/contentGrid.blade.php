@@ -79,7 +79,7 @@
                 </a>
             </span>
             <span class="btn-inline">
-                <a href="{{url('reading/solutionLesson/' . $lesson->lesson_id . '-' . $quiz_id .  '?list_answer="emptyList"&correct_answer=[]&totalQuestion=' . $lesson->total_questions)}}" class="btn btn-outline-success btn-test-overview">
+                <a href="{{url('reading/readingViewSolutionLesson/' . $lesson->lesson_id . '-' . $quiz_id)}}" class="btn btn-outline-success btn-test-overview">
                     <i class="fa fa-key" aria-hidden="true"></i>
                     Solution
                 </a>

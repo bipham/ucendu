@@ -78,4 +78,30 @@ class ResultController extends Controller
         return view('client.solutionDetail',compact('lesson_detail', 'lesson_quiz', 'correct_answer', 'totalQuestion', 'list_answer', 'practice_lessons','test_lessons', 'readingCategoryLessonModel', 'readingCategoryModel', 'type_lesson', 'type_question', 'readingTypeQuestionOfQuizModel'));
     }
 
+    public function getReadingViewSolutionLesson($domain, $lesson_id, $quiz_id) {
+//        dd($lesson_id);
+        $readingLessonModel = new ReadingLesson();
+        $lesson_detail = $readingLessonModel->getLessonById($lesson_id);
+        $quizModel = new ReadingQuizz();
+        $lesson_quiz = $quizModel->getQuizByLessonId($lesson_id);
+        $type_lesson = $lesson_quiz->type_lesson;
+        $readingTypeQuestionModel = new ReadingTypeQuestion();
+        $readingTypeQuestionOfQuizModel = new ReadingTypeQuestionOfQuiz();
+        if ($type_lesson == 1) {
+            $type_question_id = $readingTypeQuestionOfQuizModel->getTypeQuestionIdByQuizId($lesson_quiz->id);
+            $practice_lessons = $readingLessonModel->getPracticeNewestOfTypeQuestion(8, $type_question_id);
+            $test_lessons = $readingLessonModel->getTestNewestOfTypeQuestion(8, $type_question_id);
+            $type_question = $readingTypeQuestionModel->getTypeQuestionById($type_question_id);
+        }
+        else {
+            $practice_lessons = $readingLessonModel->getPracticeNewestOfTypeLesson(8, $type_lesson);
+            $test_lessons = $readingLessonModel->getTestNewestOfTypeLesson(8, $type_lesson);
+            $type_question = '';
+        }
+        $readingCategoryLessonModel = new ReadingCategoryLesson();
+        $readingCategoryModel = new ReadingCategory();
+
+        return view('client.readingOnlyViewSolution',compact('lesson_detail', 'lesson_quiz', 'practice_lessons','test_lessons', 'readingCategoryLessonModel', 'readingCategoryModel', 'type_lesson', 'type_question', 'readingTypeQuestionOfQuizModel'));
+    }
+
 }

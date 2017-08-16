@@ -76,5 +76,6 @@ Route::group(['domain'=>'{nameDomain}', 'middleware' => ['clientAuth']], functio
         Route::get('readingTypeLesson/{typeLesson}',['as'=>'reading.readingTypeLesson','uses'=>'Client\ReadingLessonController@readingTypeLesson']);
         Route::get('resultReading',['as'=>'resultReading','uses'=>'Client\ResultController@getResultQuiz']);
         Route::get('solutionLesson/{lesson_id}-{quiz_id}',['as'=>'solutionLesson','uses'=>'Client\ResultController@getSolutionLesson']);
+        Route::get('readingViewSolutionLesson/{lesson_id}-{quiz_id}',['as'=>'readingViewSolutionLesson','uses'=>'Client\ResultController@getReadingViewSolutionLesson']);
     });
 });
