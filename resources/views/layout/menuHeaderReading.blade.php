@@ -23,6 +23,51 @@
                     </h4>
                     @yield('typeLessonHeader')
                 </li>
+                <li class="menu-lesson-header">
+                    <div class="btn-group btn-dropdown-products btn-product-menu">
+                        <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <i class="fa fa-bars" aria-hidden="true"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <div class="sub-menu-item-custom">
+                                <h6 class="dropdown-header dropdown-header-custom">
+                                    READING LESSONS
+                                </h6>
+                                <?php
+                                $readingTypeQuestionModel = new  App\Models\ReadingTypeQuestion();
+                                $list_type_questions = $readingTypeQuestionModel->getAllTypeQuestion();
+                                foreach ($list_type_questions as $type_question):
+                                $title_type_question = str_replace(" ","-", $type_question->name);
+                                ?>
+                                <div class="item-type-question">
+                                    <i class="fa fa-caret-right icon-left-menu-toolbar" aria-hidden="true"></i>
+                                    <a class="type-lesson-link" href="{{ url('reading/readingTypeQuestion/typeQuestion' . $type_question->id . '-' . $title_type_question) }}">
+                                        {!! $type_question->name !!}
+                                    </a>
+                                </div>
+                                <?php
+                                endforeach;
+                                ?>
+                                <div class="dropdown-divider"></div>
+                            </div>
+                            <div class="sub-menu-item-custom">
+                                <a class="type-lesson-link" href="{{ url('reading/readingTypeLesson/typeLesson2-mix-test')}}">
+                                    <h6 class="dropdown-header dropdown-header-custom">
+                                        Mix Test
+                                    </h6>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                            </div>
+                            <div class="sub-menu-item-custom">
+                                <a class="type-lesson-link" href="{{url('reading/readingTypeLesson/typeLesson3-full-test')}}">
+                                    <h6 class="dropdown-header dropdown-header-custom">
+                                        Full Test
+                                    </h6>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
                 <li class="nav-item tab-reading-control">
                     <a class="nav-link reading-intro" data-toggle="tab" href="#readingIntro" role="tab">Introduction</a>
                 </li>

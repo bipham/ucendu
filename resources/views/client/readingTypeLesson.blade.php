@@ -17,7 +17,7 @@
     @endif
 @endsection
 @section('content')
-    @include('utils.toolbarReadingLesson')
+    {{--@include('utils.toolbarReadingLesson')--}}
 
     @section('typeLessonHeader')
         @if ($type_lesson_id == 1)

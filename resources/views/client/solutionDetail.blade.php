@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{asset('public/css/client/readingSolution.css')}}">
 @endsection
 @section('content')
-    @include('utils.toolbarReadingLesson')
+    {{--@include('utils.toolbarReadingLesson')--}}
 
     @section('titleTypeLesson')
         {!! $lesson_detail->title !!}

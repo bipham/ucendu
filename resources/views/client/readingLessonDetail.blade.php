@@ -15,7 +15,7 @@
 
 @endsection
 @section('content')
-    @include('utils.toolbarReadingLesson')
+    {{--@include('utils.toolbarReadingLesson')--}}
 
     @section('titleTypeLesson')
             {!! $lesson_detail->title !!}

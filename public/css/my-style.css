@@ -1172,3 +1172,14 @@ Action Center User
 .item-notification.seen-noti {
 	background: white;
 }
+
+.dropdown-header-custom {
+	font-size: 16px;
+	color: #43ab16;
+	font-weight: 700;
+}
+
+.btn-group.btn-dropdown-products.btn-product-menu {
+	top: 9px;
+	margin: 0 20px;
+}

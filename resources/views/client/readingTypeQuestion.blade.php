@@ -12,7 +12,7 @@
     {!! $type_question->name !!}
 @endsection
 @section('content')
-    @include('utils.toolbarReadingLesson')
+    {{--@include('utils.toolbarReadingLesson')--}}
 
     @section('typeLessonHeader')
         <span class="badge badge-success type-lesson-header">
