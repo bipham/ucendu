@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\ReadingQuestionAndAnswer;
 use App\Models\ReadingLesson;
+use App\Models\ReadingQuizz;
 use Request;
 
 class ReadingCommentController extends Controller
@@ -15,6 +16,7 @@ class ReadingCommentController extends Controller
         $readingQuestionAndAnswerModel = new ReadingQuestionAndAnswer();
         $readingLessonModel = new ReadingLesson();
         $userModel = new User();
+        $readingQuizModel = new ReadingQuizz();
 
         $all_comments = [];
         $list_comments = $readingQuestionAndAnswerModel->getALlCommentReading();
@@ -29,7 +31,10 @@ class ReadingCommentController extends Controller
                 $array_comment['username_cmt'] = $user_detail->username;
                 $array_comment['avatar_user'] = $user_detail->avatar;
                 $array_comment['lesson_title'] = $lesson_detail->title;
+                $array_comment['lesson_id'] = $lesson_detail->id;
                 $array_comment['question_id'] = $comment_reading->question_id;
+                $quiz_id = $readingQuizModel->getQuizIdByLessonId($lesson_detail->id);
+                $array_comment['quiz_id'] = $quiz_id->id;
                 $array_comment['reply_id'] = $comment_reading->reply_id;
                 $array_comment['content_cmt'] = $comment_reading->content_cmt;
                 $array_comment['comment_id'] = $comment_reading->id;
