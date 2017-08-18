@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class ReadingLesson extends Model
 {
@@ -29,6 +30,7 @@ class ReadingLesson extends Model
             ->leftJoin('reading_categories', 'reading_categories.id', '=', 'reading_category_lessons.cate_id')
             ->leftJoin('reading_quizzs', 'reading_lessons.id', '=', 'reading_quizzs.lesson_id')
             ->where('reading_quizzs.limit_time', '=', 0)
+            ->where('reading_lessons.status', '=', 1)
             ->orderBy('reading_lessons.updated_at','desc')
 //            ->take($number)
             ->get();
@@ -40,6 +42,7 @@ class ReadingLesson extends Model
             ->leftJoin('reading_categories', 'reading_categories.id', '=', 'reading_category_lessons.cate_id')
             ->leftJoin('reading_quizzs', 'reading_lessons.id', '=', 'reading_quizzs.lesson_id')
             ->where('reading_quizzs.limit_time', '>', 0)
+            ->where('reading_lessons.status', '=', 1)
             ->orderBy('reading_lessons.updated_at','desc')
 //            ->take($number)
             ->get();
@@ -82,19 +85,21 @@ class ReadingLesson extends Model
             ->leftJoin('reading_quizzs', 'reading_lessons.id', '=', 'reading_quizzs.lesson_id')
             ->where('reading_quizzs.type_lesson', '=', $type_lesson)
             ->where('reading_quizzs.limit_time', '=', 0)
+            ->where('reading_lessons.status', '=', 1)
             ->orderBy('reading_lessons.updated_at','desc')
 //            ->take($number)
             ->get();
         return $lessons;
     }
 
-     public function getTestNewestOfTypeLesson ($number, $type_lesson) {
+    public function getTestNewestOfTypeLesson ($number, $type_lesson) {
          $lessons = DB::table('reading_lessons')
              ->leftJoin('reading_category_lessons', 'reading_lessons.id', '=', 'reading_category_lessons.lesson_id')
              ->leftJoin('reading_categories', 'reading_categories.id', '=', 'reading_category_lessons.cate_id')
              ->leftJoin('reading_quizzs', 'reading_lessons.id', '=', 'reading_quizzs.lesson_id')
              ->where('reading_quizzs.type_lesson', '=', $type_lesson)
              ->where('reading_quizzs.limit_time', '>', 0)
+             ->where('reading_lessons.status', '=', 1)
              ->orderBy('reading_lessons.updated_at','desc')
 //             ->take($number)
              ->get();
@@ -118,5 +123,29 @@ class ReadingLesson extends Model
             ->select(['reading_lessons.title', 'reading_lessons.image_feature'])
             ->get()
             ->first();
+    }
+
+    public function getAllLessons() {
+        return $this->where('status',1)->orderBy('updated_at','desc')->select('id', 'title', 'image_feature')->get()->all();
+    }
+
+    public function deleteLessonById($id) {
+        return DB::table('reading_lessons') ->where('id', $id)
+                                            ->update(['status' => 0, 'updated_at' => Carbon::now()]);
+    }
+
+    public function updateContentLessonReading($id, $content_lesson, $content_highlight) {
+        return DB::table('reading_lessons') ->where('id', $id)
+                                            ->update(['content_lesson' => $content_lesson, 'content_highlight' => $content_highlight, 'updated_at' => Carbon::now()]);
+    }
+
+    public function updateInfoBasicLessonReading($id, $title, $image_feature) {
+        return DB::table('reading_lessons') ->where('id', $id)
+                                            ->update(['title' => $title, 'image_feature' => $image_feature, 'updated_at' => Carbon::now()]);
+    }
+
+    public function updateTitleLessonReading($id, $title) {
+        return DB::table('reading_lessons') ->where('id', $id)
+                                            ->update(['title' => $title, 'updated_at' => Carbon::now()]);
     }
 }

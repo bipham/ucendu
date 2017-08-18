@@ -22,7 +22,11 @@ var img_extension = '';
 var listQ = [];
 var listAnswer = {};
 var listKeyword = {};
+var listClassKeyword = {};
 var list_type_questions = {};
+var listAnswer_source = {};
+var listKeyword_source = {};
+var list_type_questions_source = {};
 var i = '';
 var idremove = '';
 var listHl = [];
@@ -170,6 +174,11 @@ $( document ).ready(function() {
                                                         '</div>');
                         }
                     }
+                    if (jQuery.inArray(qnumber, listAnswer_source) == -1) {
+                        $('input.answer-q[data-qnumber=' + qnumber + ']').val(listAnswer_source[qnumber]);
+                        $('textarea.input-keyword[data-qnumber=' + qnumber + ']').val(listKeyword_source[qnumber]);
+                        $('.enter-type-question select[data-qnumber=' + qnumber + ']').val(list_type_questions_source[qnumber]);
+                    }
                 });
             }
             console.log('listQ: ' + listQ);
@@ -230,14 +239,14 @@ $( document ).ready(function() {
             var qorder = $(this).attr('name');
             qorder = qorder.match(/\d+/);
             var answer_key = $('.answer-' + qorder).val();
-            $(this).parent().after( '<div class="explain-area explain-' + qorder + ' explain-area-' + qnumber + '" data-qnumber="' + qnumber + '" data-qorder="' + qorder + '">' +
+            $(this).parent().after( '<div class="explain-area explain-' + qorder + ' explain-area-' + qnumber + '" data-qnumber="' + qnumber + '" data-qorder="' + qorder + '" data-type-question="' + list_type_questions[qnumber] + '">' +
                                         '<div class="show-answer">' +
                                             '<button type="button" class="btn btn-danger btn-show-answer">Answer ' + qorder + ' ' +
                                                 '<div class="badge badge-pill key-answer">' +
                                                     answer_key +
                                                 '</div>' +
                                             '</button>' +
-                                            '<div class="keywords-show" id="keywordArea-' + qnumber +'"> ' +
+                                            '<div class="keywords-show ' + listClassKeyword[qnumber] + '" id="keywordArea-' + qnumber +'"> ' +
                                                 '<span class="keywords-area-title">' +
                                                     '<i class="fa fa-key" aria-hidden="true"></i>' +
                                                     '&nbsp;Keywords' +
@@ -387,6 +396,27 @@ $(document).on("click", ".remove",function() {
     hltr.removeHighlights();
 });
 
+$(document).on("change", "input.answer-q",function() {
+    var qnumber = $(this).data('qnumber');
+    listAnswer_source[qnumber] = $(this).val();
+});
+
+$(document).on("change", "textarea.input-keyword",function() {
+    var qnumber = $(this).data('qnumber');
+    listKeyword_source[qnumber] = $(this).val();
+    if (listKeyword_source[qnumber] == '') {
+        listClassKeyword[qnumber] = 'hidden-class';
+    }
+    else {
+        listClassKeyword[qnumber] = '';
+    }
+});
+
+$(document).on("change", ".enter-type-question select",function() {
+    var qnumber = $(this).data('qnumber');
+    list_type_questions_source[qnumber] = $(this).val();
+});
+
 function readURL(input) {
     img_name = $('input[type=file]').val().split('\\').pop();
     img_extension = img_name.substr( (img_name.lastIndexOf('.') + 1) ).toLowerCase();
@@ -465,6 +495,9 @@ function checkStepQuiz() {
 
 function checkStepAnswer() {
     listAnswer = {};
+    listKeyword = {};
+    list_type_questions = {};
+
     $('.preview-content-quiz .card-block .last-option').each(function () {
         var qnumber = $(this).data('qnumber');
         var qorder = $(this).attr('name');
@@ -478,7 +511,11 @@ function checkStepAnswer() {
             delete listAnswer[qnumber];
         }
         if (keywords_key == '') {
-            keywords_key = 'No keyword for this question';
+            keywords_key = 'No_keywords';
+            listClassKeyword[qnumber] = 'hidden-class';
+        }
+        else {
+            listClassKeyword[qnumber] = '';
         }
         listKeyword[qnumber] = keywords_key;
 

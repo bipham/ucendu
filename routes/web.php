@@ -47,6 +47,17 @@ Route::group(['domain' => 'admin.{nameDomain}', 'middleware' => ['adminAuth']], 
     Route::get('createNewCate',['as'=>'createNewCate','uses'=>'Admin\CateController@createNewCate']);
 //    Route::get('createNewTypeQuiz',['as'=>'createNewTypeQuiz','uses'=>'Admin\TypeQuestionController@createNewTypeQuiz']);
     Route::get('getTypeQuestion',['as'=>'getTypeQuestion','uses'=>'Admin\TypeQuestionController@getTypeQuestion']);
+
+    Route::get('listReadingLesson',['as'=>'listReadingLesson','uses'=>'Admin\ReadingLessonController@listReadingLesson']);
+
+    Route::get('deleteLessonReading/{lesson_id}',['as'=>'deleteLessonReading','uses'=>'Admin\ReadingLessonController@deleteLessonReading']);
+
+    Route::get('editLessonReading/{lesson_id}',['as'=>'getEditLessonReading','uses'=>'Admin\ReadingLessonController@getEditLessonReading']);
+
+    Route::post('updateContentLessonReading/{lesson_id}',['as'=>'updateContentLessonReading','uses'=>'Admin\ReadingLessonController@updateContentLessonReading']);
+    Route::post('updateQuizReading/{quiz_id}',['as'=>'updateQuizReading','uses'=>'Admin\ReadingLessonController@updateQuizReading']);
+
+    Route::post('updateInfoBasicReadingLesson/{lesson_id}',['as'=>'updateInfoBasicReadingLesson','uses'=>'Admin\ReadingLessonController@updateInfoBasicReadingLesson']);
 });
 
 /*********************************************************

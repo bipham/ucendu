@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class ReadingQuestion extends Model
 {
@@ -14,13 +15,39 @@ class ReadingQuestion extends Model
     public $timestamps = true;
 
     public function addNewQuestion($quiz_id, $question_id_custom, $answer, $keyword, $type_question_id) {
-        $readingQuestionModel = new ReadingQuestion();
-        $readingQuestionModel->quiz_id = $quiz_id;
-        $readingQuestionModel->question_id_custom = $question_id_custom;
-        $readingQuestionModel->answer = $answer;
-        $readingQuestionModel->keyword = $keyword;
-        $readingQuestionModel->type_question_id = $type_question_id;
-        $readingQuestionModel->save();
+        $question_query = DB::table('reading_questions')    -> where('quiz_id', $quiz_id)
+                                                            -> where('question_id_custom', $question_id_custom)
+                                                            -> count();
+
+        if ($question_query == 0) {
+            $readingQuestionModel = new ReadingQuestion();
+            $readingQuestionModel->quiz_id = $quiz_id;
+            $readingQuestionModel->question_id_custom = $question_id_custom;
+            $readingQuestionModel->answer = $answer;
+            $readingQuestionModel->keyword = $keyword;
+            $readingQuestionModel->type_question_id = $type_question_id;
+            $readingQuestionModel->save();
+        }
+        else {
+            DB::table('reading_questions')  -> where('quiz_id', $quiz_id)
+                                            -> where('question_id_custom', $question_id_custom)
+                                            -> update(['answer' => $answer, 'keyword' => $keyword, 'type_question_id' => $type_question_id, 'updated_at' => Carbon::now()]);
+        }
+
+    }
+
+    public function deleteRowByQuizIdAndQuestionIdCustom($quiz_id, $question_id_custom) {
+        $question_query = DB::table('reading_questions')    -> where('quiz_id', $quiz_id)
+                                                            -> where('question_id_custom', $question_id_custom)
+                                                            -> count();
+
+        if ($question_query != 0) {
+            DB::table('reading_questions')  -> where('quiz_id', $quiz_id)
+                                            -> where('question_id_custom', $question_id_custom)
+                                            -> delete();
+        }
+
+        return 'del_success';
     }
 
     public function checkAnswerByIdCustom($question_id_custom, $answer_key) {
@@ -53,5 +80,6 @@ class ReadingQuestion extends Model
             ->get()
             ->first();
     }
+
 
 }
