@@ -102,7 +102,6 @@
                             $highest_result_reading = 99999;
                         }
                         ?>
-                        ?>
                     @else
                         <?php
                         $detailTypeQuestionOfQuiz =  $readingTypeQuestionOfQuizModel->getDetailQuizByQuizId($test_lesson->id);
@@ -114,7 +113,6 @@
                         else {
                             $highest_result_reading = 99999;
                         }
-                        ?>
                         ?>
                     @endif
                     @include('utils.contentGrid',['lesson' => $test_lesson, 'detailTypeQuestionOfQuiz' => json_decode($detailTypeQuestionOfQuiz), 'quiz_id' => $quiz_id, 'highest_result_reading' => $highest_result_reading])

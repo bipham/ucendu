@@ -12,19 +12,6 @@
             <img class="img-middle-responsive" src="{{ asset('storage/upload/images/img-feature/' . $lesson->image_feature) }}" alt="IELTS">
         </div>
         <div class="frame-hover-lesson w3-animate-top  @if ($highest_result_reading != 99999) frame-result-reading @endif">
-            {{--<div class="button-area-lesson-item">--}}
-                {{--<span class="btn favorite-lesson btn-for-lesson" title="Chi tiết">--}}
-                    {{--<a class="button-view" href="#">--}}
-                        {{--<i class="fa fa-eye" aria-hidden="true"></i>--}}
-                        {{--<!-- <i class="fa fa-heart" aria-hidden="true"></i> -->--}}
-                    {{--</a>--}}
-                {{--</span>--}}
-                {{--<span class="btn favorite-lesson btn-for-lesson" title="Xem sau">--}}
-                    {{--<a class="button-fav" href="#">--}}
-                            {{--<i class="fa fa-heart-o fa-lg" aria-hidden="true"></i>--}}
-                    {{--</a>--}}
-                {{--</span>--}}
-            {{--</div>--}}
             <div class="over-view-lesson">
                 @if ($highest_result_reading != 99999)
                     <div class="highest-result-over-view">
@@ -97,7 +84,7 @@
         </div>
         @if($lesson->limit_time > 0)
             <div class="limit-time-overview">
-                {!! $lesson->limit_time !!}
+                {!! $lesson->limit_time/60 !!} mins
             </div>
         @endif
     </div>
