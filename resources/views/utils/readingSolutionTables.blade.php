@@ -62,25 +62,33 @@
         </h4>
         <div class="row list-answered">
             @for($i=1; $i < $lesson_quiz->total_questions + 1; $i++)
-                <div class="col-md-3 answered-score answered-score-{!! $i !!}" data-qorder="{!! $i !!}">
+                <div class="col-md-4 answered-score answered-score-{!! $i !!}" data-qorder="{!! $i !!}">
                     <div class="input-group question-table question-table-{!! $i !!}">
                         <span class="input-group-addon question-table-name">Q.{!! $i !!}</span>
                         <span class="input-group-btn">
                             <button type="button" class="btn btn-outline-secondary btn-show-answered show-answered-{!! $i !!}" data-qorder="{!! $i !!}">
-                        <span class="name-answered name-answered-{!! $i !!}">
-                            No choice
+                                <div class="your-choice-key-area">
+                                    <div class="name-answered name-answered-{!! $i !!}">
+                                        No choice
+                                    </div>
+                                    <div class="badge badge-primary badge-pill view-key-answer view-your-choice-{!! $i !!}">
+                                        -
+                                    </div>
+                                </div>
+                                <div class="icon-result">
+                                    <i class="fa selected-false-icon fa-times-circle-o" aria-hidden="true"></i>
+                                    <i class="fa selected-true-icon fa-check-circle-o hidden" aria-hidden="true"></i>
+                                </div>
+                                <div class="solution-key-area">
+                                    <div class="solution-key-title">
+                                        Answer
+                                    </div>
+                                    <div class="badge badge-warning badge-pill view-key-answer view-solution-question-{!! $i !!}">
+                                        -
+                                    </div>
+                                </div>
+                            </button>
                         </span>
-                        <div class="badge badge-primary badge-pill view-key-answer view-your-choice-{!! $i !!}">
-                            -
-                        </div>
-                        <i class="fa selected-false-icon fa-times-circle-o" aria-hidden="true"></i>
-                        <i class="fa selected-true-icon fa-check-circle-o hidden" aria-hidden="true"></i>
-                        <div class="badge badge-warning badge-pill view-key-answer view-solution-question-{!! $i !!}">
-                            B
-                        </div>
-                        Answer
-                    </button>
-                </span>
                     </div>
                 </div>
             @endfor
