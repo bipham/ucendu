@@ -44,8 +44,8 @@ $( document ).ready(function() {
 
 function deleteReadingLesson(id) {
     bootbox.confirm({
-        title: "Destroy planet?",
-        message: "Do you want to activate the Deathstar now? This cannot be undone.",
+        title: "Delete Reading Lesson",
+        message: "Do you want to delete this lesson?",
         buttons: {
             cancel: {
                 label: '<i class="fa fa-times"></i> Cancel',

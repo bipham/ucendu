@@ -7,3 +7,7 @@
     width: 200px;
     height: 200px;
 }
+
+table#reading-list-lesson td {
+    vertical-align: middle;
+}

@@ -57,6 +57,7 @@ class ReadingLesson extends Model
             ->where('reading_quizzs.type_lesson', '=', 1)
             ->where('reading_type_question_of_quizzes.type_question_id', '=', $type_question_id)
             ->where('reading_quizzs.limit_time', '=', 0)
+            ->where('reading_lessons.status', '=', 1)
             ->orderBy('reading_lessons.updated_at','desc')
 //            ->take($number)
             ->get();
@@ -72,6 +73,7 @@ class ReadingLesson extends Model
              ->where('reading_quizzs.type_lesson', '=', 1)
              ->where('reading_type_question_of_quizzes.type_question_id', '=', $type_question_id)
              ->where('reading_quizzs.limit_time', '>', 0)
+             ->where('reading_lessons.status', '=', 1)
              ->orderBy('reading_lessons.updated_at','desc')
 //             ->take($number)
              ->get();
