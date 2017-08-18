@@ -332,3 +332,23 @@ canvas#myChartReadingScore {
     bottom: 2px;
     position: relative;
 }
+
+.your-choice-key-area {
+    width: 43.5%;
+    float: left;
+}
+
+.name-answered, .solution-key-title {
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.icon-result {
+    width: 13%;
+    float: left;
+}
+
+.solution-key-area {
+    width: 43.5%;
+    float: right;
+}
