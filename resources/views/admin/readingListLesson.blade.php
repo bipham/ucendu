@@ -20,7 +20,7 @@
         <table id="reading-list-lesson" class="table datatable">
             <thead>
                 <tr>
-                <th><label><input class="select-all-lessons" name="all-stores" type="checkbox" value="all"> Chọn</label></th>
+                <th><label><input class="select-all-lessons" name="all-lessons" type="checkbox" value="all"> Chọn</label></th>
                 <th>STT </th>
                 <th>Ảnh đại diện </th>
                 <th>Tiêu đề </th>

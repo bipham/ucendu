@@ -57,6 +57,7 @@ class ReadingLesson extends Model
             ->where('reading_quizzs.type_lesson', '=', 1)
             ->where('reading_type_question_of_quizzes.type_question_id', '=', $type_question_id)
             ->where('reading_quizzs.limit_time', '=', 0)
+            ->where('reading_lessons.status', '=', 1)
             ->orderBy('reading_lessons.updated_at','desc')
 //            ->take($number)
             ->get();
@@ -72,6 +73,7 @@ class ReadingLesson extends Model
              ->where('reading_quizzs.type_lesson', '=', 1)
              ->where('reading_type_question_of_quizzes.type_question_id', '=', $type_question_id)
              ->where('reading_quizzs.limit_time', '>', 0)
+             ->where('reading_lessons.status', '=', 1)
              ->orderBy('reading_lessons.updated_at','desc')
 //             ->take($number)
              ->get();
@@ -120,7 +122,7 @@ class ReadingLesson extends Model
             ->leftJoin('reading_quizzs', 'reading_questions.quiz_id', '=', 'reading_quizzs.id')
             ->leftJoin('reading_lessons', 'reading_quizzs.lesson_id', '=', 'reading_lessons.id')
             ->where('reading_question_and_answers.id', $cmt_id)
-            ->select(['reading_lessons.title', 'reading_lessons.image_feature'])
+            ->select(['reading_lessons.id', 'reading_lessons.title', 'reading_lessons.image_feature'])
             ->get()
             ->first();
     }

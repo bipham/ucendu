@@ -40,12 +40,14 @@ class ReadingCommentNotification extends Model
         $total = $this->where('user_id', $user_id)
             ->where('type_noti', 'userCommentNotification')
             ->where('read', 0)
+            ->where('status', '=', 1)
             -> count();
         return $total;
     }
 
     public function getAllNotificationByUserId($user_id) {
         return $this->where('user_id', $user_id)
+                    ->where('status', '=', 1)
                     ->orderBy('updated_at', 'desc')
                     ->get();
     }

@@ -39,4 +39,8 @@ class ReadingQuizz extends Model
         return DB::table('reading_quizzs')  ->where('id', $id)
                                             ->update(['content_quiz' => $content_quiz, 'content_answer_quiz' => $content_answer_quiz, 'total_questions' => $total_questions, 'type_lesson' => $type_lesson, 'limit_time' => $limit_time, 'updated_at' => Carbon::now()]);
     }
+
+    public function getQuizIdByLessonId($id) {
+        return $this->where('lesson_id',$id)->select('id')->get()->first();
+    }
 }
