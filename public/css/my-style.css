@@ -567,7 +567,7 @@ ul.primary-header-custom li.nav-item:before {
 }
 
 .number-total-ov {
-	font-size: 20px;
+	font-size: 14px;
 }
 
 .list-type-question-ov {
@@ -582,7 +582,7 @@ ul.primary-header-custom li.nav-item:before {
 }
 
 .detail-number-type-over-view {
-	margin: 15px 0 0 0;
+	margin: 5px 0 0 0;
 }
 
 .card.lesson-item .card-cate-lesson {
@@ -1198,4 +1198,22 @@ Action Center User
 .title-highest-result-ov {
 	color: #f3bc65;
 	font-size: 15px;
+}
+
+.title-total-question-ov {
+	font-size: 14px;
+}
+
+.title-type-question-ov {
+	font-size: 11px;
+	width: 90%;
+}
+
+.name-lesson {
+	min-height: 62px;
+}
+
+.card-title.title-lesson {
+	font-size: 17px;
+	line-height: 1.5;
 }

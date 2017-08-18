@@ -13,7 +13,7 @@
         </h4>
         <div class="row list-answered">
             @for($i=1; $i < $lesson_quiz->total_questions + 1; $i++)
-                <div class="col-md-1 answered-score answered-score-{!! $i !!}" data-qorder="{!! $i !!}">
+                <div class="col-md-2 answered-score answered-score-{!! $i !!}" data-qorder="{!! $i !!}">
                     <div class="input-group question-table question-table-{!! $i !!}">
                         <span class="input-group-addon question-table-name">
                             Q.{!! $i !!}
