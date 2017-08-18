@@ -41,6 +41,20 @@ class ReadingTypeQuestionOfQuiz extends Model
 
     }
 
+    public function deleteRowByQuizIdAndTypeQuestionId($quiz_id, $type_question_id) {
+        $quiz_query = DB::table('reading_type_question_of_quizzes')    -> where('quiz_id', $quiz_id)
+            -> where('type_question_id', $type_question_id)
+            -> count();
+
+        if ($quiz_query != 0) {
+            DB::table('reading_type_question_of_quizzes')   -> where('quiz_id', $quiz_id)
+                                                            -> where('type_question_id', $type_question_id)
+                                                            -> delete();
+        }
+
+        return 'del_success';
+    }
+
     public function getTypeQuestionIdByQuizId ($quiz_id) {
         $quiz_query = $this->where('quiz_id',$quiz_id)->get()->first();
         return $quiz_query->type_question_id;

@@ -46,3 +46,7 @@ Created by Bi Pham
     min-width: 70%;
     min-height: 80px;
 }
+
+.remove-highlight-area div {
+    margin-bottom: 20px;
+}
