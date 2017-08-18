@@ -57,17 +57,28 @@
                         <?php
                         $detailTypeQuestionOfQuiz =  $readingTypeQuestionOfQuizModel->getDetailQuizByQuizId($practice_lesson->quiz_id);
                         $quiz_id = $practice_lesson->quiz_id;
-                        //                            dd($practice_lesson);
+                        if (array_key_exists($practice_lesson->lesson_id, $highest_result)) {
+                            $highest_result_reading = $highest_result[$practice_lesson->lesson_id];
+                        }
+                        else {
+                            $highest_result_reading = 99999;
+                        }
                         ?>
                     @else
                         <?php
                         $detailTypeQuestionOfQuiz =  $readingTypeQuestionOfQuizModel->getDetailQuizByQuizId($practice_lesson->id);
                         //                        dd($detailTypeQuestionOfQuiz);
                         $quiz_id = $practice_lesson->id;
+                        if (array_key_exists($practice_lesson->lesson_id, $highest_result)) {
+                            $highest_result_reading = $highest_result[$practice_lesson->lesson_id];
+                        }
+                        else {
+                            $highest_result_reading = 99999;
+                        }
                         ?>
                     @endif
 
-                    @include('utils.contentGrid',['lesson' => $practice_lesson, 'detailTypeQuestionOfQuiz' => json_decode($detailTypeQuestionOfQuiz), 'quiz_id' => $quiz_id])
+                    @include('utils.contentGrid',['lesson' => $practice_lesson, 'detailTypeQuestionOfQuiz' => json_decode($detailTypeQuestionOfQuiz), 'quiz_id' => $quiz_id, 'highest_result_reading' => $highest_result_reading])
                 @endforeach
             </div>
         </div>
@@ -84,15 +95,29 @@
                         $detailTypeQuestionOfQuiz =  $readingTypeQuestionOfQuizModel->getDetailQuizByQuizId($test_lesson->quiz_id);
                         //                        dd($detailTypeQuestionOfQuiz);
                         $quiz_id = $test_lesson->quiz_id;
+                        if (array_key_exists($test_lesson->lesson_id, $highest_result)) {
+                            $highest_result_reading = $highest_result[$test_lesson->lesson_id];
+                        }
+                        else {
+                            $highest_result_reading = 99999;
+                        }
+                        ?>
                         ?>
                     @else
                         <?php
                         $detailTypeQuestionOfQuiz =  $readingTypeQuestionOfQuizModel->getDetailQuizByQuizId($test_lesson->id);
                         //                        dd($detailTypeQuestionOfQuiz);
                         $quiz_id = $test_lesson->id;
+                        if (array_key_exists($test_lesson->lesson_id, $highest_result)) {
+                            $highest_result_reading = $highest_result[$test_lesson->lesson_id];
+                        }
+                        else {
+                            $highest_result_reading = 99999;
+                        }
+                        ?>
                         ?>
                     @endif
-                    @include('utils.contentGrid',['lesson' => $test_lesson, 'detailTypeQuestionOfQuiz' => json_decode($detailTypeQuestionOfQuiz), 'quiz_id' => $quiz_id])
+                    @include('utils.contentGrid',['lesson' => $test_lesson, 'detailTypeQuestionOfQuiz' => json_decode($detailTypeQuestionOfQuiz), 'quiz_id' => $quiz_id, 'highest_result_reading' => $highest_result_reading])
                 @endforeach
             </div>
         </div>

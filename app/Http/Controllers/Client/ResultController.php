@@ -74,8 +74,16 @@ class ResultController extends Controller
         }
         $readingCategoryLessonModel = new ReadingCategoryLesson();
         $readingCategoryModel = new ReadingCategory();
+        $readingResult = new ReadingResult();
+        $result_reading_users = $readingResult->getResultReadingByUserId(Auth::id());
+//        dd($result_reading_users);
+        $highest_result = [];
+//        dd($highest_result);
+        foreach ($result_reading_users as $result_reading_user) {
+            $highest_result[$result_reading_user->lesson_id] = $result_reading_user->highest_correct;
+        }
 
-        return view('client.solutionDetail',compact('lesson_detail', 'lesson_quiz', 'correct_answer', 'totalQuestion', 'list_answer', 'practice_lessons','test_lessons', 'readingCategoryLessonModel', 'readingCategoryModel', 'type_lesson', 'type_question', 'readingTypeQuestionOfQuizModel'));
+        return view('client.solutionDetail',compact('lesson_detail', 'lesson_quiz', 'correct_answer', 'totalQuestion', 'list_answer', 'practice_lessons','test_lessons', 'readingCategoryLessonModel', 'readingCategoryModel', 'type_lesson', 'type_question', 'readingTypeQuestionOfQuizModel', 'highest_result'));
     }
 
     public function getReadingViewSolutionLesson($domain, $lesson_id, $quiz_id) {
