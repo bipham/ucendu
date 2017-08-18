@@ -10,6 +10,8 @@ use App\Models\ReadingCategory;
 use App\Models\ReadingQuizz;
 use App\Models\ReadingTypeQuestion;
 use App\Models\ReadingTypeQuestionOfQuiz;
+use App\Models\ReadingResult;
+use Illuminate\Support\Facades\Auth;
 
 class ReadingLessonController extends Controller
 {
@@ -19,8 +21,17 @@ class ReadingLessonController extends Controller
         $readingTypeQuestionOfQuizModel = new ReadingTypeQuestionOfQuiz();
         $practice_lessons = $readingLessonModel->getPracticeNewest(8);
         $test_lessons = $readingLessonModel->getTestNewest(8);
+        $readingResult = new ReadingResult();
+        $result_reading_users = $readingResult->getResultReadingByUserId(Auth::id());
+//        dd($result_reading_users);
+        $highest_result = [];
+//        dd($highest_result);
+        foreach ($result_reading_users as $result_reading_user) {
+            $highest_result[$result_reading_user->lesson_id] = $result_reading_user->highest_correct;
+        }
+//        dd($highest_result);
 //        dd($lessons);
-        return view('client.reading',compact('practice_lessons', 'test_lessons', 'readingTypeQuestionOfQuizModel'));
+        return view('client.reading',compact('practice_lessons', 'test_lessons', 'readingTypeQuestionOfQuizModel', 'highest_result'));
     }
 
     public function readingLessonDetail($domain, $link_lesson)
@@ -47,8 +58,14 @@ class ReadingLessonController extends Controller
         }
         $readingCategoryLessonModel = new ReadingCategoryLesson();
         $readingCategoryModel = new ReadingCategory();
-//dd($practice_lessons);
-        return view('client.readingLessonDetail',compact('lesson_detail', 'lesson_quiz', 'practice_lessons','test_lessons', 'readingCategoryLessonModel', 'readingCategoryModel', 'type_lesson', 'type_question', 'readingTypeQuestionOfQuizModel'));
+        $readingResult = new ReadingResult();
+        $result_reading_users = $readingResult->getResultReadingByUserId(Auth::id());
+//        dd($result_reading_users);
+        $highest_result = [];
+        foreach ($result_reading_users as $result_reading_user) {
+            $highest_result[$result_reading_user->lesson_id] = $result_reading_user->highest_correct;
+        }
+        return view('client.readingLessonDetail',compact('lesson_detail', 'lesson_quiz', 'practice_lessons','test_lessons', 'readingCategoryLessonModel', 'readingCategoryModel', 'type_lesson', 'type_question', 'readingTypeQuestionOfQuizModel', 'highest_result'));
     }
 
     public function readingTypeQuestion($domain, $link_type_question)
@@ -61,7 +78,14 @@ class ReadingLessonController extends Controller
         $readingTypeQuestionModel = new ReadingTypeQuestion();
         $type_question = $readingTypeQuestionModel->getTypeQuestionById($type_question_id);
         $readingTypeQuestionOfQuizModel = new ReadingTypeQuestionOfQuiz();
-        return view('client.readingTypeQuestion',compact('practice_lessons', 'test_lessons', 'type_question', 'readingTypeQuestionOfQuizModel'));
+        $readingResult = new ReadingResult();
+        $result_reading_users = $readingResult->getResultReadingByUserId(Auth::id());
+//        dd($result_reading_users);
+        $highest_result = [];
+        foreach ($result_reading_users as $result_reading_user) {
+            $highest_result[$result_reading_user->lesson_id] = $result_reading_user->highest_correct;
+        }
+        return view('client.readingTypeQuestion',compact('practice_lessons', 'test_lessons', 'type_question', 'readingTypeQuestionOfQuizModel', 'highest_result'));
     }
 
     public function readingTypeLesson($domain, $link_type_lesson)
@@ -71,6 +95,13 @@ class ReadingLessonController extends Controller
         $practice_lessons = $readingLessonModel->getPracticeNewestOfTypeLesson(8, $type_lesson_id);
         $test_lessons = $readingLessonModel->getTestNewestOfTypeLesson(8, $type_lesson_id);
         $readingTypeQuestionOfQuizModel = new ReadingTypeQuestionOfQuiz();
-        return view('client.readingTypeLesson',compact('practice_lessons', 'test_lessons', 'type_lesson_id', 'readingTypeQuestionOfQuizModel'));
+        $readingResult = new ReadingResult();
+        $result_reading_users = $readingResult->getResultReadingByUserId(Auth::id());
+//        dd($result_reading_users);
+        $highest_result = [];
+        foreach ($result_reading_users as $result_reading_user) {
+            $highest_result[$result_reading_user->lesson_id] = $result_reading_user->highest_correct;
+        }
+        return view('client.readingTypeLesson',compact('practice_lessons', 'test_lessons', 'type_lesson_id', 'readingTypeQuestionOfQuizModel', 'highest_result'));
     }
 }

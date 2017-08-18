@@ -11,7 +11,7 @@
         <div class="img-thumbnail-inner">
             <img class="img-middle-responsive" src="{{ asset('storage/upload/images/img-feature/' . $lesson->image_feature) }}" alt="IELTS">
         </div>
-        <div class="frame-hover-lesson w3-animate-top">
+        <div class="frame-hover-lesson w3-animate-top  @if ($highest_result_reading != 99999) frame-result-reading @endif">
             {{--<div class="button-area-lesson-item">--}}
                 {{--<span class="btn favorite-lesson btn-for-lesson" title="Chi tiết">--}}
                     {{--<a class="button-view" href="#">--}}
@@ -26,12 +26,22 @@
                 {{--</span>--}}
             {{--</div>--}}
             <div class="over-view-lesson">
+                @if ($highest_result_reading != 99999)
+                    <div class="highest-result-over-view">
+                        <h5 class="title-highest-result-ov">
+                            Highest correct:
+                        </h5>
+                        <span class="number-highest-correct-ov badge badge-warning">
+                           {!! $highest_result_reading !!}/{!! $lesson->total_questions !!}
+                        </span>
+                    </div>
+                @endif
                 <div class="total-question-over-view">
                     <h5 class="title-total-question-ov inline-class">
                         Total questions:
                     </h5>
                     <span class="pull-right number-total-ov badge badge-success inline-class">
-                        {!! $lesson->total_questions !!}
+                       {!! $lesson->total_questions !!}
                     </span>
                 </div>
                 <div class="detail-number-type-over-view">

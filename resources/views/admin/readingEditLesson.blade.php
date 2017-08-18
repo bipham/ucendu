@@ -62,7 +62,7 @@
                     </button>
                 </div>
             </div>
-            <div class="edit-highlight hidden">
+            <div class="row edit-highlight hidden">
                 <div class="col-md-8 card highlight-sandbox">
                     <div class="card-header">
                         <h3 class="text-left">

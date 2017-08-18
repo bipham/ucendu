@@ -1183,3 +1183,19 @@ Action Center User
 	top: 9px;
 	margin: 0 20px;
 }
+
+.highest-result-over-view {
+	border-bottom: 1px solid;
+	margin-bottom: 3px;
+	padding-bottom: 3px;
+	text-align: center;
+}
+
+.frame-result-reading {
+	padding-top: 10px !important;
+}
+
+.title-highest-result-ov {
+	color: #f3bc65;
+	font-size: 15px;
+}

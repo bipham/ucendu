@@ -41,4 +41,12 @@ class ReadingResult extends Model
 
         }
     }
+
+    public function getResultReadingByUserId($user_id) {
+        return DB::table('reading_results')->leftJoin('reading_quizzs', 'reading_results.quiz_id', '=', 'reading_quizzs.id')
+                                            -> where('reading_results.user_id', $user_id)
+                                            -> select('reading_results.*', 'reading_quizzs.lesson_id')
+                                            -> get();
+
+    }
 }
