@@ -36,9 +36,6 @@
                                 <a class="type-lesson-link" href="{{ url('reading/readingTypeQuestion/typeQuestion' . $type_question->id . '-' . $title_type_question) }}">
                                     {!! $type_question->name !!}
                                 </a>
-                                {{--<span class="pull-right number-lesson badge badge-primary">--}}
-                                {{----}}
-                                {{--</span>--}}
                             </div>
                             <?php
                             endforeach;
@@ -73,5 +70,4 @@
             </div>
         </div>
     </div>
-    {{--<div class="overlay"></div>--}}
 </div>

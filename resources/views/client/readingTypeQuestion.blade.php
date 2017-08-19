@@ -15,9 +15,9 @@
     {{--@include('utils.toolbarReadingLesson')--}}
 
     @section('typeLessonHeader')
-        <span class="badge badge-success type-lesson-header">
-            {!! $type_question->name !!}
-        </span>
+        <span class="badge badge-success question-header question-header-{!! $type_question->id !!} type-lesson-header" data-type-question-id="{!! $type_question->id !!}">
+                        {!! $type_question->name !!}
+                    </span>
     @endsection
 
 @section('readingIntro')

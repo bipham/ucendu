@@ -54,6 +54,19 @@ $(document).mouseup(function(e)
         $('.noti-status').removeClass('white-font-class');
     }
 
+    $('.btn-lesson-menu').click(function () {
+        if($('.type-lesson-header').hasClass('question-header')) {
+            var type_question_id = $('.type-lesson-header').data('type-question-id');
+            $('.item-type-question-' + type_question_id).addClass('active-custom');
+        }
+        else if($('.type-lesson-header').hasClass('mix-test-header')) {
+            $('.mix-test-lesson-reading').addClass('active-custom');
+        }
+        else {
+            $('.full-test-lesson-reading').addClass('active-custom');
+        }
+    });
+
 });
 
 $('.noti-status').click(function (e) {

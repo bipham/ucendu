@@ -27,11 +27,11 @@
                     @yield('typeLessonHeader')
                 </li>
                 <li class="menu-lesson-header">
-                    <div class="btn-group btn-dropdown-products btn-product-menu">
+                    <div class="btn-group btn-dropdown-products btn-lesson-menu">
                         <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                             <i class="fa fa-bars" aria-hidden="true"></i>
                         </button>
-                        <div class="dropdown-menu">
+                        <div class="dropdown-menu dropdowm-reading-header">
                             <div class="sub-menu-item-custom">
                                 <h6 class="dropdown-header dropdown-header-custom">
                                     READING LESSONS
@@ -42,7 +42,7 @@
                                 foreach ($list_type_questions as $type_question):
                                 $title_type_question = str_replace(" ","-", $type_question->name);
                                 ?>
-                                <div class="item-type-question">
+                                <div class="item-type-question item-type-question-{!! $type_question->id !!}" data-type-question-id="{!! $type_question->id !!}>
                                     <i class="fa fa-caret-right icon-left-menu-toolbar" aria-hidden="true"></i>
                                     <a class="type-lesson-link" href="{{ url('reading/readingTypeQuestion/typeQuestion' . $type_question->id . '-' . $title_type_question) }}">
                                         {!! $type_question->name !!}
@@ -53,7 +53,7 @@
                                 ?>
                                 <div class="dropdown-divider"></div>
                             </div>
-                            <div class="sub-menu-item-custom">
+                            <div class="sub-menu-item-custom menu-lesson-reading mix-test-lesson-reading">
                                 <a class="type-lesson-link" href="{{ url('reading/readingTypeLesson/typeLesson2-mix-test')}}">
                                     <h6 class="dropdown-header dropdown-header-custom">
                                         Mix Test
@@ -61,7 +61,7 @@
                                 </a>
                                 <div class="dropdown-divider"></div>
                             </div>
-                            <div class="sub-menu-item-custom">
+                            <div class="sub-menu-item-custom full-test-menu-lesson-reading">
                                 <a class="type-lesson-link" href="{{url('reading/readingTypeLesson/typeLesson3-full-test')}}">
                                     <h6 class="dropdown-header dropdown-header-custom">
                                         Full Test
