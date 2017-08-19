@@ -6,7 +6,7 @@
  *************************************************/
 @media (max-width: 1650px) {
     .img-thumbnail-middle {
-        height: 200px;
+        /*height: 200px;*/
     }
 
     .lesson-item .frame-hover-lesson {
@@ -14,23 +14,23 @@
     }
 
     .title-total-question-ov {
-        font-size: 16px;
+        font-size: 12px;
     }
 
     .number-total-ov {
-        font-size: 17px;
+        font-size: 10px;
     }
 
     .detail-number-type-over-view {
-        margin: 10px 0 0 0;
+        margin: 3px 0 0 0;
     }
 
     .title-type-question-ov {
-        font-size: 13px;
+        font-size: 10px;
     }
 
     .number-type-ov {
-        font-size: 14px;
+        font-size: 11px;
     }
 
     .card-body-product {

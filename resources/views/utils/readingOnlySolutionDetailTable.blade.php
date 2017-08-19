@@ -9,7 +9,7 @@
 <div class="overview-solution-detail-section">
     <div class="answered-table">
         <h4 class="title-answer-table">
-            List answered detail
+            List solutions
         </h4>
         <div class="row list-answered">
             @for($i=1; $i < $lesson_quiz->total_questions + 1; $i++)
