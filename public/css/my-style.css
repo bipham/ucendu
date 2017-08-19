@@ -491,7 +491,7 @@ ul.primary-header-custom li.nav-item:before {
 .limit-time-overview {
 	display: inline-block;
 	left: 0;
-	padding: 2px 20px;
+	padding: 2px 10px;
 	right: auto;
 	position: absolute;
 	top: 10px;
