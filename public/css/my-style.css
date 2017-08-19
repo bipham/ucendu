@@ -790,6 +790,7 @@ footer.navbar-fixed-bottom {
 #lesson-content-area::-webkit-scrollbar, #lesson-highlight-area::-webkit-scrollbar
 {
 	width: 10px;
+	height: 10px;
 	background-color: #F5F5F5;
 }
 
@@ -820,6 +821,7 @@ footer.navbar-fixed-bottom {
 #solution-area::-webkit-scrollbar, #quiz-test-area::-webkit-scrollbar
 {
 	width: 10px;
+	height: 10px;
 	background-color: #F5F5F5;
 }
 
@@ -1210,10 +1212,10 @@ Action Center User
 }
 
 .name-lesson {
-	min-height: 62px;
+	min-height: 65px;
 }
 
-.card-title.title-lesson {
+.title-lesson {
 	font-size: 17px;
 	line-height: 1.5;
 }
