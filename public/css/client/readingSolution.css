@@ -175,6 +175,7 @@ input.reply-cmt {
 .question-table-name {
     background: #5bc0de;
     color: white;
+    padding: 5px 7px;
 }
 
 .btn-show-answered {
@@ -189,6 +190,8 @@ input.reply-cmt {
 .view-key-answer {
     font-weight: 900;
     margin: 0 5px;
+    white-space: normal;
+    font-size: 11px;
 }
 
 .title-overview-solution-section {
@@ -296,10 +299,6 @@ canvas#myChartReadingScore {
     color: green;
 }
 
-.question-table-name {
-    min-width: 70px;
-}
-
 .question-table .input-group-btn {
     width: calc( 100% - 60px );
 }
@@ -351,4 +350,8 @@ canvas#myChartReadingScore {
 .solution-key-area {
     width: 43.5%;
     float: right;
+}
+
+.btn-show-answered {
+    padding: 5px;
 }
