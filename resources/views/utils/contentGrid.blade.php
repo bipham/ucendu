@@ -18,7 +18,7 @@
                         <h5 class="title-highest-result-ov">
                             Highest correct:
                         </h5>
-                        <span class="number-highest-correct-ov badge badge-warning">
+                        <span class="number-highest-correct-ov badge badge-danger">
                            {!! $highest_result_reading !!}/{!! $lesson->total_questions !!}
                         </span>
                     </div>

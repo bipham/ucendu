@@ -539,9 +539,9 @@ ul.primary-header-custom li.nav-item:before {
 	transform: translateY(-50%);
 	text-align: left;
 	width: 100%;
-	-webkit-transition: all 0.5s ease;
-	-moz-transition: all 0.5s ease;
-	transition: all 0.5s ease;
+	/*-webkit-transition: all 0.5s ease;*/
+	/*-moz-transition: all 0.5s ease;*/
+	/*transition: all 0.5s ease;*/
 	opacity: 0;
 	visibility: hidden;
 	color: white;
@@ -1217,5 +1217,9 @@ Action Center User
 
 .title-lesson {
 	font-size: 17px;
+	line-height: 1.5;
+}
+
+.frame-hover-lesson .badge {
 	line-height: 1.5;
 }
