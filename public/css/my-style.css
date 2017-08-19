@@ -675,6 +675,7 @@ h1,h2,h3,h4,h5,h6 {
 
 .dropdown-divider {
 	background-color: #c2c6c7;
+	margin: 0;
 }
 
 .header-other-lesson {
@@ -1205,7 +1206,7 @@ Action Center User
 	font-weight: 700;
 }
 
-.btn-group.btn-dropdown-products.btn-product-menu {
+.btn-group.btn-dropdown-products.btn-lesson-menu {
 	top: 9px;
 	margin: 0 20px;
 }
@@ -1246,4 +1247,13 @@ Action Center User
 
 .frame-hover-lesson .badge {
 	line-height: 1.5;
+}
+
+.dropdowm-reading-header {
+	padding-bottom: 0;
+}
+
+.active-custom {
+	background: beige;
+	/*color: white;*/
 }

@@ -21,15 +21,15 @@
 
     @section('typeLessonHeader')
         @if ($type_lesson_id == 1)
-            <span class="badge badge-success type-lesson-header">
+            <span class="badge badge-success question-header question-header-{!! $type_question->id !!} type-lesson-header" data-type-question-id="{!! $type_question->id !!}">
                         {!! $type_question->name !!}
                     </span>
         @elseif ($type_lesson_id == 2)
-            <span class="badge badge-warning type-lesson-header">
+            <span class="badge badge-warning mix-test-header mix-test-header-{!! $type_lesson_id !!} type-lesson-header" data-type-lesson-id="{!! $type_lesson_id !!}">
                        Mix Test
                     </span>
         @elseif ($type_lesson_id == 3)
-            <span class="badge badge-danger type-lesson-header">
+            <span class="badge badge-danger full-test-header full-test-header-{!! $type_lesson_id !!} type-lesson-header" data-type-lesson-id="{!! $type_lesson_id !!}">
                         Full Test
                     </span>
         @endif
