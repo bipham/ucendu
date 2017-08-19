@@ -9,6 +9,9 @@
 <div class="menu-fix-custom">
     <div class="container">
         <div class="menu menu-reading">
+            <div class="pull-right action-user-center-fixed">
+                @include('utils.actionCenterUser')
+            </div>
             <ul class="nav nav-tabs" id="myTabReading" role="tablist">
                 <li class="logo-reading-menu img-thumbnail-middle">
                     <div class="img-thumbnail-inner">

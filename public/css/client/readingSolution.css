@@ -320,7 +320,7 @@ canvas#myChartReadingScore {
 
 .keywords-area {
     font-size: 17px;
-    border: 1px solid #5bc0de;
+    border: 1px solid rgba(70, 74, 76, 0.38);
     padding: 5px 10px;
     display: inline-block;
     /*min-width: 30%;*/

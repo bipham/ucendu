@@ -29,7 +29,7 @@ $(".panel-top").resizable({
 
 jQuery("document").ready(function($){
 
-    var nav = $('#myTabReading');
+    var nav = $('.menu-reading');
 
     $(window).scroll(function () {
         if ($(this).scrollTop() > 139) {
