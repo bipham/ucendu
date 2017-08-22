@@ -1,6 +1,11 @@
 var myId = $('#userNotiAction').data('user-id');
 var baseUrl = document.location.origin;
+var noti_container = '';
+var noti_header = '';
+var noti_area = '';
+var noti_fixed_element = '';
 var openNoti = false;
+var openNotiFixed = false;
 
 $("#toolbar-open").click(function() {
     $(this).toggleClass('transform-open-toolbar-active');
@@ -34,8 +39,14 @@ jQuery("document").ready(function($){
     $(window).scroll(function () {
         if ($(this).scrollTop() > 139) {
             nav.addClass("reading-header-fixed");
+            $('.left-custom #notifications-container-menu').hide();
+            $('.left-custom .noti-status').removeClass('white-font-class');
+            openNoti = false;
         } else {
             nav.removeClass("reading-header-fixed");
+            $('.action-user-center-fixed #notifications-container-menu').hide();
+            $('.action-user-center-fixed .noti-status').removeClass('white-font-class');
+            openNotiFixed = false;
         }
     });
 
@@ -44,7 +55,8 @@ jQuery("document").ready(function($){
 
 $(document).mouseup(function(e)
 {
-    var container = $('.notification-status');
+    var container = $('.left-custom .notification-status');
+    var container_fixed = $('.action-user-center-fixed .left-custom .notification-status');
 
     // if the target of the click isn't the container nor a descendant of the container
     if (!container.is(e.target) && container.has(e.target).length === 0)
@@ -52,6 +64,13 @@ $(document).mouseup(function(e)
         openNoti = false;
         $('#notifications-container-menu').hide();
         $('.noti-status').removeClass('white-font-class');
+    }
+
+    if (!container_fixed.is(e.target) && container_fixed.has(e.target).length === 0)
+    {
+        openNotiFixed = false;
+        $('.action-user-center-fixed #notifications-container-menu').hide();
+        $('.action-user-center-fixed .noti-status').removeClass('white-font-class');
     }
 
     $('.btn-lesson-menu').click(function () {
@@ -72,29 +91,43 @@ $(document).mouseup(function(e)
 $('.noti-status').click(function (e) {
     // alert('match noti');
     e.preventDefault();
+    noti_header = $(this).parent('.notification-status');
+    noti_fixed_element = $(this).parents('.action-user-center-fixed');
+    noti_area = noti_header.find('#listNotiArea');
+    noti_container = noti_header.find('#notifications-container-menu');
     if (!openNoti) {
-        openNoti = true;
-        $('#notifications-container-menu').show();
-        $('.noti-status').addClass('white-font-class');
+        if (noti_fixed_element.length > 0) {
+            openNotiFixed = true;
+        }
+        else {
+            openNoti = true;
+        }
+        noti_container.show();
+        $(this).addClass('white-font-class');
     }
     else {
-        openNoti = false;
-        $('#notifications-container-menu').hide();
-        $('.noti-status').removeClass('white-font-class');
+        if (noti_fixed_element.length > 0) {
+            openNotiFixed = false;
+        }
+        else {
+            openNoti = false;
+        }
+        noti_container.hide();
+        $(this).removeClass('white-font-class');
     }
-    loadAllNotification();
+    loadAllNotification(noti_area);
 });
 
 
 
-function loadAllNotification() {
+function loadAllNotification(noti_area) {
     var ajaxGetNotiUrl = baseUrl + '/getNotification/' + myId;
     $.ajax({
         type: "GET",
         url: ajaxGetNotiUrl,
         dataType: "json",
         success: function (data) {
-            $('#listNotiArea').html('');
+            noti_area.html('');
             console.log(data);
             var list_notis = data.list_notis;
             if (list_notis.length != 0) {
@@ -113,7 +146,7 @@ function loadAllNotification() {
                         var url_link = '#';
                         var content_noti = '<strong>' + list_notis[i].username_cmt + ' </strong> commented on <strong>' + list_notis[i].lesson_title + ' lesson</strong>';
                     }
-                    $('#listNotiArea').append(
+                    noti_area.append(
                         '<div class="item-notification no-read ' + classReadNoti + '" onclick="#">'
                         + '<a href="' + url_link + '" class="link-to-noti">'
                         + '<span class="img-user-send-noti img-auto-center">'

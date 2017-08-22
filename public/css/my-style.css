@@ -1258,3 +1258,12 @@ Action Center User
 	background: beige;
 	/*color: white;*/
 }
+
+.action-user-center-fixed div#notifications-container-menu {
+	right: 3px;
+	top: 45px;
+}
+
+.action-user-center-fixed div#notifications-container-menu:before {
+	left: 410px;
+}
