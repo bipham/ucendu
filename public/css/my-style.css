@@ -1122,6 +1122,7 @@ Action Center User
 .panel-container {
 	border: 2px solid green;
 	border-radius: 10px;
+	position: relative;
 }
 
 .item-notification.no-read {

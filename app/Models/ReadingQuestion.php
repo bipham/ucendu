@@ -52,7 +52,18 @@ class ReadingQuestion extends Model
 
     public function checkAnswerByIdCustom($question_id_custom, $answer_key) {
         $answer_extractly = $this->where('question_id_custom',$question_id_custom)->get()->pluck('answer');
-        if ($answer_extractly[0] == $answer_key) {
+        $answer_key = trim($answer_key);
+        $answer_solution = trim($answer_extractly[0]);
+        if (strpos($answer_solution, '//') !== false) {
+            $array_solution = explode("//", $answer_solution);
+            foreach ($array_solution as $or_solution) {
+                $or_solution = trim($or_solution);
+                if (strtolower($or_solution) == strtolower(urldecode($answer_key))) {
+                    return true;
+                }
+            }
+        }
+        elseif (strtolower($answer_solution) == strtolower(urldecode($answer_key))) {
             return true;
         }
         else return false;

@@ -502,7 +502,7 @@ function checkStepAnswer() {
         var qnumber = $(this).data('qnumber');
         var qorder = $(this).attr('name');
         qorder = qorder.match(/\d+/);
-        var answer_key = $('.answer-' + qorder).val();
+        var answer_key = $('.answer-' + qorder).val().trim();
         var keywords_key = $('.keyword-' + qorder).val();
         if (answer_key != '') {
             listAnswer[qnumber] = answer_key;
@@ -518,12 +518,13 @@ function checkStepAnswer() {
             listClassKeyword[qnumber] = '';
         }
         listKeyword[qnumber] = keywords_key;
+        var type_question_key = '';
 
         if (type_lesson == 1) {
-            var type_question_key = $('#onlyTypeQuestion').val();
+            type_question_key = $('#onlyTypeQuestion').val();
         }
         else {
-            var type_question_key = $('.sl-type-question-' + qorder).val();
+            type_question_key = $('.sl-type-question-' + qorder).val();
         }
 
         if (type_question_key != '') {

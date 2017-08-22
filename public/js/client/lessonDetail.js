@@ -63,7 +63,13 @@ function getAllAnswer() {
             if ($(this).is(':checked')) {
                 var answer_key = $(this).val();
                 if (answer_key != '') {
-                    list_answer[qnumber] = answer_key;
+                    if (qnumber in list_answer) {
+                        list_answer[qnumber] += ' %26 ' + answer_key;
+                    }
+                    else {
+                        list_answer[qnumber] = answer_key;
+                    }
+                    // list_answer[qnumber] = answer_key;
                 }
                 else {
                     delete list_answer[qnumber];
@@ -71,7 +77,7 @@ function getAllAnswer() {
             }
         }
         else if ($(this).hasClass('question-input')) {
-            var answer_key = $(this).val();
+            var answer_key = $(this).val().trim();
             if (answer_key != '') {
                 list_answer[qnumber] = answer_key;
             }

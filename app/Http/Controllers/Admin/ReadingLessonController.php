@@ -19,7 +19,7 @@ class ReadingLessonController extends Controller
 {
     public function getUploadReadingLesson() {
         $ques = new ReadingQuestion();
-        $i_ques = $ques::orderBy('id', 'desc')->first();
+        $i_ques = $ques::orderBy('question_id_custom', 'desc')->first();
         if ($i_ques == NULL) {
             $id_ques = 1;
         }
@@ -166,9 +166,17 @@ class ReadingLessonController extends Controller
             $readingQuizzModel = new ReadingQuizz();
             $readingQuizzModel->updateQuizLessonReading($quiz_id, $content_quiz, $content_answer_quiz, $total_questions, $type_lesson, $limit_time);
 
-            for ($i=0; $i < sizeof($list_type_old); $i++) {
-                $readingTypeQuestionOfQuizModel->deleteRowByQuizIdAndTypeQuestionId($quiz_id, $list_type_old[$i]);
+            if ($type_lesson == 1) {
+                if ($list_type_old[0] == '') $list_type_old[0] = 2;
+                $readingTypeQuestionOfQuizModel->deleteRowByQuizIdAndTypeQuestionId($quiz_id, $list_type_old[0]);
             }
+            else {
+                for ($i=0; $i < sizeof($list_type_old); $i++) {
+                    if ($list_type_old[$i] == '') $list_type_old[$i] = 2;
+                    $readingTypeQuestionOfQuizModel->deleteRowByQuizIdAndTypeQuestionId($quiz_id, $list_type_old[$i]);
+                }
+            }
+
 
             for ($i=0; $i < sizeof($list_Q_old); $i++) {
                 $readingQuestionModel->deleteRowByQuizIdAndQuestionIdCustom($quiz_id, $list_Q_old[$i]);
