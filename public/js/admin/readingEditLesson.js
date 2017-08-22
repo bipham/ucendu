@@ -67,9 +67,11 @@ $('.btn-edit-quiz-lesson').click(function () {
             else {
                 listClassKeyword[qnumber] = '';
             }
-            list_type_questions_source[qnumber] = $('.explain-area-' + qnumber).data('type-question');
-            list_type_old.push(list_type_questions_source[qnumber]);
-            list_Q_old.push(qnumber);
+            if (jQuery.inArray(qnumber, list_Q_old) == -1) {
+                list_type_questions_source[qnumber] = $('.explain-area-' + qnumber).data('type-question');
+                list_type_old.push(list_type_questions_source[qnumber]);
+                list_Q_old.push(qnumber);
+            }
         }
     });
 });
@@ -236,7 +238,7 @@ $( document ).ready(function() {
                 var qorder = $(this).attr('name');
                 qorder = qorder.match(/\d+/);
                 var answer_key = $('.answer-' + qorder).val();
-                $(this).parent().after( '<div class="explain-area explain-' + qorder + ' explain-area-' + qnumber + '" data-qnumber="' + qnumber + '" data-qorder="' + qorder + '" data-type-question="' + list_type_questions_source[qnumber] + '">' +
+                $(this).parent().after( '<div class="explain-area explain-' + qorder + ' explain-area-' + qnumber + '" data-qnumber="' + qnumber + '" data-qorder="' + qorder + '" data-type-question="' + list_type_questions[qnumber] + '">' +
                     '<div class="show-answer">' +
                     '<button type="button" class="btn btn-danger btn-show-answer">Answer ' + qorder + ' ' +
                     '<div class="badge badge-pill key-answer">' +
@@ -308,6 +310,13 @@ $( document ).ready(function() {
 
     $('.btn-update-quiz-lesson').click(function () {
         var limit_time = $('#limitTime').val();
+        console.log('list list_type_old: ' + JSON.stringify(list_type_old));
+        console.log('list list_Q_old: ' + JSON.stringify(list_Q_old));
+        console.log('list keyword: ' + JSON.stringify(listKeyword));
+        console.log('list lesson_id: ' + lesson_id);
+        console.log('list list_answer: ' + JSON.stringify(listAnswer));
+        console.log('list type_lesson: ' + type_lesson);
+        console.log('list limit_time: ' + limit_time);
         $.ajax({
             type: "POST",
             url: ajaxUpdateQuizReadingReading,
@@ -375,7 +384,7 @@ function checkStepAnswer() {
         var qnumber = $(this).data('qnumber');
         var qorder = $(this).attr('name');
         qorder = qorder.match(/\d+/);
-        var answer_key = $('.answer-' + qorder).val();
+        var answer_key = $('.answer-' + qorder).val().trim();
         var keywords_key = $('.keyword-' + qorder).val();
         if (answer_key != '') {
             listAnswer[qnumber] = answer_key;

@@ -14,23 +14,23 @@ CKEDITOR.dialog.add( 'select_quizDialog', function( editor ) {
                         label: 'Question number',
                         validate: CKEDITOR.dialog.validate.notEmpty( "Question number field cannot be empty." )
                     },
-                    {
-                        type: 'text',
-                        id: 'content_question',
-                        label: 'Content question',
-                        // validate: CKEDITOR.dialog.validate.notEmpty( "Content option field cannot be empty." )
-                    },
+                    // {
+                    //     type: 'text',
+                    //     id: 'content_question',
+                    //     label: 'Content question',
+                    //     validate: CKEDITOR.dialog.validate.notEmpty( "Content option field cannot be empty." )
+                    // },
                     {
                         type: 'text',
                         id: 'number_option',
-                        label: 'Number option'
-                        // validate: CKEDITOR.dialog.validate.notEmpty( "Value option field cannot be empty." )
+                        label: 'Number option',
+                        validate: CKEDITOR.dialog.validate.notEmpty( "Value number option field cannot be empty." )
                     },
                     {
                         type: 'select',
                         id: 'type_question',
                         label: 'Type question',
-                        items: [ [ 'A B C' ], [ '1 2 3' ], [ 'I II III' ], [ 'YES NO NOT_GIVEN' ], [ 'TRUE FALSE NOT_GIVEN'] ],
+                        items: [ [ 'A B C' ], [ '1 2 3' ], [ 'i ii iii' ], [ 'YES NO NOT_GIVEN' ], [ 'TRUE FALSE NOT_GIVEN'] ],
                         'default': 'A B C'
                     }
                 ]
@@ -41,7 +41,7 @@ CKEDITOR.dialog.add( 'select_quizDialog', function( editor ) {
             var data_ques = $('.upload-page-custom').data('idquestion');
             var question_number = dialog.getValueOf( 'tab-basic', 'question' );
             var number_option = dialog.getValueOf( 'tab-basic', 'number_option' );
-            var content_question = dialog.getValueOf( 'tab-basic', 'content_question' );
+            // var content_question = dialog.getValueOf( 'tab-basic', 'content_question' );
             var type_question = dialog.getValueOf('tab-basic', 'type_question' );
             var l_option = 'last-option';
             var option = '';
@@ -60,7 +60,7 @@ CKEDITOR.dialog.add( 'select_quizDialog', function( editor ) {
             else {
                 option = generateRomanize(number_option);
             }
-            var html = '<select class="question-quiz question-select question-' + question_number + ' ' + l_option +'" name="question-' + question_number + '" data-qnumber="' + data_ques +'">' + option + '</select>' + content_question;
+            var html = '<select class="question-quiz question-select question-' + question_number + ' ' + l_option +'" name="question-' + question_number + '" data-qnumber="' + data_ques +'">' + option + '</select> ';
             data_ques++;
             $('.upload-page-custom').data('idquestion', data_ques);
             editor.insertHtml( html );
@@ -111,7 +111,7 @@ function generateRomanize(n) {
 }
 
 function romanize(num) {
-    var lookup = {M:1000,CM:900,D:500,CD:400,C:100,XC:90,L:50,XL:40,X:10,IX:9,V:5,IV:4,I:1},
+    var lookup = {m:1000,cm:900,D:500,cd:400,c:100,xc:90,l:50,xl:40,x:10,ix:9,v:5,iv:4,i:1},
         roman = '',
         i;
     for ( i in lookup ) {

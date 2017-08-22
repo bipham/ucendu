@@ -94,6 +94,7 @@ function loadAllNotification() {
         url: ajaxGetNotiUrl,
         dataType: "json",
         success: function (data) {
+            $('#listNotiArea').html('');
             console.log(data);
             var list_notis = data.list_notis;
             if (list_notis.length != 0) {

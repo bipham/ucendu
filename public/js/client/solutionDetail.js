@@ -10,6 +10,28 @@ var token = $('[name="_token"]').val();
 var baseUrl = document.location.origin;
 var isCreateReplyComment = false;
 var isExpanded = [];
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+};
+var question_id_noti = getUrlParameter('question');
+
+jQuery(function(){
+    jQuery('.btn-show-comments[data-qnumber=' + question_id_noti + ']').trigger('click');
+    // jQuery('#comment' + comment_id_noti).focus();
+    $("html, body").animate({ scrollTop: 370 }, 1000);
+    // $(window).scrollTop($("#comment" + comment_id_noti).offset().top);
+});
 
 function scrollToHighlight(i) {
     // alert('Scroll to: ' + i);
@@ -283,5 +305,9 @@ $('.btn-show-answered').click(function () {
         scrollTop: $(".solution-detail").position().top
     }, 500);
 
+});
 
+$(document).ready(function () {
+    var comment_id_noti = getUrlParameter('comment');
+    $(".right-panel-custom").animate({ scrollTop: $('.btn-show-comments[data-qnumber=' + question_id_noti + ']').offset().top + 100}, 1000);
 });

@@ -195,7 +195,11 @@
             }
             else if ($(this).hasClass('question-checkbox')) {
                 if (answer_key) {
-                    $('input[value=' + answer_key + '].question-' + qorder,'#solution-area').prop( "checked", true);
+                    var array_answer = answer_key.split(' & ');
+                    for (var i = 0; i < array_answer.length; i++) {
+                        $('input[value=' + array_answer[i] + '].question-' + qorder,'#solution-area').prop( "checked", true);
+                    }
+
                 }
             }
             else if ($(this).hasClass('question-input')) {
@@ -205,7 +209,7 @@
             }
             else if ($(this).hasClass('question-select')) {
                 if (answer_key) {
-                    $(this).val(answer_key);;
+                    $(this).val(answer_key);
                 }
             }
         });
