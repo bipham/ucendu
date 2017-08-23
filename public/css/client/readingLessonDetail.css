@@ -112,6 +112,6 @@ img.img-overlay-quiz {
     top: 60px;
 }
 
-div#quiz-test-area span {
-    background: transparent !important;
-}
+.right-panel-custom span {
+     background: transparent !important;
+ }
