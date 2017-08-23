@@ -41,7 +41,7 @@ function scrollToHighlight(i) {
     $('.highlight-' + i).removeClass('hidden-highlight');
     $('.highlight-' + i).addClass('highlighting');
     $("html, body").animate({
-        scrollTop: $('.footer-bottom').offset().top
+        scrollTop: $('.panel-container').offset().top
     }, 100);
     var qnumber = $('#lesson-highlight-area .highlight-' + i).data('qnumber');
     var idClass = 'highlight-' + i;
