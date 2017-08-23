@@ -7,7 +7,7 @@ var oldTotalNoti = $('.total-noti').html();
 console.log('ID: ' + myId);
 console.log('oldTotalNoti: ' + oldTotalNoti);
 var baseUrl = document.location.origin;
-var socket_connect = baseUrl + ':8890';
+var socket_connect = baseUrl + ':80';
 var socket = io.connect(socket_connect);
 console.log('baseUrl: ' + baseUrl);
 console.log('socket_connect: ' + socket_connect);
