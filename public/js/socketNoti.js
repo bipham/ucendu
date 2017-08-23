@@ -11,7 +11,6 @@ var socket_connect = baseUrl + ':8890';
 var socket = io.connect(socket_connect);
 console.log('baseUrl: ' + baseUrl);
 console.log('socket_connect: ' + socket_connect);
-console.log('socket: ' + json.stringify(socket));
 socket.emit('updateSocket', myId);
 socket.on('commentNotification', function (data) {
     console.log('data: ' + data);
