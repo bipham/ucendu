@@ -199,105 +199,145 @@ function showKeywords(i) {
 }
 
 function replyComment(cmt_id, question_id) {
+    var avatar = current_user.avatar;
+    var username = current_user.username;
     var reply_id = $('.cmt-' + cmt_id).parent().data('cmt-id');
-    $('input.reply-cmt-' + question_id).data('reply-cmt-id', reply_id);
-    $('input.reply-cmt-' + question_id).focus();
-    $('html,body').animate({
-        scrollTop: $("input.reply-cmt-" + question_id).offset().top - 100
-    }, 500);
+    var parentCmt = $('.cmt-' + cmt_id).parent('.list-cmt-area');
+    var item_reply_sub_cmt = parentCmt.find('.item-reply-sub-cmt');
+    if (item_reply_sub_cmt.length > 0) {
+        $('input.reply-sub-cmt-' + question_id).data('reply-cmt-id', reply_id);
+    }
+    else {
+        parentCmt.append('<div class="item-reply-sub-cmt item-sub-cmt" id="replySubComment">'
+            + '<span class="img-avatar">'
+            + '<img alt="" src="/storage/img/users/' + avatar + '" class="img-custom avatar-custom" />'
+            + '</span>'
+            + '<span class="item-cmt-content">'
+            + '<div class="item-cmt-header">'
+            +  username
+            + '</div>'
+            + '<div class="item-cmt-body">'
+            + '<input type="text" placeholder=" Write a reply ..." class="reply-cmt reply-sub-cmt reply-sub-cmt-' + reply_id + '" data-reply-cmt-id="' + reply_id + '" data-question-id = "' + question_id + '">'
+            + '</div>'
+            + '<div class="item-time-cmt">'
+            + '</div>'
+            + '</span>'
+            + '</div>'
+            + '</div>');
+    }
+
+    $('input.reply-sub-cmt-' + reply_id).focus();
+    $("html, body").animate({
+        scrollTop: $('.panel-container').offset().top
+    }, 100);
+    var t = 100,
+        r = $(".right-panel-custom").offset().top,
+        u = $("input.reply-sub-cmt-" + reply_id).offset().top,
+        f = $(".right-panel-custom").scrollTop(),
+        v = u + f - r;
+    $(".right-panel-custom").animate({
+        scrollTop: v - t
+    }, {
+        duration: 100,
+        complete: function () {
+        }
+    });
 }
 
 function enterComment(e) {
     if (e.keyCode == 13) {
         var user_id = current_user.id;
         var content_cmt = $(this).val().trim();
-        $(this).val('');
-        var question_id_custom = $(this).data('question-id');
-        var reply_id = $(this).data('reply-cmt-id');
-        var ajaxUrlEnterReplyComment = baseUrl + '/enterNewComment';
-        console.log('reply: ' + reply_id + ' question: ' + question_id_custom + 'content: ' + content_cmt);
-        var token = $("input[name='_token']").val();
-        $.ajax({
-            type: "POST",
-            url: ajaxUrlEnterReplyComment,
-            dataType: "json",
-            data: { '_token':token, user_id: user_id, content_cmt: content_cmt, question_id_custom: question_id_custom, reply_id: reply_id},
-            success: function (data) {
-                console.log('sucess:', data);
-                var avatar = current_user.avatar;
-                var time_ago = 'Just now';
-                var cmt_id = data.list_comment.id;
-                var username = current_user.username;
-                $('p.no-cmt').remove();
-                if ((data.list_comment.private == 0) || (data.list_comment.user_id == user_id)) {
-                    if (reply_id == 0) {
-                        $('#commentArea-' + question_id_custom + ' .comments-area').append('<div class="row list-cmt-area list-cmt-' + cmt_id + '" data-cmt-id="' + cmt_id + '">' +
-                            '<div class="item-cmt cmt-' + cmt_id + '" data-cmt-id="' + cmt_id + '">'
-                            + '<span class="img-avatar">'
-                            + '<img alt="" src="/storage/img/users/' + avatar + '" class="img-custom avatar-custom" />'
-                            + '</span>'
-                            + '<span class="item-cmt-content">'
-                            + '<div class="item-cmt-header">'
-                            + username
-                            + '</div>'
-                            + '<div class="item-cmt-body">'
-                            + content_cmt
-                            + '</div>'
-                            + '<div class="item-time-cmt">'
-                            + '<span class="img-time-cmt">'
-                            + '<img alt="time-cmt" src="/public/imgs/original/time.png" class="img-time-cmt" />'
-                            + '</span>'
-                            + '<span class="time-ago-cmt">'
-                            + time_ago
-                            + '</span>'
-                            + '<span class="reply-cmt pull-right">'
-                            + '<button type="button" class="btn btn-sm btn-outline-primary" onclick="replyComment(' + cmt_id + ', ' + question_id_custom + ')">Reply</button>'
-                            + '</span>'
-                            + '</div>'
-                            + '</span>'
-                            + '</div>'
-                            + '</div>');
+        if (content_cmt != '') {
+            $(this).val('');
+            var question_id_custom = $(this).data('question-id');
+            var reply_id = $(this).data('reply-cmt-id');
+            var ajaxUrlEnterReplyComment = baseUrl + '/enterNewComment';
+            console.log('reply: ' + reply_id + ' question: ' + question_id_custom + 'content: ' + content_cmt);
+            var token = $("input[name='_token']").val();
+            $.ajax({
+                type: "POST",
+                url: ajaxUrlEnterReplyComment,
+                dataType: "json",
+                data: { '_token':token, user_id: user_id, content_cmt: content_cmt, question_id_custom: question_id_custom, reply_id: reply_id},
+                success: function (data) {
+                    console.log('sucess:', data);
+                    var avatar = current_user.avatar;
+                    var time_ago = 'Just now';
+                    var cmt_id = data.list_comment.id;
+                    var username = current_user.username;
+                    $('p.no-cmt').remove();
+                    $('.item-reply-sub-cmt').remove();
+                    if ((data.list_comment.private == 0) || (data.list_comment.user_id == user_id)) {
+                        if (reply_id == 0) {
+                            $('#commentArea-' + question_id_custom + ' .comments-area').append('<div class="row list-cmt-area list-cmt-' + cmt_id + '" data-cmt-id="' + cmt_id + '">' +
+                                '<div class="item-cmt cmt-' + cmt_id + '" data-cmt-id="' + cmt_id + '">'
+                                + '<span class="img-avatar">'
+                                + '<img alt="" src="/storage/img/users/' + avatar + '" class="img-custom avatar-custom" />'
+                                + '</span>'
+                                + '<span class="item-cmt-content">'
+                                + '<div class="item-cmt-header">'
+                                + username
+                                + '</div>'
+                                + '<div class="item-cmt-body">'
+                                + content_cmt
+                                + '</div>'
+                                + '<div class="item-time-cmt">'
+                                + '<span class="img-time-cmt">'
+                                + '<img alt="time-cmt" src="/public/imgs/original/time.png" class="img-time-cmt" />'
+                                + '</span>'
+                                + '<span class="time-ago-cmt">'
+                                + time_ago
+                                + '</span>'
+                                + '<span class="reply-cmt pull-right">'
+                                + '<button type="button" class="btn btn-sm btn-outline-primary" onclick="replyComment(' + cmt_id + ', ' + question_id_custom + ')">Reply</button>'
+                                + '</span>'
+                                + '</div>'
+                                + '</span>'
+                                + '</div>'
+                                + '</div>');
+                        }
+                        else {
+                            $('.list-cmt-' + reply_id).append('<div class="item-cmt item-sub-cmt cmt-' + cmt_id + '" data-cmt-id="' + cmt_id + '">'
+                                + '<span class="img-avatar">'
+                                + '<img alt="" src="/storage/img/users/' + avatar + '" class="img-custom avatar-custom" />'
+                                + '</span>'
+                                + '<span class="item-cmt-content">'
+                                + '<div class="item-cmt-header">'
+                                + username
+                                + '</div>'
+                                + '<div class="item-cmt-body">'
+                                + content_cmt
+                                + '</div>'
+                                + '<div class="item-time-cmt">'
+                                + '<span class="img-time-cmt">'
+                                + '<img alt="time-cmt" src="/public/imgs/original/time.png" class="img-time-cmt" />'
+                                + '</span>'
+                                + '<span class="time-ago-cmt">'
+                                + time_ago
+                                + '</span>'
+                                + '<span class="reply-cmt pull-right">'
+                                + '<button type="button" class="btn btn-sm btn-outline-primary" onclick="replyComment(' + cmt_id + ', ' + question_id_custom + ')">Reply</button>'
+                                + '</span>'
+                                + '</div>'
+                                + '</span>'
+                                + '</div>');
+                        }
                     }
-                    else {
-                        $('.list-cmt-' + reply_id).append('<div class="item-cmt item-sub-cmt cmt-' + cmt_id + '" data-cmt-id="' + cmt_id + '">'
-                            + '<span class="img-avatar">'
-                            + '<img alt="" src="/storage/img/users/' + avatar + '" class="img-custom avatar-custom" />'
-                            + '</span>'
-                            + '<span class="item-cmt-content">'
-                            + '<div class="item-cmt-header">'
-                            + username
-                            + '</div>'
-                            + '<div class="item-cmt-body">'
-                            + content_cmt
-                            + '</div>'
-                            + '<div class="item-time-cmt">'
-                            + '<span class="img-time-cmt">'
-                            + '<img alt="time-cmt" src="/public/imgs/original/time.png" class="img-time-cmt" />'
-                            + '</span>'
-                            + '<span class="time-ago-cmt">'
-                            + time_ago
-                            + '</span>'
-                            + '<span class="reply-cmt pull-right">'
-                            + '<button type="button" class="btn btn-sm btn-outline-primary" onclick="replyComment(' + cmt_id + ', ' + question_id_custom + ')">Reply</button>'
-                            + '</span>'
-                            + '</div>'
-                            + '</span>'
-                            + '</div>');
-                    }
+                    $('input.reply-cmt-' + question_id_custom).data('reply-cmt-id', 0);
+                    $('html,body').animate({
+                        scrollTop: $(".cmt-" + cmt_id).offset().top - 20
+                    }, 500);
+                },
+                error: function (data) {
+                    console.log('Error:', data);
+                    bootbox.alert({
+                        message: "Error, please contact admin!",
+                        backdrop: true
+                    });
                 }
-                $('input.reply-cmt-' + question_id_custom).data('reply-cmt-id', 0);
-                $('html,body').animate({
-                    scrollTop: $(".cmt-" + cmt_id).offset().top - 20
-                }, 500);
-            },
-            error: function (data) {
-                console.log('Error:', data);
-                bootbox.alert({
-                    message: "Error, please contact admin!",
-                    backdrop: true
-                });
-            }
-        });
+            });
+        }
     }
 }
 

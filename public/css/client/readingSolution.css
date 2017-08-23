@@ -358,14 +358,10 @@ span.keywords-area-title {
     padding: 5px;
 }
 
-/*@media (min-width: 1024px) {*/
-    /*.left-panel-custom {*/
-        /*max-height: calc(100vh - 133px);*/
-        /*min-height: calc(100vh - 133px);*/
-    /*}*/
+.item-reply-sub-cmt {
+    border: 1px solid #b2c6cd;
+}
 
-    /*.right-panel-custom {*/
-        /*max-height: calc(100vh - 133px);*/
-        /*min-height: calc(100vh - 133px);*/
-    /*}*/
-/*}*/
+input.reply-sub-cmt {
+    width: calc(100% - 90px);
+}
