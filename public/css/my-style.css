@@ -745,6 +745,7 @@ h1,h2,h3,h4,h5,h6 {
 	min-height: 30vh;
 	max-width: 100%;
 	min-width: 100%;
+    text-align: justify;
 }
 
 .right-panel-custom {
@@ -1124,7 +1125,7 @@ Action Center User
 	border: 2px solid green;
 	border-radius: 10px;
 	position: relative;
-	/*display: none;*/
+    /*text-align: justify;*/
 }
 
 .item-notification.no-read {

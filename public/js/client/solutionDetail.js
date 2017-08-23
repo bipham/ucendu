@@ -45,12 +45,13 @@ function scrollToHighlight(i) {
     }, 100);
     var qnumber = $('#lesson-highlight-area .highlight-' + i).data('qnumber');
     var idClass = 'highlight-' + i;
-    var r = $(".left-panel-custom").offset().top,
-        u = $("."+idClass).position().top,
+    var t = 60,
+        r = $(".left-panel-custom").offset().top,
+        u = $("."+idClass).offset().top,
         f = $(".left-panel-custom").scrollTop(),
-        i = u + f - r;
+        v = u + f - r;
         $(".left-panel-custom").animate({
-        scrollTop: i
+        scrollTop: v - t
     }, {
         duration: 100,
         complete: function () {
