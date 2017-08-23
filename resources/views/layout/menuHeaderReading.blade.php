@@ -83,7 +83,7 @@
                 <li class="nav-item tab-reading-control">
                     <a class="nav-link reading-test-quiz" data-toggle="tab" href="#readingTestQuiz" role="tab">
                         Test Quiz
-                        <div class="badge badge-danger countdown-time"></div>
+                        <div class="badge badge-danger countdown-time hidden-class"></div>
                     </a>
                 </li>
                 <li class="nav-item tab-reading-control">

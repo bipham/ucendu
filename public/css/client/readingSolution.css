@@ -356,3 +356,15 @@ canvas#myChartReadingScore {
 .btn-show-answered {
     padding: 5px;
 }
+
+@media (min-width: 1024px) {
+    .left-panel-custom {
+        max-height: calc(100vh - 133px);
+        min-height: calc(100vh - 133px);
+    }
+
+    .right-panel-custom {
+        max-height: calc(100vh - 133px);
+        min-height: calc(100vh - 133px);
+    }
+}
