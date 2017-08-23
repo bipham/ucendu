@@ -27,9 +27,9 @@ var getUrlParameter = function getUrlParameter(sParam) {
 var question_id_noti = getUrlParameter('question');
 
 jQuery(function(){
-    jQuery('.btn-show-comments[data-qnumber=' + question_id_noti + ']').trigger('click');
+    // jQuery('.btn-show-comments[data-qnumber=' + question_id_noti + ']').trigger('click');
     // jQuery('#comment' + comment_id_noti).focus();
-    $("html, body").animate({ scrollTop: 370 }, 1000);
+    // $("html, body").animate({ scrollTop: $('#footer').offset().top }, 1000);
     // $(window).scrollTop($("#comment" + comment_id_noti).offset().top);
 });
 
@@ -40,21 +40,17 @@ function scrollToHighlight(i) {
     last_highlight.addClass('hidden-highlight');
     $('.highlight-' + i).removeClass('hidden-highlight');
     $('.highlight-' + i).addClass('highlighting');
+    $("html, body").animate({
+        scrollTop: $('.footer-bottom').offset().top
+    }, 100);
     var qnumber = $('#lesson-highlight-area .highlight-' + i).data('qnumber');
     var idClass = 'highlight-' + i;
-    // $('html,body').animate({
-    //         scrollTop: $("#"+idClass).offset().top - 20
-    //     }, 500);
-    $('.left-panel-custom').animate({
-        scrollTop: $("."+idClass).position().top
-    }, 100);
-    var t = 140,
-        r = $(".left-panel-custom").offset().top,
+    var r = $(".left-panel-custom").offset().top,
         u = $("."+idClass).position().top,
         f = $(".left-panel-custom").scrollTop(),
         i = u + f - r;
         $(".left-panel-custom").animate({
-        scrollTop: u
+        scrollTop: i
     }, {
         duration: 100,
         complete: function () {

@@ -111,3 +111,7 @@ img.img-overlay-quiz {
 .lesson-detail.panel-container {
     top: 60px;
 }
+
+div#quiz-test-area span {
+    background: transparent !important;
+}

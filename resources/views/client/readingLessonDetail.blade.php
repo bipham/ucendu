@@ -127,7 +127,7 @@
         @include('utils.readingLessonTestTools',['lesson_detail' => $lesson_detail, 'lesson_quiz' => $lesson_quiz])
         <div class="container lesson-detail-page page-custom">
             <input type="hidden" name="_token" value="{!!csrf_token()!!}">
-            <div class="overlay-lesson ">
+            <div class="overlay-lesson">
                 <img src="/public/imgs/original/cover-1.jpg" alt="Logo" class="img-overlay-quiz">
                 <div class="reading-guide-test">
                     <div class="badge badge-primary countdown-time-overview"></div>
@@ -187,6 +187,7 @@
         var limit_time = <?php print_r($lesson_quiz->limit_time); ?>;
         var show_time_quiz = limit_time/60;
         if (show_time_quiz > 0) {
+            $('.countdown-time').removeClass('hidden-class');
             if (show_time_quiz == 1) {
                 $('.countdown-time-overview').html(show_time_quiz + ' min');
             }
