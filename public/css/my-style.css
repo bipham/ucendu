@@ -863,7 +863,7 @@ footer.navbar-fixed-bottom {
 	visibility: visible;
 	position: relative;
 	width: 100%;
-    height: calc(100vh - 283px);
+    height: calc(100vh - 235px);
 	background: rgba(0, 0, 0, 0.94);
 	left: 0;
 	top: 0;
@@ -1269,4 +1269,8 @@ Action Center User
 
 .action-user-center-fixed div#notifications-container-menu:before {
 	left: 410px;
+}
+
+.overflow-hidden-class {
+    overflow: hidden;
 }
