@@ -58,6 +58,10 @@ jQuery("document").ready(function($){
         $('body').addClass('overflow-hidden-class');
     });
 
+    $('#myTabReading a.reading-solution-quiz').on('shown.bs.tab', function (e) {
+        $('footer.navbar-fixed-bottom').addClass('hidden');
+    });
+
     $('#myTabReading a:not(.reading-test-quiz)').click(function () {
         $('header#header').removeClass('hidden');
         $('.menu-reading').removeClass('reading-header-fixed');
@@ -69,9 +73,13 @@ jQuery("document").ready(function($){
         if (isStart) {
             $('header#header').addClass('hidden');
             $('.menu-reading').addClass('reading-header-fixed');
-            $('footer.navbar-fixed-bottom').addClass('hidden');
         }
         $('body').addClass('overflow-hidden-class');
+        $('footer.navbar-fixed-bottom').addClass('hidden');
+    });
+
+    $('#myTabReading a.reading-solution-quiz').click(function () {
+        $('footer.navbar-fixed-bottom').addClass('hidden');
     });
 
 });
