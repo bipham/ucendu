@@ -9,6 +9,7 @@ console.log('oldTotalNoti: ' + oldTotalNoti);
 var baseUrl = document.location.origin;
 var socket_connect = baseUrl + ':8890';
 var socket = io.connect(socket_connect);
+console.log('data: ' + socket);
 socket.emit('updateSocket', myId);
 socket.on('commentNotification', function (data) {
     console.log('data: ' + data);
