@@ -860,9 +860,9 @@ footer.navbar-fixed-bottom {
 	opacity: 1;
 	z-index: 99998;
 	visibility: visible;
-	position: absolute;
+	position: relative;
 	width: 100%;
-	height: 100%;
+	height: 70vh;
 	background: rgba(0, 0, 0, 0.94);
 	left: 0;
 	top: 0;
@@ -872,6 +872,7 @@ footer.navbar-fixed-bottom {
 .overlay-lesson-active {
 	visibility: hidden;
 	opacity: 0;
+	display: none;
 }
 
 #myTabReading {
@@ -1123,6 +1124,7 @@ Action Center User
 	border: 2px solid green;
 	border-radius: 10px;
 	position: relative;
+	/*display: none;*/
 }
 
 .item-notification.no-read {

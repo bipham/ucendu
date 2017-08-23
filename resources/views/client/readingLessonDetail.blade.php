@@ -127,7 +127,17 @@
         @include('utils.readingLessonTestTools',['lesson_detail' => $lesson_detail, 'lesson_quiz' => $lesson_quiz])
         <div class="container lesson-detail-page page-custom">
             <input type="hidden" name="_token" value="{!!csrf_token()!!}">
-            <div class="lesson-detail panel-container">
+            <div class="overlay-lesson ">
+                <img src="/public/imgs/original/cover-1.jpg" alt="Logo" class="img-overlay-quiz">
+                <div class="reading-guide-test">
+                    <div class="badge badge-primary countdown-time-overview"></div>
+                    <h4 class="reading-title-start">
+                        Are you ready?
+                    </h4>
+                    <button type="button" class="btn btn-outline-danger btn-reading-start-test">START</button>
+                </div>
+            </div>
+            <div class="lesson-detail panel-container hidden">
                 <div class="left-panel-custom panel-left panel-top" id="lesson-content-area" data-lessonid="{!! $lesson_detail->id !!}">
                     {!! $lesson_detail->content_lesson !!}
                 </div>
@@ -153,16 +163,6 @@
                                 Found a mistake? Let us know!
                             </a>
                         </div>
-                    </div>
-                </div>
-                <div class="overlay-lesson @if ($lesson_quiz->limit_time == 0) overlay-lesson-active @endif">
-                    <img src="/public/imgs/original/cover-1.jpg" alt="Logo" class="img-overlay-quiz">
-                    <div class="reading-guide-test">
-                        <div class="badge badge-primary countdown-time-overview"></div>
-                        <h4 class="reading-title-start">
-                            Are you ready?
-                        </h4>
-                        <button type="button" class="btn btn-outline-danger btn-reading-start-test">START</button>
                     </div>
                 </div>
             </div>
@@ -200,7 +200,11 @@
 
         $('.btn-reading-start-test').click(function () {
             var limit_time_quiz = new Date().getTime() + limit_time*1000;
+            $('.lesson-detail').removeClass('hidden');
+            $('header#header').addClass('hidden');
+            $('.menu-reading').addClass('reading-header-fixed');
             $('.overlay-lesson').addClass('overlay-lesson-active');
+            $('footer.navbar-fixed-bottom').addClass('hidden');
             $('.right-panel-custom').addClass('active-quiz');
             $('html,body').animate({
                 scrollTop: 0
