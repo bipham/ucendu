@@ -200,6 +200,7 @@
         }
 
         $('.btn-reading-start-test').click(function () {
+            isStart = true;
             var limit_time_quiz = new Date().getTime() + limit_time*1000;
             $('.lesson-detail').removeClass('hidden');
             $('header#header').addClass('hidden');
