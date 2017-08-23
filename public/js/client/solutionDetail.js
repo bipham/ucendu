@@ -46,9 +46,20 @@ function scrollToHighlight(i) {
     //         scrollTop: $("#"+idClass).offset().top - 20
     //     }, 500);
     $('.left-panel-custom').animate({
-        scrollTop: $("."+idClass).position().top - 155
-    }, 500);
-    // $('.highlight-' + i).focus();
+        scrollTop: $("."+idClass).position().top
+    }, 100);
+    var t = 140,
+        r = $(".left-panel-custom").offset().top,
+        u = $("."+idClass).position().top,
+        f = $(".left-panel-custom").scrollTop(),
+        i = u + f - r;
+        $(".left-panel-custom").animate({
+        scrollTop: u
+    }, {
+        duration: 100,
+        complete: function () {
+        }
+    });
 }
 
 function showComments(i) {

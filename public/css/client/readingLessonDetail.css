@@ -24,6 +24,7 @@ h4.reading-title-start {
 
 img.img-overlay-quiz {
     height: 100%;
+    width: 100%;
 }
 
 .countdown-time-overview {
@@ -105,4 +106,8 @@ img.img-overlay-quiz {
 
 .btn-focus-question {
     cursor: pointer;
+}
+
+.lesson-detail.panel-container {
+    top: 60px;
 }

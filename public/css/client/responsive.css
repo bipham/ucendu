@@ -171,8 +171,8 @@
         width: calc(50% - 18px);
         /* height: calc(100vh - 185px); */
         float: left;
-        max-height: 100vh;
-        min-height: 100vh;
+        max-height: 91vh;
+        min-height: 91vh;
         min-width: 30%;
         max-width: 70%;
     }
@@ -181,8 +181,8 @@
         float: left;
         padding-bottom: 0;
         overflow: hidden;
-        max-height: 100vh;
-        min-height: 100vh;
+        max-height: 91vh;
+        min-height: 91vh;
     }
 
     .right-panel-custom.active-quiz {

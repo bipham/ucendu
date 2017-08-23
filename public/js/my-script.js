@@ -36,18 +36,35 @@ jQuery("document").ready(function($){
 
     var nav = $('.menu-reading');
 
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 139) {
-            nav.addClass("reading-header-fixed");
-            $('.left-custom #notifications-container-menu').hide();
-            $('.left-custom .noti-status').removeClass('white-font-class');
-            openNoti = false;
-        } else {
-            nav.removeClass("reading-header-fixed");
-            $('.action-user-center-fixed #notifications-container-menu').hide();
-            $('.action-user-center-fixed .noti-status').removeClass('white-font-class');
-            openNotiFixed = false;
-        }
+    $('#myTabReading a:not(.reading-test-quiz)').on('shown.bs.tab', function (e) {
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 139) {
+                nav.addClass("reading-header-fixed");
+                $('.left-custom #notifications-container-menu').hide();
+                $('.left-custom .noti-status').removeClass('white-font-class');
+                openNoti = false;
+            } else {
+                nav.removeClass("reading-header-fixed");
+                $('.action-user-center-fixed #notifications-container-menu').hide();
+                $('.action-user-center-fixed .noti-status').removeClass('white-font-class');
+                openNotiFixed = false;
+            }
+        });
+    });
+    $('#myTabReading a.reading-test-quiz').on('shown.bs.tab', function (e) {
+        $(window).unbind('scroll');
+    });
+
+    $('#myTabReading a:not(.reading-test-quiz)').click(function () {
+        $('header#header').removeClass('hidden');
+        $('.menu-reading').removeClass('reading-header-fixed');
+        $('footer.navbar-fixed-bottom').removeClass('hidden');
+    });
+
+    $('#myTabReading a.reading-test-quiz').click(function () {
+        $('header#header').addClass('hidden');
+        $('.menu-reading').addClass('reading-header-fixed');
+        $('footer.navbar-fixed-bottom').addClass('hidden');
     });
 
 });
