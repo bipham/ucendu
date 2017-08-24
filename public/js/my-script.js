@@ -84,7 +84,6 @@ jQuery("document").ready(function($){
 
 });
 
-
 $(document).mouseup(function(e)
 {
     var container = $('.left-custom .notification-status');
@@ -217,7 +216,6 @@ function loadAllNotification(noti_area) {
     });
 }
 
-
 function readNotification(type_noti, id) {
     var ajaxReadNotiUrl = baseUrl + '/readNotification/' + type_noti + '--' + id;
     $.ajax({
@@ -233,3 +231,24 @@ function readNotification(type_noti, id) {
     });
 }
 
+function markAllNotificationAsRead() {
+    var ajaxMarkAllNotificationAsRead = baseUrl + '/markAllNotificationAsRead';
+    // alert('dasd');/**/
+    $.ajax({
+        type: "GET",
+        url: ajaxMarkAllNotificationAsRead,
+        dataType: "json",
+        success: function (data) {
+            $('sup.total-noti').each(function () {
+                $(this).hide();
+            });
+            $('.item-notification.no-read').each(function () {
+                $(this).removeClass('no-read');
+                $(this).addClass('seen-noti');
+            });
+        },
+        error: function (data) {
+            console.log('Error:', data);
+        }
+    });
+}

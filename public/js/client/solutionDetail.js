@@ -605,7 +605,7 @@ $(document).ready(function() {
                         $("#comment" + comment_id_noti).addClass('current-cmt');
                     }
                 });
-            }, 1000);
+            }, 3000);
             setTimeout(function(){
                 $("#comment" + comment_id_noti).addClass('time-out-current-cmt');
             },5000);
