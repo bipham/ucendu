@@ -26,6 +26,8 @@
     @yield('css')
 </head>
 <body>
+<a href="#" id="allownoti" class="hidden">Cho phép thông báo</a>
+<a href="#" id="shownoti" class="hidden">Hiển thị thông báo</a>
 <div class="overlay"></div>
 @include('layout.header')
 @include('layout.menuHeaderReading')
@@ -61,6 +63,37 @@
         style: 'primary',
         event: 'click'
     });
+
+    var allownoti = document.getElementById('allownoti');
+    var shownoti = document.getElementById('shownoti');
+
+    // Thực hiện hành động bên trong khi nhấp vào Cho phép thông báo
+//        e.preventDefault();
+
+//        // Nếu trình duyệt không hỗ trợ thông báo
+//        if (!window.Notification)
+//        {
+//            alert('Trình duyệt của bạn không hỗ trợ chức năng này.');
+//        }
+//        // Ngược lại trình duyệt có hỗ trợ thông báo
+//        else
+//        {
+            // Gửi lời mời cho phép thông báo
+            Notification.requestPermission(function (p) {
+                // Nếu không cho phép
+                if (p === 'denied')
+                {
+//                    Notification.requestPermission = 'granted';
+                    alert('Bạn đã không cho phép thông báo trên trình duyệt.');
+                }
+                // Ngược lại cho phép
+                else
+                {
+                    alert('Bạn đã cho phép thông báo trên trình duyệt!');
+                }
+            });
+//        }
+
 </script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
 <script src="{{asset('public/js/socketNoti.js')}}"></script>
