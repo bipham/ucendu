@@ -84,12 +84,12 @@
                 if (p === 'denied')
                 {
 //                    Notification.requestPermission = 'granted';
-                    alert('Bạn đã không cho phép thông báo trên trình duyệt.');
+//                    alert('Bạn đã không cho phép thông báo trên trình duyệt.');
                 }
                 // Ngược lại cho phép
                 else
                 {
-                    alert('Bạn đã cho phép thông báo trên trình duyệt!');
+//                    alert('Bạn đã cho phép thông báo trên trình duyệt!');
                 }
             });
 //        }

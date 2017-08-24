@@ -35,20 +35,29 @@ socket.on('commentNotification', function (data) {
     }
     oldTotalNoti = totalNoti;
 
-    notify = new Notification(
-        title_noti,
-        {
-            body: body,
-            icon: img_feature, // Hình ảnh
-            tag: url // Đường dẫn
-        }
-    );
+    if (Notification.permission == 'default')
+    {
+        alert('Bạn phải cho phép thông báo trên trình duyệt mới có thể hiển thị nó.');
+    }
+    // Ngược lại đã cho phép
+    else
+    {
+        // Tạo thông báo
+        notify = new Notification(
+            title_noti,
+            {
+                body: body,
+                icon: img_feature, // Hình ảnh
+                tag: url // Đường dẫn
+            }
+        );
 
-    notify.onclick = function () {
-        window.open(this.tag, '_blank');
-        // window.location.href = this.tag; // Di chuyển đến trang cho url = tag
-        readNotification(0, dataJSON.noti_id);
-        window.focus();
+        notify.onclick = function () {
+            window.open(this.tag, '_blank');
+            // window.location.href = this.tag; // Di chuyển đến trang cho url = tag
+            readNotification(0, dataJSON.noti_id);
+            window.focus();
+        };
     }
 });
 
