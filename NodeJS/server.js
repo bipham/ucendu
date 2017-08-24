@@ -3,7 +3,7 @@ var server = require('http').Server(app);
 var io = require('socket.io')(server);
 var redis = require('redis');
 
-server.listen(80);
+server.listen(8890);
 console.log('Server running port: 80 ...');
 current_sockets = {};
 io.on('connection', function (socket) {
@@ -15,11 +15,12 @@ io.on('connection', function (socket) {
         if (channel == 'commentNotification') {
             console.log("new commentNotification", channel, data);
             var dataJSON = JSON.parse(data);
-            // var userID = dataJSON.result_match.user_id;
-            // var socketID = current_sockets['user-' + userID];
+            var userID = dataJSON.user_receive_id;
+            var socketID = current_sockets['user-' + userID];
             // console.log('data new : ' + JSON.stringify(current_sockets));
             // console.log('user id: ' + socketID);
-            socket.emit('commentNotification', data);
+            // socket.emit('commentNotification', data);
+            io.to(socketID).emit('commentNotification', data);
         }
     });
 
