@@ -25,13 +25,158 @@ var getUrlParameter = function getUrlParameter(sParam) {
     }
 };
 var question_id_noti = getUrlParameter('question');
+var comment_id_noti = getUrlParameter('comment');
+
+console.log('question_id_noti ' + baseUrl);
+console.log('comment_id_noti ' + comment_id_noti);
 
 jQuery(function(){
-    // jQuery('.btn-show-comments[data-qnumber=' + question_id_noti + ']').trigger('click');
-    // jQuery('#comment' + comment_id_noti).focus();
-    // $("html, body").animate({ scrollTop: $('#footer').offset().top }, 1000);
-    // $(window).scrollTop($("#comment" + comment_id_noti).offset().top);
+    jQuery('.btn-show-comments[data-qnumber=' + question_id_noti + ']').trigger('click');
 });
+
+var mainUrl_tmp = baseUrl.substring(7);
+var adminBaseUrl = 'http://admin.' + mainUrl_tmp;
+function deleteReadingComment(id) {
+    bootbox.confirm({
+        title: "Delete Reading Comment",
+        message: "Do you want to delete this comment?" + id,
+        buttons: {
+            cancel: {
+                label: '<i class="fa fa-times"></i> Cancel',
+                className: 'btn-danger'
+            },
+            confirm: {
+                label: '<i class="fa fa-check"></i> Confirm',
+                className: 'btn-success'
+            }
+        },
+        callback: function (result) {
+            if(result) {
+                var ajaxDelCommentReading = baseUrl + '/deleteCommentReading/' + id;
+                console.log('ajaxDelCommentReading ' + ajaxDelCommentReading);
+                $.ajax({
+                    type: "GET",
+                    url: ajaxDelCommentReading,
+                    dataType: "json",
+                    // data: { },
+                    success: function (data) {
+                        bootbox.alert({
+                            message: "Delete comment success! " + data.result,
+                            backdrop: true,
+                            callback: function(){
+                                // location.href= baseUrl + '/listCommentReading';
+                                var reply_id_deleted = $('.btn-set-comment-public[data-id=' + id + ']').data('reply-id');
+                                if (reply_id_deleted == 0) {
+                                    $('.list-cmt-' + id).remove();
+                                }
+                                else {
+                                    $('#comment' + id).remove();
+                                }
+                            }
+                        });
+                    },
+                    error: function (data) {
+                        bootbox.alert({
+                            message: "Delete comment fail!",
+                            backdrop: true
+                        });
+                    }
+                });
+            }
+        }
+    });
+}
+
+function setPublicReadingComment(id) {
+    var $this = $(this);
+    bootbox.confirm({
+        title: "Set public reading comment",
+        message: "Do you want to set public for this comment?",
+        buttons: {
+            cancel: {
+                label: '<i class="fa fa-times"></i> Cancel',
+                className: 'btn-danger'
+            },
+            confirm: {
+                label: '<i class="fa fa-check"></i> Confirm',
+                className: 'btn-success'
+            }
+        },
+        callback: function (result) {
+            if(result) {
+                var ajaxSetPublicReadingComment = baseUrl + '/setPublicReadingComment/' + id;
+                $.ajax({
+                    type: "GET",
+                    url: ajaxSetPublicReadingComment,
+                    dataType: "json",
+                    // data: { },
+                    success: function (data) {
+                        bootbox.alert({
+                            message: "Set public comment success! " + data.result,
+                            backdrop: true,
+                            callback: function(){
+                                // location.href= baseUrl + '/listCommentReading';
+                                $('.btn-set-comment-public[data-id=' + id + ']').prop('disabled', true);
+                                $('.btn-set-comment-private[data-id=' + id + ']').prop('disabled', false);
+                            }
+                        });
+                    },
+                    error: function (data) {
+                        bootbox.alert({
+                            message: "Set public comment fail!",
+                            backdrop: true
+                        });
+                    }
+                });
+            }
+        }
+    });
+}
+
+function setPrivateReadingComment(id) {
+    bootbox.confirm({
+        title: "Set private reading comment",
+        message: "Do you want to set private for this comment?",
+        buttons: {
+            cancel: {
+                label: '<i class="fa fa-times"></i> Cancel',
+                className: 'btn-danger'
+            },
+            confirm: {
+                label: '<i class="fa fa-check"></i> Confirm',
+                className: 'btn-success'
+            }
+        },
+        callback: function (result) {
+            if(result) {
+                var ajaxSetPrivateReadingComment = baseUrl + '/setPrivateReadingComment/' + id;
+                $.ajax({
+                    type: "GET",
+                    url: ajaxSetPrivateReadingComment,
+                    dataType: "json",
+                    // data: { },
+                    success: function (data) {
+                        bootbox.alert({
+                            message: "Set private comment success! " + data.result,
+                            backdrop: true,
+                            callback: function(){
+                                // location.href= baseUrl + '/listCommentReading';
+                                $('.btn-set-comment-public[data-id=' + id + ']').prop('disabled', false);
+                                $('.btn-set-comment-private[data-id=' + id + ']').prop('disabled', true);
+                            }
+                        });
+                    },
+                    error: function (data) {
+                        bootbox.alert({
+                            message: "Set private comment fail!",
+                            backdrop: true
+                        });
+                    }
+                });
+            }
+        }
+    });
+}
 
 function scrollToHighlight(i) {
     // alert('Scroll to: ' + i);
@@ -45,11 +190,11 @@ function scrollToHighlight(i) {
     }, 100);
     var qnumber = $('#lesson-highlight-area .highlight-' + i).data('qnumber');
     var idClass = 'highlight-' + i;
-    var t = 60,
-        r = $(".left-panel-custom").offset().top,
-        u = $("."+idClass).offset().top,
-        f = $(".left-panel-custom").scrollTop(),
-        v = u + f - r;
+    var t = 60;
+    var r = $(".left-panel-custom").offset().top;
+    var u = $("."+idClass).offset().top;
+    var f = $(".left-panel-custom").scrollTop();
+    var v = u + f - r;
         $(".left-panel-custom").animate({
         scrollTop: v - t
     }, {
@@ -58,6 +203,29 @@ function scrollToHighlight(i) {
         }
     });
 }
+
+function scrollToExplain(q_index) {
+    $("html, body").animate({
+        scrollTop: $('.panel-container').offset().top
+    }, 100);
+    var t_question = 100;
+    var r_question = $(".right-panel-custom").offset().top;
+    var u_question = $(".explain-" + q_index).offset().top;
+    var f_question = $(".right-panel-custom").scrollTop();
+    var v_question = u_question + f_question - r_question;
+    $(".right-panel-custom").animate({
+        scrollTop: v_question - t_question
+    }, {
+        duration: 100,
+        complete: function () {
+        }
+    });
+}
+
+$('.btn-show-answered').click(function () {
+    var q_index = $(this).data('qorder');
+    scrollToExplain(q_index);
+});
 
 function showComments(i) {
     var ajaxUrlShowComments = baseUrl + '/showComments/' + i;
@@ -76,10 +244,83 @@ function showComments(i) {
                     var cmt_content = list_comment.content_cmt;
                     var time_ago = list_comment.updated_at;
                     var cmt_id = list_comment.id;
+                    var question_id = list_comment.question_id;
                     var username = list_comment.username;
                     var reply_id = list_comment.reply_id;
+                    var isPrivated = '';
+                    var isPublic = '';
+                    var status_class = 'item-cmt-public';
+                    if (list_comment.private == 1) {
+                        isPrivated = 'disabled';
+                        status_class = 'item-cmt-private';
+                    }
+                    else {
+                        isPublic = 'disabled';
+                    }
 
-                    if ((list_comment.private == 0) || (list_comment.user_id == data.user_id)) {
+                    if (data.level_current_user == 0) {
+                        if (reply_id == 0) {
+                            $('#commentArea-' + i + ' .comments-area').append('<div class="row list-cmt-area list-cmt-' + cmt_id + '" data-cmt-id="' + cmt_id + '">' +
+                                '<div class="item-cmt cmt-' + cmt_id + ' ' + status_class + '" id="comment' + cmt_id + '" data-cmt-id="' + cmt_id + '">'
+                                + '<span class="img-avatar">'
+                                + '<img alt="" src="/storage/img/users/' + avatar + '" class="img-custom avatar-custom" />'
+                                + '</span>'
+                                + '<span class="item-cmt-content">'
+                                + '<div class="item-cmt-header">'
+                                +  username
+                                + '</div>'
+                                + '<div class="item-cmt-body">'
+                                +  cmt_content
+                                + '</div>'
+                                + '<div class="item-time-cmt">'
+                                + '<span class="img-time-cmt">'
+                                + '<img alt="time-cmt" src="/public/imgs/original/time.png" class="img-time-cmt" />'
+                                + '</span>'
+                                + '<span class="time-ago-cmt">'
+                                + time_ago
+                                + '</span>'
+                                + '<span class="reply-cmt pull-right">'
+                                + '<button type="button" class="btn btn-success btn-admin-custom btn-set-comment-public" data-id="' + cmt_id + '" data-question-id="' + question_id + '" data-reply-id="' + reply_id + '" onclick="setPublicReadingComment(' + cmt_id + ')"' + isPublic + '>Set public</button>'
+                                + '<button type="button" class="btn btn-warning btn-admin-custom btn-set-comment-private" data-id="' + cmt_id + '" data-question-id="' + question_id + '" data-reply-id="' + reply_id + '" onclick="setPrivateReadingComment(' + cmt_id + ')"' + isPrivated + '>Set private</button>'
+                                + '<button type="button" class="btn btn-danger btn-admin-custom btn-del-lesson" data-id="' + cmt_id + '" data-question-id="' + question_id + '" data-reply-id="' + reply_id + '" onclick="deleteReadingComment(' + cmt_id + ')">Del</button>'
+                                + '<button type="button" class="btn btn-reply-cmt btn-sm btn-outline-primary" onclick="replyComment(' + cmt_id + ', ' + i + ')">Reply</button>'
+                                + '</span>'
+                                + '</div>'
+                                + '</span>'
+                                + '</div>'
+                                + '</div>');
+                        }
+                        else {
+                            $('.list-cmt-' + reply_id).append('<div class="item-cmt item-sub-cmt cmt-' + cmt_id + ' ' + status_class + '" id="comment' + cmt_id + '" data-cmt-id="' + cmt_id + '">'
+                                + '<span class="img-avatar">'
+                                + '<img alt="" src="/storage/img/users/' + avatar + '" class="img-custom avatar-custom" />'
+                                + '</span>'
+                                + '<span class="item-cmt-content">'
+                                + '<div class="item-cmt-header">'
+                                +  username
+                                + '</div>'
+                                + '<div class="item-cmt-body">'
+                                +  cmt_content
+                                + '</div>'
+                                + '<div class="item-time-cmt">'
+                                + '<span class="img-time-cmt">'
+                                + '<img alt="time-cmt" src="/public/imgs/original/time.png" class="img-time-cmt" />'
+                                + '</span>'
+                                + '<span class="time-ago-cmt">'
+                                + time_ago
+                                + '</span>'
+                                + '<span class="reply-cmt pull-right">'
+                                + '<button type="button" class="btn btn-success btn-admin-custom btn-set-comment-public" data-id="' + cmt_id + '" data-question-id="' + question_id + '" data-reply-id="' + reply_id + '" onclick="setPublicReadingComment(' + cmt_id + ')"' + isPublic + '>Set public</button>'
+                                + '<button type="button" class="btn btn-warning btn-admin-custom btn-set-comment-private" data-id="' + cmt_id + '" data-question-id="' + question_id + '" data-reply-id="' + reply_id + '" onclick="setPrivateReadingComment(' + cmt_id + ')"' + isPrivated + '>Set private</button>'
+                                + '<button type="button" class="btn btn-danger btn-admin-custom btn-del-lesson" data-id="' + cmt_id + '" data-question-id="' + question_id + '" data-reply-id="' + reply_id + '" onclick="deleteReadingComment(' + cmt_id + ')">Del</button>'
+                                + '<button type="button" class="btn btn-sm btn-outline-primary" onclick="replyComment(' + cmt_id + ', ' + i + ')">Reply</button>'
+                                + '</span>'
+                                + '</div>'
+                                + '</span>'
+                                + '</div>');
+                        }
+                    }
+                    else if ((list_comment.private == 0) || (list_comment.user_id == data.user_id)) {
                         if (reply_id == 0) {
                             $('#commentArea-' + i + ' .comments-area').append('<div class="row list-cmt-area list-cmt-' + cmt_id + '" data-cmt-id="' + cmt_id + '">' +
                                 '<div class="item-cmt cmt-' + cmt_id + '" id="comment' + cmt_id + '" data-cmt-id="' + cmt_id + '">'
@@ -343,19 +584,27 @@ function enterComment(e) {
 
 $(document).on("keypress","input.reply-cmt",enterComment);
 
-$('.btn-show-answered').click(function () {
-    var q_index = $(this).data('qorder');
-    $('.right-panel-custom').animate({
-        scrollTop: $(".explain-" + q_index).position().top - 155
-    }, 500);
-
-    $('html,body').animate({
-        scrollTop: $(".solution-detail").position().top
-    }, 500);
-
-});
-
-$(document).ready(function () {
-    var comment_id_noti = getUrlParameter('comment');
-    $(".right-panel-custom").animate({ scrollTop: $('.btn-show-comments[data-qnumber=' + question_id_noti + ']').offset().top + 100}, 1000);
+$(document).ready(function() {
+    $(function () {
+        if (question_id_noti && comment_id_noti) {
+            $('html, body').animate({
+                scrollTop: $('.solution-detail').offset().top
+            }, 1000);
+            setTimeout(function() {
+                var t = 60;
+                var r = $(".right-panel-custom").offset().top;
+                var u = $("#comment" + comment_id_noti).offset().top;
+                var f = $(".right-panel-custom").scrollTop();
+                var v = u + f - r;
+                $(".right-panel-custom").animate({
+                    scrollTop: v - t
+                }, {
+                    duration: 100,
+                    complete: function () {
+                    }
+                });
+            }, 1000);
+        }
+        return false;
+    });
 });

@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\ReadingCommentNotification;
 use App\Models\ReadingLesson;
+use App\Models\ReadingQuestionAndAnswer;
+use App\Models\ReadingQuizz;
 use Request;
 
 class ReadingNotificationController extends Controller
@@ -16,6 +18,9 @@ class ReadingNotificationController extends Controller
             $readingCommentNotificationModel = new ReadingCommentNotification();
             $readingLessonModel = new ReadingLesson();
             $userModel = new User();
+            $readingQuestionAndAnswerModel = new ReadingQuestionAndAnswer();
+            $readingQuizzModel = new ReadingQuizz();
+
             $result_notifications = [];
             $list_notifications = $readingCommentNotificationModel->getAllNotificationByUserId($user_id);
 
@@ -28,9 +33,15 @@ class ReadingNotificationController extends Controller
                     $lesson_detail = $readingLessonModel->getLessonByCommentId($notificationReading->comment_id);
                     $array_notification['lesson_title'] = $lesson_detail->title;
                     $array_notification['image_lesson_feature'] = $lesson_detail->image_feature;
-                    $user_detail = $userModel->getInfoBasicUserById($notificationReading->user_id);
+                    $info_related = $readingQuestionAndAnswerModel->getInfoRelateCommentedById($notificationReading->comment_id);
+                    $user_detail = $userModel->getInfoBasicUserById($info_related->user_id);
                     $array_notification['username_cmt'] = $user_detail->username;
                     $array_notification['avatar_user'] = $user_detail->avatar;
+                    $array_notification['question_id'] = $info_related->question_id;
+                    $quiz_id = $readingQuizzModel->getQuizIdByLessonId($lesson_detail->id);
+                    $array_notification['lesson_id'] = $lesson_detail->id;
+                    $array_notification['quiz_id'] = $quiz_id->id;
+                    $array_notification['comment_id'] = $notificationReading->comment_id;
                     array_push($result_notifications, $array_notification);
                 }
             }

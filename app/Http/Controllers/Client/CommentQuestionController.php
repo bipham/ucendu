@@ -19,13 +19,15 @@ class CommentQuestionController extends Controller
     public function getComments($domain, $question_id_custom) {
         if (Request::ajax()) {
             $questionModel = new ReadingQuestion();
+            $userModel = new User();
             $question_id = $questionModel->getQuestionIdByIdCustom($question_id_custom);
             $commentQuestionModel = new ReadingQuestionAndAnswer();
             $list_comments = $commentQuestionModel->getAllCommentsByQuestionId($question_id);
             foreach ($list_comments as $list_comment) {
                 $list_comment->updated_at = timeago($list_comment->updated_at);
             }
-            return json_encode(['list_comments' => $list_comments, 'user_id' => Auth::id()]);
+            $level_current_user = $userModel->getLevelCurrentUserByUserId(Auth::id());
+            return json_encode(['list_comments' => $list_comments, 'user_id' => Auth::id(), 'level_current_user' => $level_current_user->level]);
         }
     }
 
@@ -47,9 +49,17 @@ class CommentQuestionController extends Controller
 //            $question_id_custom = 39;
             $reply_id = $_POST['reply_id'];
             $readingQuestionModel = new ReadingQuestion();
+            $userModel = new User();
+            $level_current_user = $userModel->getLevelCurrentUserByUserId(Auth::id());
+            if ($level_current_user->level == 0) {
+                $privated_cmt = 0;
+            }
+            else {
+                $privated_cmt = 1;
+            }
             $question_id = $readingQuestionModel->getQuestionIdByIdCustom($question_id_custom);
             $questionAndAnswerModel = new ReadingQuestionAndAnswer();
-            $result = $questionAndAnswerModel->createNewComment($question_id, $user_id, $reply_id, $content_cmt);
+            $result = $questionAndAnswerModel->createNewComment($question_id, $user_id, $reply_id, $content_cmt, $privated_cmt);
             $readingCommentNotificationModel = new ReadingCommentNotification();
             $related_users = $questionAndAnswerModel->getAllRelatedUser($question_id);
 //            foreach ($related_users as $related_user) {
@@ -58,7 +68,7 @@ class CommentQuestionController extends Controller
 //                    $readingCommentNotificationModel->createNewCommentNotification($question_id, $related_user->user_id);
 //                }
 //            }
-            $userModel = new User();
+
             $list_admin_related = $userModel->getAllAdmin();
             foreach ($list_admin_related as $admin_detect_related) {
 //                dd($related_user);

@@ -46,7 +46,7 @@ class ReadingCommentController extends Controller
         return view('admin.readingListComment', compact('all_comments'));
     }
 
-    public function deleteCommentReading($domain, $comment_id) {
+    public function deleteCommentReading($comment_id) {
         if (Request::ajax()) {
             $readingQuestionAndAnswerModel = new ReadingQuestionAndAnswer();
             $result = $readingQuestionAndAnswerModel->deleteCommentById($comment_id);
@@ -54,7 +54,7 @@ class ReadingCommentController extends Controller
         }
     }
 
-    public function setPublicReadingComment($domain, $comment_id) {
+    public function setPublicReadingComment($comment_id) {
         if (Request::ajax()) {
             $readingQuestionAndAnswerModel = new ReadingQuestionAndAnswer();
             $result = $readingQuestionAndAnswerModel->setPublicReadingCommentById($comment_id);
@@ -62,7 +62,7 @@ class ReadingCommentController extends Controller
         }
     }
 
-    public function setPrivateReadingComment($domain, $comment_id) {
+    public function setPrivateReadingComment($comment_id) {
         if (Request::ajax()) {
             $readingQuestionAndAnswerModel = new ReadingQuestionAndAnswer();
             $result = $readingQuestionAndAnswerModel->setPrivateReadingCommentById($comment_id);

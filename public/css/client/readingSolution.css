@@ -365,3 +365,21 @@ span.keywords-area-title {
 input.reply-sub-cmt {
     width: calc(100% - 90px);
 }
+
+.btn-reply-cmt {
+    margin-left: 3px;
+}
+
+.btn-admin-custom {
+    font-size: 12px;
+    padding: 5px 7px;
+    margin: 0 3px;
+}
+
+.item-cmt-public {
+    border: 2px solid #5cb85c;
+}
+
+.item-cmt-private {
+    border: 2px solid #f0ad4e;
+}

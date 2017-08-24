@@ -175,6 +175,7 @@
     <script src="{{asset('public/js/client/lessonDetail.js')}}"></script>
     <script src="{{asset('public/libs/countdown/jquery.countdown.js')}}"></script>
     <script>
+
         var type_lesson = <?php print_r($type_lesson); ?>;
         $(function () {
             $('#myTabReading a.reading-test-quiz').tab('show');
