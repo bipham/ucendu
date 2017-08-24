@@ -156,8 +156,6 @@ $('.noti-status').click(function (e) {
     loadAllNotification(noti_area);
 });
 
-
-
 function loadAllNotification(noti_area) {
     var ajaxGetNotiUrl = baseUrl + '/getNotification/' + myId;
     $.ajax({
@@ -180,12 +178,13 @@ function loadAllNotification(noti_area) {
                     }
 
                     if (list_notis[i].type_noti == 'userCommentNotification') {
-                        var type_noti = 'userCommentNotification';
+                        var type_noti = 0;
                         var url_link = baseUrl + '/reading/readingViewSolutionLesson/' + list_notis[i].lesson_id + '-' + list_notis[i].quiz_id + '?question=' + list_notis[i].question_id + '&comment=' + list_notis[i].comment_id;
                         var content_noti = '<strong>' + list_notis[i].username_cmt + ' </strong> commented on <strong>' + list_notis[i].lesson_title + ' lesson</strong>';
+                        var noti_id = list_notis[i].noti_id;
                     }
                     noti_area.append(
-                        '<div class="item-notification no-read ' + classReadNoti + '" onclick="#">'
+                        '<div class="item-notification no-read ' + classReadNoti + '" onclick="readNotification(' + type_noti + ', ' + noti_id + ')">'
                         + '<a href="' + url_link + '" class="link-to-noti">'
                         + '<span class="img-user-send-noti img-auto-center">'
                         + '<img alt="' + list_notis[i].username_cmt + '" src="/storage/img/users/' + list_notis[i].avatar_user + '" class="img-user-noti-header img-auto-center-inner" />'
@@ -211,6 +210,22 @@ function loadAllNotification(noti_area) {
                     );
                 }
             }
+        },
+        error: function (data) {
+            console.log('Error:', data);
+        }
+    });
+}
+
+
+function readNotification(type_noti, id) {
+    var ajaxReadNotiUrl = baseUrl + '/readNotification/' + type_noti + '--' + id;
+    $.ajax({
+        type: "GET",
+        url: ajaxReadNotiUrl,
+        dataType: "json",
+        success: function (data) {
+            console.log('Success:', data);
         },
         error: function (data) {
             console.log('Error:', data);
