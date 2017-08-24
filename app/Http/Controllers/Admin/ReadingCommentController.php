@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 //use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\ReadingQuestion;
 use App\Models\User;
 use App\Models\ReadingQuestionAndAnswer;
 use App\Models\ReadingLesson;
@@ -17,6 +18,7 @@ class ReadingCommentController extends Controller
         $readingLessonModel = new ReadingLesson();
         $userModel = new User();
         $readingQuizModel = new ReadingQuizz();
+        $readingQuestionModel = new ReadingQuestion();
 
         $all_comments = [];
         $list_comments = $readingQuestionAndAnswerModel->getALlCommentReading();
@@ -32,6 +34,8 @@ class ReadingCommentController extends Controller
                 $array_comment['avatar_user'] = $user_detail->avatar;
                 $array_comment['lesson_title'] = $lesson_detail->title;
                 $array_comment['lesson_id'] = $lesson_detail->id;
+                $question_id_commented = $readingQuestionModel->getQuestionIdCustomById($comment_reading->question_id);
+                $array_comment['question_id_custom'] = $question_id_commented->question_id_custom;
                 $array_comment['question_id'] = $comment_reading->question_id;
                 $quiz_id = $readingQuizModel->getQuizIdByLessonId($lesson_detail->id);
                 $array_comment['quiz_id'] = $quiz_id->id;
