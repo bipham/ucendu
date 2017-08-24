@@ -590,6 +590,7 @@ $(document).ready(function() {
             $('html, body').animate({
                 scrollTop: $('.solution-detail').offset().top
             }, 1000);
+
             setTimeout(function() {
                 var t = 60;
                 var r = $(".right-panel-custom").offset().top;
@@ -601,9 +602,13 @@ $(document).ready(function() {
                 }, {
                     duration: 100,
                     complete: function () {
+                        $("#comment" + comment_id_noti).addClass('current-cmt');
                     }
                 });
             }, 1000);
+            setTimeout(function(){
+                $("#comment" + comment_id_noti).addClass('time-out-current-cmt');
+            },5000);
         }
         return false;
     });
