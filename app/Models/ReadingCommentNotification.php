@@ -27,9 +27,10 @@ class ReadingCommentNotification extends Model
             $newCommentNotification->user_id = $user_id;
             $newCommentNotification->type_noti = 'userCommentNotification';
             $newCommentNotification->save();
+            return $newCommentNotification;
         }
         else {
-            DB::table('reading_comment_notifications')  -> where('comment_id', $comment_id)
+            return DB::table('reading_comment_notifications')  -> where('comment_id', $comment_id)
                                                         -> where('user_id', $user_id)
                                                         -> where('type_noti', 'userCommentNotification')
                                                         -> update(['read' => 0, 'updated_at' => Carbon::now()]);
