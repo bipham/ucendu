@@ -92,5 +92,9 @@ class ReadingQuestion extends Model
             ->first();
     }
 
+    public function getQuestionIdCustomById($id) {
+        return $this->where('id',$id)->select('question_id_custom')->get()->first();
+    }
+
 
 }

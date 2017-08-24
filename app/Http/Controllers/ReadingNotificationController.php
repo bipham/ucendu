@@ -9,6 +9,7 @@ use App\Models\ReadingCommentNotification;
 use App\Models\ReadingLesson;
 use App\Models\ReadingQuestionAndAnswer;
 use App\Models\ReadingQuizz;
+use App\Models\ReadingQuestion;
 use Request;
 
 class ReadingNotificationController extends Controller
@@ -20,6 +21,7 @@ class ReadingNotificationController extends Controller
             $userModel = new User();
             $readingQuestionAndAnswerModel = new ReadingQuestionAndAnswer();
             $readingQuizzModel = new ReadingQuizz();
+            $readingQuestionModel = new ReadingQuestion();
 
             $result_notifications = [];
             $list_notifications = $readingCommentNotificationModel->getAllNotificationByUserId($user_id);
@@ -34,10 +36,11 @@ class ReadingNotificationController extends Controller
                     $array_notification['lesson_title'] = $lesson_detail->title;
                     $array_notification['image_lesson_feature'] = $lesson_detail->image_feature;
                     $info_related = $readingQuestionAndAnswerModel->getInfoRelateCommentedById($notificationReading->comment_id);
+                    $question_id_commented = $readingQuestionModel->getQuestionIdCustomById($info_related->question_id);
                     $user_detail = $userModel->getInfoBasicUserById($info_related->user_id);
                     $array_notification['username_cmt'] = $user_detail->username;
                     $array_notification['avatar_user'] = $user_detail->avatar;
-                    $array_notification['question_id'] = $info_related->question_id;
+                    $array_notification['question_id'] = $question_id_commented->question_id_custom;
                     $quiz_id = $readingQuizzModel->getQuizIdByLessonId($lesson_detail->id);
                     $array_notification['lesson_id'] = $lesson_detail->id;
                     $array_notification['quiz_id'] = $quiz_id->id;

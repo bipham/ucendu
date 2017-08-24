@@ -88,7 +88,7 @@ jQuery("document").ready(function($){
 $(document).mouseup(function(e)
 {
     var container = $('.left-custom .notification-status');
-    var container_fixed = $('.action-user-center-fixed .left-custom .notification-status');
+    var container_fixed = $('.action-user-center-fixed .notification-status');
 
     // if the target of the click isn't the container nor a descendant of the container
     if (!container.is(e.target) && container.has(e.target).length === 0)
@@ -127,26 +127,32 @@ $('.noti-status').click(function (e) {
     noti_fixed_element = $(this).parents('.action-user-center-fixed');
     noti_area = noti_header.find('#listNotiArea');
     noti_container = noti_header.find('#notifications-container-menu');
-    if (!openNoti) {
-        if (noti_fixed_element.length > 0) {
+
+    if (noti_fixed_element.length > 0) {
+        if (!openNotiFixed) {
             openNotiFixed = true;
+            $('.action-user-center-fixed #notifications-container-menu').show();
+            $(this).addClass('white-font-class');
         }
         else {
-            openNoti = true;
+            openNotiFixed = false;
+            $('.action-user-center-fixed #notifications-container-menu').hide();
+            $(this).removeClass('white-font-class');
         }
-        noti_container.show();
-        $(this).addClass('white-font-class');
     }
     else {
-        if (noti_fixed_element.length > 0) {
-            openNotiFixed = false;
+        if (!openNoti) {
+            openNoti = true;
+            noti_container.show();
+            $(this).addClass('white-font-class');
         }
         else {
             openNoti = false;
+            noti_container.hide();
+            $(this).removeClass('white-font-class');
         }
-        noti_container.hide();
-        $(this).removeClass('white-font-class');
     }
+
     loadAllNotification(noti_area);
 });
 
@@ -175,7 +181,7 @@ function loadAllNotification(noti_area) {
 
                     if (list_notis[i].type_noti == 'userCommentNotification') {
                         var type_noti = 'userCommentNotification';
-                        var url_link = '#';
+                        var url_link = baseUrl + '/reading/readingViewSolutionLesson/' + list_notis[i].lesson_id + '-' + list_notis[i].quiz_id + '?question=' + list_notis[i].question_id + '&comment=' + list_notis[i].comment_id;
                         var content_noti = '<strong>' + list_notis[i].username_cmt + ' </strong> commented on <strong>' + list_notis[i].lesson_title + ' lesson</strong>';
                     }
                     noti_area.append(
