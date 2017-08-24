@@ -36,7 +36,7 @@
                 <div id="notifications-container-menu">
                     <div class="notifications-header">
                         <h3 class="title-noti-menu">Notifications</h3>
-                        <h3 class="mark-all-notis">Mark all read</h3>
+                        <h3 class="mark-all-notis" onclick="markAllNotificationAsRead()">Mark all read</h3>
                     </div>
                     <div id="notifications-body">
                         <div class="list-noti-content">

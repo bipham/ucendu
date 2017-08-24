@@ -11,6 +11,7 @@ use App\Models\ReadingQuestionAndAnswer;
 use App\Models\ReadingQuizz;
 use App\Models\ReadingQuestion;
 use Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReadingNotificationController extends Controller
 {
@@ -60,6 +61,14 @@ class ReadingNotificationController extends Controller
                 $type_notification = 'userCommentNotification';
             }
             $result = $readingCommentNotificationModel->readNotificationById($id, $type_notification);
+            return json_encode(['ok' => $result]);
+        }
+    }
+
+    public function markAllNotificationAsRead() {
+        if (Request::ajax()) {
+            $readingCommentNotificationModel = new ReadingCommentNotification();
+            $result = $readingCommentNotificationModel->readAllNotificationByUserId(Auth::id());
             return json_encode(['ok' => $result]);
         }
     }

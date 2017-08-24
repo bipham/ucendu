@@ -29,6 +29,7 @@ Route::get('setPublicReadingComment/{comment_id}',['as'=>'setPublicReadingCommen
 Route::get('setPrivateReadingComment/{comment_id}',['as'=>'setPrivateReadingComment','uses'=>'Admin\ReadingCommentController@setPrivateReadingComment']);
 
 Route::get('readNotification/{type_noti}--{id}',['as'=>'readNotification','uses'=>'ReadingNotificationController@readNotification']);
+Route::get('markAllNotificationAsRead',['as'=>'markAllNotificationAsRead','uses'=>'ReadingNotificationController@markAllNotificationAsRead']);
 
 /*********************************************************
  *

@@ -58,4 +58,11 @@ class ReadingCommentNotification extends Model
                                                     -> update(['read' => 1, 'read_at' => Carbon::now()]);
         return 'success';
     }
+
+    public function readAllNotificationByUserId($user_id) {
+        DB::table('reading_comment_notifications')  -> where('user_id', $user_id)
+                                                    -> where('read', 0)
+                                                    -> update(['read' => 1, 'read_at' => Carbon::now()]);
+        return 'success';
+    }
 }
