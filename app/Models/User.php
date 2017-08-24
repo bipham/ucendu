@@ -47,4 +47,8 @@ class User extends Authenticatable
         DB::table('users')  -> where('id', $id)
                             -> update(['password' => Hash::make($new_password), 'activated' => 1]);
     }
+
+    public function getLevelCurrentUserByUserId($id) {
+        return $this->where('id',$id)->select('level')->get()->first();
+    }
 }

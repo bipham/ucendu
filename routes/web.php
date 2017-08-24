@@ -24,13 +24,17 @@ Route::get('getNotification/{user_id}',['as'=>'getMatchNotification','uses'=>'Re
 
 Route::get('logout',['as'=>'logout','uses'=>'Auth\LoginController@getLogout'])->middleware('auth');
 
+Route::get('deleteCommentReading/{comment_id}',['as'=>'deleteCommentReading','uses'=>'Admin\ReadingCommentController@deleteCommentReading']);
+Route::get('setPublicReadingComment/{comment_id}',['as'=>'setPublicReadingComment','uses'=>'Admin\ReadingCommentController@setPublicReadingComment']);
+Route::get('setPrivateReadingComment/{comment_id}',['as'=>'setPrivateReadingComment','uses'=>'Admin\ReadingCommentController@setPrivateReadingComment']);
+
 /*********************************************************
  *
  *                  ROUTE FOR ADMIN MODULE
  *
  *********************************************************/
 
-Route::group(['domain' => 'admin.{nameDomain}', 'middleware' => ['adminAuth']], function () {
+Route::group(['domain' => 'admin.{nameDomain}'], function () {
     Route::get('/', function () {
         return view('welcome');
     });
@@ -53,10 +57,6 @@ Route::group(['domain' => 'admin.{nameDomain}', 'middleware' => ['adminAuth']], 
     Route::get('listCommentReading',['as'=>'listCommentReading','uses'=>'Admin\ReadingCommentController@listCommentReading']);
 
     Route::get('deleteLessonReading/{lesson_id}',['as'=>'deleteLessonReading','uses'=>'Admin\ReadingLessonController@deleteLessonReading']);
-
-    Route::get('deleteCommentReading/{comment_id}',['as'=>'deleteCommentReading','uses'=>'Admin\ReadingCommentController@deleteCommentReading']);
-    Route::get('setPublicReadingComment/{comment_id}',['as'=>'setPublicReadingComment','uses'=>'Admin\ReadingCommentController@setPublicReadingComment']);
-    Route::get('setPrivateReadingComment/{comment_id}',['as'=>'setPrivateReadingComment','uses'=>'Admin\ReadingCommentController@setPrivateReadingComment']);
 
     Route::get('editLessonReading/{lesson_id}',['as'=>'getEditLessonReading','uses'=>'Admin\ReadingLessonController@getEditLessonReading']);
 

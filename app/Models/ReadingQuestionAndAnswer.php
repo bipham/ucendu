@@ -25,12 +25,13 @@ class ReadingQuestionAndAnswer extends Model
         return $comments;
     }
 
-    public function createNewComment($question_id, $user_id, $reply_id, $content_cmt) {
+    public function createNewComment($question_id, $user_id, $reply_id, $content_cmt, $private) {
         $newComment = new ReadingQuestionAndAnswer();
         $newComment->question_id = $question_id;
         $newComment->user_id = $user_id;
         $newComment->reply_id = $reply_id;
         $newComment->content_cmt = $content_cmt;
+        $newComment->private = $private;
         $newComment->save();
         return $newComment;
     }
@@ -63,5 +64,9 @@ class ReadingQuestionAndAnswer extends Model
     public function setPrivateReadingCommentById($id) {
         return DB::table('reading_question_and_answers')    ->where('id', $id)
                                                             ->update(['private' => 1]);
+    }
+
+    public function getInfoRelateCommentedById($id) {
+        return $this->where('id',$id)->select('question_id', 'user_id')->get()->first();
     }
 }
