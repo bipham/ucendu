@@ -51,4 +51,11 @@ class ReadingCommentNotification extends Model
                     ->orderBy('updated_at', 'desc')
                     ->get();
     }
+
+    public function readNotificationById($id, $type_noti) {
+        DB::table('reading_comment_notifications')  -> where('id', $id)
+                                                    -> where('type_noti', $type_noti)
+                                                    -> update(['read' => 1, 'read_at' => Carbon::now()]);
+        return 'success';
+    }
 }

@@ -28,6 +28,8 @@ Route::get('deleteCommentReading/{comment_id}',['as'=>'deleteCommentReading','us
 Route::get('setPublicReadingComment/{comment_id}',['as'=>'setPublicReadingComment','uses'=>'Admin\ReadingCommentController@setPublicReadingComment']);
 Route::get('setPrivateReadingComment/{comment_id}',['as'=>'setPrivateReadingComment','uses'=>'Admin\ReadingCommentController@setPrivateReadingComment']);
 
+Route::get('readNotification/{type_noti}--{id}',['as'=>'readNotification','uses'=>'ReadingNotificationController@readNotification']);
+
 /*********************************************************
  *
  *                  ROUTE FOR ADMIN MODULE

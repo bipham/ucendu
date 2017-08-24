@@ -45,10 +45,22 @@ class ReadingNotificationController extends Controller
                     $array_notification['lesson_id'] = $lesson_detail->id;
                     $array_notification['quiz_id'] = $quiz_id->id;
                     $array_notification['comment_id'] = $notificationReading->comment_id;
+                    $array_notification['noti_id'] = $notificationReading->id;
                     array_push($result_notifications, $array_notification);
                 }
             }
             return json_encode(['list_notis' => $result_notifications]);
+        }
+    }
+
+    public function readNotification($type_noti, $id) {
+        if (Request::ajax()) {
+            $readingCommentNotificationModel = new ReadingCommentNotification();
+            if ($type_noti == 0) {
+                $type_notification = 'userCommentNotification';
+            }
+            $result = $readingCommentNotificationModel->readNotificationById($id, $type_notification);
+            return json_encode(['ok' => $result]);
         }
     }
 }
