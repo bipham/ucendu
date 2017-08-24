@@ -53,7 +53,7 @@
                         <div class="img-auto-center lesson-comment-info thumbnail-outer-custom">
                             <img class="rounded img-thumbnail img-feature-lesson img-feature-custom img-thumbnail-inner" src="{{ asset('storage/upload/images/img-feature/' . $comment_reading['image_lesson_feature']) }}" alt="{!! $comment_reading['lesson_title'] !!}" />
                             <span class="username-comment inline-class title-thumbnail-inner">
-                                <a href="{{url('http://ucendu.dev/reading/readingViewSolutionLesson/' . $comment_reading['lesson_id'] . '-' . $comment_reading['quiz_id'])}}">
+                                <a href="{{url('http://ucendu.dev/reading/readingViewSolutionLesson/' . $comment_reading['lesson_id'] . '-' . $comment_reading['quiz_id'] . '?question=' . $comment_reading['question_id_custom'] . '&comment=' . $comment_reading['comment_id'])}}">
                                     {!! $comment_reading['lesson_title'] !!}
                                 </a>
                             </span>
