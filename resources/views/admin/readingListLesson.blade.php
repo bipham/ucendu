@@ -40,16 +40,16 @@
                         <a href="{{url('editLessonReading/' . $lesson->id)}}">
                             <button type="button" class="btn btn-info btn-admin-custom btn-edit-lesson" data-id="{!! $lesson->id !!}" onclick="">Edit</button>
                         </a>
-                        <button class="btn btn-warning btn-admin-custom btn-edit-info-basic-lesson" data-id="{!! $lesson->id !!}" data-toggle="modal" data-target="#editInfoBasicReadingLessonModal">Edit Basic</button>
+                        <button class="btn btn-warning btn-admin-custom btn-edit-info-basic-lesson" data-id="{!! $lesson->id !!}" data-toggle="modal" data-target="#editInfoBasicReadingLessonModal-{!! $lesson->id !!}">Edit Basic</button>
                         <button class="btn btn-danger btn-admin-custom btn-del-lesson" data-id="{!! $lesson->id !!}" onclick="deleteReadingLesson({!! $lesson->id !!})">Del</button>
 
                         <!-- Modal Edit Basic-->
-                        <div class="modal fade" id="editInfoBasicReadingLessonModal" tabindex="-1" data-id="{!! $lesson->id !!}" role="dialog" aria-labelledby="editInfoBasicReadingLessonModal" aria-hidden="true">
+                        <div class="modal fade" id="editInfoBasicReadingLessonModal-{!! $lesson->id !!}" tabindex="-1" data-id="{!! $lesson->id !!}" role="dialog" aria-labelledby="editInfoBasicReadingLessonModal" aria-hidden="true">
                             <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="readingReviewQuizModalLabel">
-                                            Review your answers
+                                            Edit basic lesson!
                                         </h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
@@ -59,15 +59,15 @@
                                         <form role="form" action="{!! url('updateInfoBasicReadingLesson') !!}" method="POST">
                                             <input type="hidden" name="_token" value="{!!csrf_token()!!}">
                                             <div class="form-group">
-                                                <label for="itemname">
+                                                <label for="title-lesson-{!! $lesson->id !!}">
                                                     Tên Bài Viết
                                                 </label>
-                                                <input type="text" name="title-lesson" class="form-control" placeholder="Điền vào đây" required id="titleLesson" value="{!! $lesson->title !!}">
+                                                <input type="text" name="title-lesson-{!! $lesson->id !!}" class="form-control" placeholder="Điền vào đây" required id="titleLesson{!! $lesson->id !!}" value="{!! $lesson->title !!}">
                                             </div>
                                             <div class="form-group form-upload-img-custom">
                                                 <label>Hình Đại Diện</label>
-                                                <input type="file" name="image-main" onchange="readURL(this);" required id="imgFeature">
-                                                <img id="image-main-preview" class="img-upload-product" src="{{ asset('storage/upload/images/img-feature/' . $lesson->image_feature) }}" alt="Ảnh" />
+                                                <input type="file" name="image-main-{!! $lesson->id !!}" onchange="readURL(this);" required id="imgFeature{!! $lesson->id !!}" data-id="{!! $lesson->id !!}">
+                                                <img id="image-main-preview-{!! $lesson->id !!}" class="img-upload-product" src="{{ asset('storage/upload/images/img-feature/' . $lesson->image_feature) }}" alt="Ảnh" />
                                             </div>
                                         </form>
                                     </div>
