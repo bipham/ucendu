@@ -16,7 +16,7 @@ var img_extension = '';
 $( document ).ready(function() {
     $('.btn-save-info-basic').click(function () {
         var lesson_id = $(this).parents('.modal').data('id');
-        var title_lesson = $('#titleLesson').val();
+        var title_lesson = $('#titleLesson' + lesson_id).val();
         var ajaxUrl = ajaxUpdateInfoBasic + lesson_id;
         $.ajax({
             type: "POST",
@@ -86,7 +86,9 @@ function deleteReadingLesson(id) {
 }
 
 function readURL(input) {
-    img_name = $('input[type=file]').val().split('\\').pop();
+    var $this = input;
+    var id_lesson = $this.dataset.id;
+    img_name = $('input#imgFeature' + id_lesson + '[type=file]').val().split('\\').pop();
     img_extension = img_name.substr( (img_name.lastIndexOf('.') + 1) ).toLowerCase();
     var allowedExtensions = ['png', 'jpg', 'jpeg', 'gif'];
     if( allowedExtensions.indexOf(img_extension) == -1 ) {
@@ -94,24 +96,24 @@ function readURL(input) {
             message: "Img not true format!",
             backdrop: true
         });
-        $('#imgFeature').val('');
+        $('input#imgFeature' + id_lesson + '[type=file]').val('');
         img_name = '';
-        $("#image-main-preview").attr('src', '#');
-        $("#image-main-preview").addClass('hidden-class');
+        $("#image-main-preview-" + id_lesson).attr('src', '#');
+        $("#image-main-preview-" + id_lesson).addClass('hidden-class');
         i++;
         return;
     }
     else {
-        img_name = $('input[type=file]').val().split('\\').pop();
+        img_name = $('input#imgFeature' + id_lesson + '[type=file]').val().split('\\').pop();
         if (input.files && input.files[0]) {
             var reader = new FileReader();
 
             reader.onload = function (e) {
-                $("#" + input.name + "-preview")
+                $("#image-main-preview-" + id_lesson)
                     .attr('src', e.target.result)
                     .width(150);
                 img_url = e.target.result;
-                $("#" + input.name + "-preview").removeClass('hidden-class');
+                $("#image-main-preview-" + id_lesson).removeClass('hidden-class');
             };
             reader.readAsDataURL(input.files[0]);
         }
