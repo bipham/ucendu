@@ -13,6 +13,10 @@
 
 Route::pattern('nameDomain', '(www.ucendu.dev|ucendu.dev|www.ucendu.com|ucendu.com|www.ucendu.vn|ucendu.vn)');
 
+Route::get('/', function () {
+    return view('welcome');
+});
+
 // Authentication routes...
 Route::get('login', ['as'=>'getLogin', 'uses' => 'Auth\LoginController@getLogin']);
 Route::post('login',['as'=>'postLogin','uses'=>'Auth\LoginController@postLogin']);
@@ -38,10 +42,6 @@ Route::get('markAllNotificationAsRead',['as'=>'markAllNotificationAsRead','uses'
  *********************************************************/
 
 Route::group(['domain' => 'admin.{nameDomain}'], function () {
-    Route::get('/', function () {
-        return view('welcome');
-    });
-
     Route::get('uploadReadingLesson',['as'=>'getUploadReadingLesson','uses'=>'Admin\ReadingLessonController@getUploadReadingLesson']);
     Route::post('uploadReadingLesson',['as'=>'postUploadReadingLesson','uses'=>'Admin\ReadingLessonController@postUploadReadingLesson']);
 
@@ -78,10 +78,6 @@ Route::group(['domain' => 'admin.{nameDomain}'], function () {
  *
  *********************************************************/
 Route::group(['domain'=>'{nameDomain}', 'middleware' => ['clientAuth']], function () {
-    Route::get('/', function () {
-        return view('welcome');
-    });
-
     Route::get('showComments/{question_id_custom}',['as'=>'showComments','uses'=>'Client\CommentQuestionController@getComments']);
     Route::get('showKeywords/{question_id_custom}',['as'=>'showKeywords','uses'=>'Client\CommentQuestionController@getKeywords']);
 
