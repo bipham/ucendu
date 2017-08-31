@@ -11,7 +11,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>@yield('meta-title', 'Reading English') - Reading English</title>
+    <title>@yield('meta-title', 'Reading English') - Ucendu</title>
     <link rel="stylesheet" href="{{asset('public/libs/bootstrap/css/bootstrap.min.css')}}"/>
     <link rel="stylesheet" href="{{asset('public/libs/font-awesome/css/font-awesome.min.css')}}"/>
     <link rel="stylesheet" href="{{asset('public/css/client/readingLessonDetail.css')}}">
@@ -25,7 +25,7 @@
     </script>
     @yield('css')
 </head>
-<body>
+<body data-hijacking="on" data-animation="parallax">
 <a href="#" id="allownoti" class="hidden">Cho phép thông báo</a>
 <a href="#" id="shownoti" class="hidden">Hiển thị thông báo</a>
 <div class="overlay"></div>

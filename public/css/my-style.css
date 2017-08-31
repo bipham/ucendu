@@ -485,7 +485,7 @@ ul.primary-header-custom li.nav-item:before {
 
 .btn-lesson-overview-area {
 	margin-top: 10px;
-	text-align: center;s
+	text-align: center;
 }
 
 .limit-time-overview {
@@ -1273,4 +1273,66 @@ Action Center User
 
 .overflow-hidden-class {
     overflow: hidden;
+}
+
+.img-banner-home-custom.parallax {
+	/* The image used */
+	background-image: url("/public/imgs/background-header/banner-home.png");
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.outer-banner-custom {
+	height: 100vh;
+	text-align: center;
+	vertical-align: middle;
+	display: table;
+	width: 100%;
+}
+
+.outer-banner-custom:before {
+	content: ' ';
+	display: inline-block;
+	vertical-align: middle;
+	height: 100%;
+}
+
+.middle-banner-custom {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.inner-banner-custom {
+	max-width: 100%;
+	margin: 0 auto;
+	display: inline-block;
+	vertical-align: middle;
+	background: rgba(41, 43, 44, 0.65);
+	padding: 40px;
+}
+
+.title-banner-custom {
+	color: white;
+	font-size: 25px;
+}
+
+.name-banner-custom {
+	color: #00d8b3;
+	font-size: 100px;
+	font-weight: 900;
+	letter-spacing: 2px;
+	word-wrap: break-word;
+	word-break: break-word;
+}
+
+.name-store-welcome {
+	color: #00d8b3;
+	margin: 20px 0;
+}
+
+.content-banner-custom {
+	color: white;
+	font-size: 25px;
 }

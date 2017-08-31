@@ -1,95 +1,131 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @if (Auth::check())
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
-                    @endif
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+<?php
+/**
+ * Created by PhpStorm.
+ * User: BiPham
+ * Date: 7/18/2017
+ * Time: 4:42 PM
+ */
+//var_dump($highest_result[1]);
+?>
+@extends('layout.master')
+@section('meta-title')
+    Welcome Ucendu
+@endsection
+@section('css')
+    <link rel="stylesheet" href="{{asset('public/css/reset.css')}}">
+    <link rel="stylesheet" href="{{asset('public/css/welcome.css')}}">
+    <script src="{{asset('public/libs/modernizr/modernizr.js')}}"></script>
+@endsection
+@section('content')
+    <section class="cd-section visible">
+        <div class="row-fluid outer-banner-custom img-banner-home-custom parallax">
+            <div class="middle-banner-custom">
+                <div class="welcome-store-custom inner-banner-custom">
+                    <div class="title-welcome title-banner-custom">
+                        CHÀO MỪNG BẠN ĐẾN VỚI
+                    </div>
+                    <div class="name-store-welcome name-banner-custom">
+                        UCENDU
+                    </div>
+                    <div class="content-store content-banner-custom">
+                        Đây là nơi bạn có thể học tập và ôn thi IELTS!
+                    </div>
                 </div>
             </div>
         </div>
-    </body>
-</html>
+    </section>
+
+    <section class="cd-section">
+        <div class="row-fluid outer-banner-custom img-banner-home-custom parallax">
+            <div class="middle-banner-custom">
+                <div class="welcome-store-custom inner-banner-custom">
+                    <div class="title-welcome title-banner-custom">
+                        GIỚI THIỆU
+                    </div>
+                    {{--<div class="name-store-welcome name-banner-custom">--}}
+                        {{--UCENDU--}}
+                    {{--</div>--}}
+                    {{--<div class="content-store content-banner-custom">--}}
+                        {{--Đây là nơi bạn có thể học tập và ôn thi IELTS!--}}
+                    {{--</div>--}}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cd-section">
+        <div class="row-fluid outer-banner-custom img-banner-home-custom parallax">
+            <div class="middle-banner-custom">
+                <div class="welcome-store-custom inner-banner-custom">
+                    <div class="title-welcome title-banner-custom">
+                        PHƯƠNG PHÁP LỘ TRÌNH
+                    </div>
+                    {{--<div class="name-store-welcome name-banner-custom">--}}
+                    {{--UCENDU--}}
+                    {{--</div>--}}
+                    {{--<div class="content-store content-banner-custom">--}}
+                    {{--Đây là nơi bạn có thể học tập và ôn thi IELTS!--}}
+                    {{--</div>--}}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cd-section">
+        <div class="row-fluid outer-banner-custom img-banner-home-custom parallax">
+            <div class="middle-banner-custom">
+                <div class="welcome-store-custom inner-banner-custom">
+                    <div class="title-welcome title-banner-custom">
+                        BẮT ĐẦU KHÓA HỌC
+                    </div>
+                    {{--<div class="name-store-welcome name-banner-custom">--}}
+                    {{--UCENDU--}}
+                    {{--</div>--}}
+                    {{--<div class="content-store content-banner-custom">--}}
+                    {{--Đây là nơi bạn có thể học tập và ôn thi IELTS!--}}
+                    {{--</div>--}}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cd-section">
+        <div class="row-fluid outer-banner-custom img-banner-home-custom parallax">
+            <div class="middle-banner-custom">
+                <div class="welcome-store-custom inner-banner-custom">
+                    <div class="title-welcome title-banner-custom">
+                        TESTIMONIALS
+                    </div>
+                    {{--<div class="name-store-welcome name-banner-custom">--}}
+                    {{--UCENDU--}}
+                    {{--</div>--}}
+                    {{--<div class="content-store content-banner-custom">--}}
+                    {{--Đây là nơi bạn có thể học tập và ôn thi IELTS!--}}
+                    {{--</div>--}}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <nav>
+        <ul class="cd-vertical-nav">
+            <li><a href="#0" class="cd-prev inactive">Next</a></li>
+            <li><a href="#0" class="cd-next">Prev</a></li>
+        </ul>
+    </nav> <!-- .cd-vertical-nav -->
+@endsection
+
+@section('scripts')
+    <script>
+        $(function () {
+            $('#myTabReading a.reading-practice').addClass('hidden');
+            $('#myTabReading a.reading-intro').addClass('hidden');
+            $('#myTabReading a.reading-test-quiz').addClass('hidden');
+            $('#myTabReading a.reading-solution-quiz').addClass('hidden');
+        })
+    </script>
+    <script src="{{asset('public/libs/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('public/libs/velocity/velocity.min.js')}}"></script>
+    <script src="{{asset('public/libs/velocity/velocity.ui.min.js')}}"></script>
+    <script src="{{asset('public/js/welcome.js')}}"></script>
+@endsection
