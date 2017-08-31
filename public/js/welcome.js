@@ -1,5 +1,7 @@
 jQuery(document).ready(function($){
 	//variables
+
+	$('.tab-content').remove();
 	var hijacking= $('body').data('hijacking'),
 		animationType = $('body').data('animation'),
 		delta = 0,
