@@ -69,7 +69,6 @@
                                 </a>
                             </div>
                         </div>
-                    </div>
                 </li>
                 <li class="nav-item tab-reading-control">
                     <a class="nav-link reading-intro" data-toggle="tab" href="#readingIntro" role="tab">Introduction</a>

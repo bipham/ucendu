@@ -49,5 +49,5 @@
 @endsection
 
 @section('scripts')
-    <script src="{{asset('public/js/admin/admin.js')}}"></script>
+    <script src="{{asset('public/js/admin/readingNewTypeQuestion.js')}}"></script>
 @endsection

@@ -38,7 +38,7 @@
                        <a class="nav-link" href="{{url('/reading')}}">Reading</a>
                    </li>
                    <li class="nav-item">
-                       <a class="nav-link" href="#">Progress</a>
+                       <a class="nav-link" href="{{url('/vocabularyReading')}}">Vocabulary</a>
                    </li>
                </ul>
            </div>

@@ -48,6 +48,9 @@ Route::group(['domain' => 'admin.{nameDomain}'], function () {
     Route::get('createNewTypeQuestion',['as'=>'getCreateNewTypeQuestion','uses'=>'Admin\TypeQuestionController@getCreateNewTypeQuestion']);
     Route::post('createNewTypeQuestion',['as'=>'postCreateNewTypeQuestion','uses'=>'Admin\TypeQuestionController@postCreateNewTypeQuestion']);
 
+    Route::get('createNewVocabulary',['as'=>'getCreateNewVocabulary','uses'=>'Admin\ReadingVocabularyController@getCreateNewVocabulary']);
+    Route::post('createNewVocabulary',['as'=>'postCreateNewVocabulary','uses'=>'Admin\ReadingVocabularyController@postCreateNewVocabulary']);
+
     Route::get('createNewUser',['as'=>'getCreateNewUser','uses'=>'Admin\UserController@getCreateNewUser']);
     Route::post('createNewUser',['as'=>'postCreateNewUser','uses'=>'Admin\UserController@postCreateNewUser']);
 
@@ -80,6 +83,8 @@ Route::group(['domain' => 'admin.{nameDomain}'], function () {
 Route::group(['domain'=>'{nameDomain}', 'middleware' => ['clientAuth']], function () {
     Route::get('showComments/{question_id_custom}',['as'=>'showComments','uses'=>'Client\CommentQuestionController@getComments']);
     Route::get('showKeywords/{question_id_custom}',['as'=>'showKeywords','uses'=>'Client\CommentQuestionController@getKeywords']);
+
+    Route::get('vocabularyReading',['as'=>'vocabularyReading','uses'=>'Client\ReadingVocabularyController@getVocabularyReading']);
 
     Route::post('enterNewComment',['as'=>'enterNewComment','uses'=>'Client\CommentQuestionController@createNewComment']);
 

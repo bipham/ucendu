@@ -1,0 +1,25 @@
+ul#myTabVocabulary {
+    background: #464a4c;
+    color: white;
+    padding: 0;
+    text-align: center;
+    font-size: 20px;
+}
+
+#myTabVocabulary.nav-tabs .nav-link {
+    border: 0;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    /*opacity: 0.3;*/
+}
+
+#myTabVocabulary.nav-tabs .nav-item.show .nav-link, #myTabVocabulary.nav-tabs .nav-link.active {
+    color: #333;
+    background-color: #fff;
+    /*opacity: 1;*/
+}
+
+.content-vocabulary-area {
+    overflow: auto;
+    height: calc(100vh - 188px);
+}

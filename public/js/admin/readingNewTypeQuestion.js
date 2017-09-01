@@ -6,8 +6,6 @@ $.ajaxSetup({
 
 var baseUrl = document.location.origin;
 var mainUrl = baseUrl.substring(13);
-console.log('base: ' + baseUrl);
-console.log('main: ' + mainUrl);
 var ajaxFinishCreateNewTypeQuestion = baseUrl + '/createNewTypeQuestion';
 
 $('.btn-finish-new-type-question').click(function () {
