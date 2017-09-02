@@ -1336,3 +1336,13 @@ Action Center User
 	color: white;
 	font-size: 25px;
 }
+
+#loading {
+	 display: none;
+	background: #fff url("/public/imgs/original/loader.gif") no-repeat center center;
+	opacity: 0.9;
+	z-index: 12345;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+}

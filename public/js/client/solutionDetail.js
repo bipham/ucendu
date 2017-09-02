@@ -30,10 +30,6 @@ var comment_id_noti = getUrlParameter('comment');
 console.log('question_id_noti ' + baseUrl);
 console.log('comment_id_noti ' + comment_id_noti);
 
-jQuery(function(){
-    jQuery('.btn-show-comments[data-qnumber=' + question_id_noti + ']').trigger('click');
-});
-
 var mainUrl_tmp = baseUrl.substring(7);
 var adminBaseUrl = 'http://admin.' + mainUrl_tmp;
 function deleteReadingComment(id) {
@@ -229,7 +225,7 @@ $('.btn-show-answered').click(function () {
 
 function showComments(i) {
     var ajaxUrlShowComments = baseUrl + '/showComments/' + i;
-    console.log('ajaxUrlShowComments: ' + ajaxUrlShowComments);
+    $('#loading').show();
     $.ajax({
         type: "GET",
         url: ajaxUrlShowComments,
@@ -406,8 +402,31 @@ function showComments(i) {
             if (numItems == 0) {
                 $('#commentArea-' + i + ' .comments-area').append('<p class="no-cmt">Chua co comment nao cho cau hoi nay!</p>');
             }
+
+            $('#loading').hide();
+
+            //Show Comment:
+                if (question_id_noti && comment_id_noti) {
+                    $('html, body').animate({
+                        scrollTop: $('.solution-detail').offset().top
+                    }, 1000);
+
+                    var t = 60;
+                    var r = $(".right-panel-custom").offset().top;
+                    var u = $("#comment" + comment_id_noti).offset().top;
+                    var f = $(".right-panel-custom").scrollTop();
+                    var v = u + f - r;
+                    $(".right-panel-custom").animate({
+                        scrollTop: v - t
+                    });
+                    $("#comment" + comment_id_noti).addClass('current-cmt');
+                    setTimeout(function(){
+                        $("#comment" + comment_id_noti).addClass('time-out-current-cmt');
+                    }, 3000);
+                }
         },
         error: function (data) {
+            $('#loading').hide();
             console.log('Error:', data);
             bootbox.alert({
                 message: "Error, please contact admin!",
@@ -585,31 +604,7 @@ function enterComment(e) {
 $(document).on("keypress","input.reply-cmt",enterComment);
 
 $(document).ready(function() {
-    $(function () {
-        if (question_id_noti && comment_id_noti) {
-            $('html, body').animate({
-                scrollTop: $('.solution-detail').offset().top
-            }, 1000);
-
-            setTimeout(function() {
-                var t = 60;
-                var r = $(".right-panel-custom").offset().top;
-                var u = $("#comment" + comment_id_noti).offset().top;
-                var f = $(".right-panel-custom").scrollTop();
-                var v = u + f - r;
-                $(".right-panel-custom").animate({
-                    scrollTop: v - t
-                }, {
-                    duration: 100,
-                    complete: function () {
-                        $("#comment" + comment_id_noti).addClass('current-cmt');
-                    }
-                });
-            }, 3000);
-            setTimeout(function(){
-                $("#comment" + comment_id_noti).addClass('time-out-current-cmt');
-            },5000);
-        }
-        return false;
+    jQuery(function(){
+        jQuery('.btn-show-comments[data-qnumber=' + question_id_noti + ']').trigger('click');
     });
 });
