@@ -181,6 +181,7 @@ input.reply-cmt {
 
 .btn-show-answered {
     color: black;
+    background: white;
 }
 
 .btn-show-answered:hover {
@@ -276,11 +277,19 @@ input.reply-cmt {
 }
 
 .title-answer-table {
-    margin-bottom: 20px;
+    text-align: center;
+    margin: 50px 0;
+    font-size: 45px;
+    color: green;
 }
 
 .answered-score {
     margin-bottom: 20px;
+}
+
+.breadcrumb-custom-area {
+     background: transparent;
+    margin-bottom: 0;
 }
 
 canvas#myChartReadingScore {
@@ -385,7 +394,7 @@ input.reply-sub-cmt {
 }
 
 .current-cmt {
-    background: rgba(44, 200, 247, 0.42);
+    background: rgba(241, 245, 79, 0.38);
     transition: all 2s;
 }
 

@@ -58,20 +58,32 @@ class ReadingLessonController extends Controller
             $listKeyword = $_POST['listKeyword'];
             $type_lesson = $_POST['type_lesson'];
             $limit_time = $_POST['limit_time'];
-
             $base_to_php = explode(',', $img_url);
-
             $data = base64_decode($base_to_php[1]);
 
-            $filepath = base_path() . '/storage/upload/images/img-feature/';
+            $readingLessonModel = new ReadingLesson();
+            $current_lesson_id = $readingLessonModel::orderBy('id', 'desc')->first();
+
+            if ($current_lesson_id == NULL) {
+                $current_lesson_id = 1;
+            }
+            else {
+                $current_lesson_id = $current_lesson_id->id + 1;
+            }
+
+            $filepath = base_path() . '\storage\upload\images\img-feature';
 
             if (!File::exists($filepath)) {
                 File::makeDirectory($filepath, 0777, true, true);
             }
 
-            $filename_img = base_path() . '/storage/upload/images/img-feature/' . $img_name;
+            $filename_img = base_path() . '\storage\upload\images\img-feature\\' . $img_name . '-' . $current_lesson_id;
 
             file_put_contents($filename_img, $data);
+
+            $destination = base_path() . '\storage\upload\images\img-feature\\' . $img_name . '-' . $current_lesson_id;
+
+            compressImage($filename_img, $destination);
 
             $readingLessonModel = new ReadingLesson();
             $post_id = $readingLessonModel->createNewPost($title_post, $content_post, $content_highlight, $img_name);

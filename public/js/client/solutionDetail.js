@@ -223,7 +223,8 @@ $('.btn-show-answered').click(function () {
     scrollToExplain(q_index);
 });
 
-function showComments(i) {
+function showComments(i, isTrigger) {
+    isTrigger = isTrigger || false;
     var ajaxUrlShowComments = baseUrl + '/showComments/' + i;
     $('#loading').show();
     $.ajax({
@@ -406,6 +407,7 @@ function showComments(i) {
             $('#loading').hide();
 
             //Show Comment:
+            if (isTrigger) {
                 if (question_id_noti && comment_id_noti) {
                     $('html, body').animate({
                         scrollTop: $('.solution-detail').offset().top
@@ -424,6 +426,20 @@ function showComments(i) {
                         $("#comment" + comment_id_noti).addClass('time-out-current-cmt');
                     }, 3000);
                 }
+            }
+            else {
+                $('html, body').animate({
+                    scrollTop: $('.solution-detail').offset().top
+                }, 1000);
+                var t = 60;
+                var r = $(".right-panel-custom").offset().top;
+                var u = $("#commentArea-" + i).offset().top;
+                var f = $(".right-panel-custom").scrollTop();
+                var v = u + f - r;
+                $(".right-panel-custom").animate({
+                    scrollTop: v - t
+                });
+            }
         },
         error: function (data) {
             $('#loading').hide();
@@ -605,6 +621,10 @@ $(document).on("keypress","input.reply-cmt",enterComment);
 
 $(document).ready(function() {
     jQuery(function(){
-        jQuery('.btn-show-comments[data-qnumber=' + question_id_noti + ']').trigger('click');
+        // jQuery('.btn-show-comments[data-qnumber=' + question_id_noti + ']').trigger('click');
+        if (question_id_noti && comment_id_noti) {
+            showComments(question_id_noti, true);
+            $('#commentArea-' + question_id_noti).collapse();
+        }
     });
 });

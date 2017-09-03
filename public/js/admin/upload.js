@@ -364,6 +364,7 @@ $( document ).ready(function() {
     // });
 
     $('.btn-finish-steps').click(function () {
+        $('#loading').show();
         limit_time = $('#limitTime').val();
         // type_question = getValueTypeQuestion();
         $.ajax({
@@ -372,6 +373,7 @@ $( document ).ready(function() {
             dataType: "json",
             data: { img_url: img_url, img_name: img_name, title_post: title_post, list_answer: listAnswer, cate_selected: cate_selected, content_post: content_post, content_highlight: content_highlight, content_quiz: content_quiz, content_answer_quiz: content_answer_quiz, list_type_questions: list_type_questions, listKeyword: listKeyword, type_lesson: type_lesson, limit_time: limit_time },
             success: function (data) {
+                $('#loading').hide();
                 bootbox.alert({
                     message: "Create post success!",
                     backdrop: true,
@@ -381,6 +383,7 @@ $( document ).ready(function() {
                 });
             },
             error: function (data) {
+                $('#loading').hide();
                 bootbox.alert({
                     message: "Create post fail!",
                     backdrop: true

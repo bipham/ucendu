@@ -1383,7 +1383,7 @@ h2.title-post {
 	color: #5cb85c;
 }
 
-#readingIntro.active {
+#readingIntro.active, #readingSolutionQuiz.active {
 	display: block;
 }
 

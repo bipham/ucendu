@@ -13,9 +13,36 @@
 @endsection
 @section('css')
     <link rel="stylesheet" href="{{asset('public/css/client/readingSolution.css')}}">
+
+    <?php
+    $bg = array('1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg', '9.jpg', '10.jpg', '11.jpg', '12.jpg', '13.jpg', '14.jpg', '15.jpg');
+    $i = rand(0, count($bg)-1); // generate random number size of the array
+    $i2 = rand(0, count($bg)-1); // generate random number size of the array
+    $selectedBg = "$bg[$i]"; // set variable equal to which random filename was chosen
+    $selectedBg2 = "$bg[$i2]"; // set variable equal to which random filename was chosen
+    ?>
+    <style type="text/css">
+        .outer-banner-custom {
+            background: url(/public/imgs/background-header/<?php echo $selectedBg2; ?>);
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .header-product {
+            background: url(/public/imgs/background-header/<?php echo $selectedBg; ?>);
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 300px;
+            margin-bottom: 30px;
+        }
+    </style>
 @endsection
 @section('banner-page')
-    <div class="row-fluid header-product outer-banner-custom">
+    <div class="row-fluid outer-banner-custom">
         <div class="breadcrumb-header middle-banner-custom">
             <div class="content-breadcrumb-header content-banner-custom">
                 <h2 class="title-post">{!! $lesson_detail->title !!}</h2>
@@ -151,6 +178,33 @@
 @endsection
 
 @section('readingSolutionQuiz')
+    <div class="row-fluid header-product outer-banner-custom">
+        <div class="breadcrumb-header middle-banner-custom">
+            <div class="content-breadcrumb-header content-banner-custom">
+                <div class="breadcrumb-custom-area">
+                    <h2 class="title-post">{!! $lesson_detail->title !!}</h2>
+                    <ol class="breadcrumb" id="path">
+                        <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{url('/reading')}}">READING</a></li>
+                        <li class="breadcrumb-item">
+                            <a href="#">
+                                @if ($type_lesson == 1)
+                                    {!! $type_question->name !!}
+                                @elseif ($type_lesson == 2)
+                                    Mix Test
+                                @elseif ($type_lesson == 3)
+                                    Full Test
+                                @endif
+                            </a>
+                        </li>
+                    </ol>
+                </div>
+                <div class="info-overview">
+
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container solution-detail-page page-custom">
         @include('utils.readingSolutionTables', ['lesson_detail' => $lesson_detail, 'lesson_quiz' => $lesson_quiz, 'correct_answers' => $correct_answer, 'list_answered' => $list_answer])
         <input type="hidden" name="_token" value="{!!csrf_token()!!}">
