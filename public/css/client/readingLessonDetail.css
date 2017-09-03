@@ -18,6 +18,7 @@ h4.reading-title-start {
 
 .overlay-lesson .outer-banner-custom {
     background-image: url(/public/imgs/original/cover-1.jpg);
+    height: 100%;
 }
 
 .btn-reading-start-test {
