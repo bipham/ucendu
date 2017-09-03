@@ -11,14 +11,27 @@
 @section('meta-title')
     {!! $type_question->name !!}
 @endsection
-@section('content')
+@section('banner-page')
+    <div class="row-fluid header-product outer-banner-custom">
+        <div class="breadcrumb-header middle-banner-custom">
+            <div class="content-breadcrumb-header content-banner-custom">
+                <h2 class="title-post">{!! $type_question->name !!}</h2>
+                <ol class="breadcrumb" id="path">
+                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/reading')}}">READING</a></li>
+                    {{--<li class="breadcrumb-item"><a href="{{url('/')}}">asd</a></li>--}}
+                </ol>
+            </div>
+        </div>
+    </div>
+@endsection
     {{--@include('utils.toolbarReadingLesson')--}}
 
-    @section('typeLessonHeader')
-        <span class="badge badge-success question-header question-header-{!! $type_question->id !!} type-lesson-header" data-type-question-id="{!! $type_question->id !!}">
-                        {!! $type_question->name !!}
-                    </span>
-    @endsection
+@section('typeLessonHeader')
+    <span class="badge badge-success question-header question-header-{!! $type_question->id !!} type-lesson-header" data-type-question-id="{!! $type_question->id !!}">
+        {!! $type_question->name !!}
+    </span>
+@endsection
 
 @section('readingIntro')
     {!! $type_question->introduction !!}
@@ -66,8 +79,6 @@
             </div>
         </div>
     </div>
-@endsection
-
 @endsection
 
 @section('scripts')

@@ -1,5 +1,71 @@
-.menu-fix-custom, .tab-content, footer.navbar-fixed-bottom, header#header {
+.menu-fix-custom, .tab-content, footer.navbar-fixed-bottom {
     display: none;
+}
+
+.outer-banner-home-custom {
+    height: 100vh;
+    text-align: center;
+    vertical-align: middle;
+    display: table;
+    width: 100%;
+}
+
+.outer-first-banner-home-custom {
+    height: calc(100vh - 140px);
+}
+
+.outer-banner-home-custom:before {
+    content: ' ';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+
+.middle-banner-home-custom {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.inner-banner-home-custom {
+    max-width: 100%;
+    margin: 0 auto;
+    display: inline-block;
+    vertical-align: middle;
+    background: rgba(41, 43, 44, 0.65);
+    padding: 40px;
+}
+
+.title-banner-home-custom {
+    color: white;
+    font-size: 25px;
+}
+
+.name-banner-home-custom {
+    color: #00d8b3;
+    font-size: 100px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+.content-banner-home-custom {
+    color: white;
+    font-size: 25px;
+}
+
+.img-banner-homepage-custom.parallax {
+    /* The image used */
+    background-image: url("/public/imgs/background-header/banner-home.png");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.name-homepage-welcome {
+    color: #00d8b3;
+    margin: 20px 0;
 }
 
 /* --------------------------------
@@ -7,22 +73,6 @@
 Primary style
 
 -------------------------------- */
-*, *::after, *::before {
-    box-sizing: border-box;
-}
-
-html {
-    font-size: 62.5%;
-}
-
-body {
-    font-size: 1.6rem;
-    font-family: "Open Sans", sans-serif;
-    color: #ffffff;
-    background-color: #22283f;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
 body::before {
     /* never visible - this is used in jQuery to check the current MQ */
     content: 'mobile';
@@ -33,11 +83,6 @@ body::before {
         /* never visible - this is used in jQuery to check the current MQ */
         content: 'desktop';
     }
-}
-
-a {
-    color: #267481;
-    text-decoration: none;
 }
 
 /* --------------------------------

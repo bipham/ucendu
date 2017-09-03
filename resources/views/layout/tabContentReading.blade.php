@@ -10,6 +10,7 @@
 <!-- Tab panes -->
 <div class="tab-content">
     <div class="tab-pane" id="readingIntro" role="tabpanel">
+        @yield('banner-page')
         <div class="container introduction-container">
             @yield('readingIntro')
         </div>

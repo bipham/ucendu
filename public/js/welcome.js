@@ -13,7 +13,8 @@ jQuery(document).ready(function($){
     var sectionsAvailable = $('.cd-section'),
     	verticalNav = $('.cd-vertical-nav'),
     	prevArrow = verticalNav.find('a.cd-prev'),
-    	nextArrow = verticalNav.find('a.cd-next');
+    	nextArrow = verticalNav.find('a.cd-next'),
+    	header_menu = $('header#header');
 
 	
 	//check the media query and bind corresponding events
@@ -195,6 +196,7 @@ jQuery(document).ready(function($){
 
     function checkNavigation() {
     	//update navigation arrows visibility
+		( sectionsAvailable.filter('.visible').is(':first-of-type') ) ? header_menu.removeClass('hidden') : header_menu.addClass('hidden');
 		( sectionsAvailable.filter('.visible').is(':first-of-type') ) ? prevArrow.addClass('inactive') : prevArrow.removeClass('inactive');
 		( sectionsAvailable.filter('.visible').is(':last-of-type')  ) ? nextArrow.addClass('inactive') : nextArrow.removeClass('inactive');
 	}

@@ -18,16 +18,17 @@
 @endsection
 @section('content')
     <section class="cd-section visible">
-        <div class="row-fluid outer-banner-custom img-banner-home-custom parallax">
-            <div class="middle-banner-custom">
-                <div class="welcome-store-custom inner-banner-custom">
-                    <div class="title-welcome title-banner-custom">
+        @include('layout.menuHeaderReading')
+        <div class="row-fluid outer-banner-home-custom outer-first-banner-home-custom img-banner-homepage-custom parallax">
+            <div class="middle-banner-home-custom">
+                <div class="welcome-homepage-custom inner-banner-home-custom">
+                    <div class="title-welcome title-banner-home-custom">
                         CHÀO MỪNG BẠN ĐẾN VỚI
                     </div>
-                    <div class="name-store-welcome name-banner-custom">
+                    <div class="name-homepage-welcome name-banner-home-custom">
                         UCENDU
                     </div>
-                    <div class="content-store content-banner-custom">
+                    <div class="content-homepage content-banner-home-custom">
                         Đây là nơi bạn có thể học tập và ôn thi IELTS!
                     </div>
                 </div>
@@ -36,10 +37,10 @@
     </section>
 
     <section class="cd-section">
-        <div class="row-fluid outer-banner-custom img-banner-home-custom parallax">
-            <div class="middle-banner-custom">
-                <div class="welcome-store-custom inner-banner-custom">
-                    <div class="title-welcome title-banner-custom">
+        <div class="row-fluid outer-banner-home-custom img-banner-homepage-custom parallax">
+            <div class="middle-banner-home-custom">
+                <div class="welcome-homepage-custom inner-banner-home-custom">
+                    <div class="title-welcome title-banner-home-custom">
                         GIỚI THIỆU
                     </div>
                     {{--<div class="name-store-welcome name-banner-custom">--}}
@@ -54,10 +55,10 @@
     </section>
 
     <section class="cd-section">
-        <div class="row-fluid outer-banner-custom img-banner-home-custom parallax">
-            <div class="middle-banner-custom">
-                <div class="welcome-store-custom inner-banner-custom">
-                    <div class="title-welcome title-banner-custom">
+        <div class="row-fluid outer-banner-home-custom img-banner-homepage-custom parallax">
+            <div class="middle-banner-home-custom">
+                <div class="welcome-homepage-custom inner-banner-home-custom">
+                    <div class="title-welcome title-banner-home-custom">
                         PHƯƠNG PHÁP LỘ TRÌNH
                     </div>
                     {{--<div class="name-store-welcome name-banner-custom">--}}
@@ -72,10 +73,10 @@
     </section>
 
     <section class="cd-section">
-        <div class="row-fluid outer-banner-custom img-banner-home-custom parallax">
-            <div class="middle-banner-custom">
-                <div class="welcome-store-custom inner-banner-custom">
-                    <div class="title-welcome title-banner-custom">
+        <div class="row-fluid outer-banner-home-custom img-banner-homepage-custom parallax">
+            <div class="middle-banner-home-custom">
+                <div class="welcome-homepage-custom inner-banner-home-custom">
+                    <div class="title-welcome title-banner-home-custom">
                         BẮT ĐẦU KHÓA HỌC
                     </div>
                     {{--<div class="name-store-welcome name-banner-custom">--}}
@@ -90,10 +91,10 @@
     </section>
 
     <section class="cd-section">
-        <div class="row-fluid outer-banner-custom img-banner-home-custom parallax">
-            <div class="middle-banner-custom">
-                <div class="welcome-store-custom inner-banner-custom">
-                    <div class="title-welcome title-banner-custom">
+        <div class="row-fluid outer-banner-home-custom img-banner-homepage-custom parallax">
+            <div class="middle-banner-home-custom">
+                <div class="welcome-homepage-custom inner-banner-home-custom">
+                    <div class="title-welcome title-banner-home-custom">
                         TESTIMONIALS
                     </div>
                     {{--<div class="name-store-welcome name-banner-custom">--}}

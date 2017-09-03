@@ -15,8 +15,31 @@
 @section('css')
     <link rel="stylesheet" href="{{asset('public/css/client/readingSolution.css')}}">
 @endsection
-@section('content')
-    {{--@include('utils.toolbarReadingLesson')--}}
+@section('banner-page')
+    <div class="row-fluid header-product outer-banner-custom">
+        <div class="breadcrumb-header middle-banner-custom">
+            <div class="content-breadcrumb-header content-banner-custom">
+                <h2 class="title-post">{!! $lesson_detail->title !!}</h2>
+                <ol class="breadcrumb" id="path">
+                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/reading')}}">READING</a></li>
+                    <li class="breadcrumb-item">
+                        <a href="#">
+                            @if ($type_lesson == 1)
+                                {!! $type_question->name !!}
+                            @elseif ($type_lesson == 2)
+                                Mix Test
+                            @elseif ($type_lesson == 3)
+                                Full Test
+                            @endif
+                        </a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+@endsection
+{{--@include('utils.toolbarReadingLesson')--}}
 
 @section('titleTypeLesson')
     {!! $lesson_detail->title !!}
@@ -147,8 +170,6 @@
             </div>
         </div>
     </div>
-@endsection
-
 @endsection
 
 @section('scripts')

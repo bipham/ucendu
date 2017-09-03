@@ -16,69 +16,66 @@
         Full Test
     @endif
 @endsection
-@section('content')
-    {{--@include('utils.toolbarReadingLesson')--}}
+{{--@include('utils.toolbarReadingLesson')--}}
 
-    @section('typeLessonHeader')
-        @if ($type_lesson_id == 1)
-            <span class="badge badge-success question-header question-header-{!! $type_question->id !!} type-lesson-header" data-type-question-id="{!! $type_question->id !!}">
-                        {!! $type_question->name !!}
-                    </span>
-        @elseif ($type_lesson_id == 2)
-            <span class="badge badge-warning mix-test-header mix-test-header-{!! $type_lesson_id !!} type-lesson-header" data-type-lesson-id="{!! $type_lesson_id !!}">
-                       Mix Test
-                    </span>
-        @elseif ($type_lesson_id == 3)
-            <span class="badge badge-danger full-test-header full-test-header-{!! $type_lesson_id !!} type-lesson-header" data-type-lesson-id="{!! $type_lesson_id !!}">
-                        Full Test
-                    </span>
-        @endif
-    @endsection
+@section('typeLessonHeader')
+    @if ($type_lesson_id == 1)
+        <span class="badge badge-success question-header question-header-{!! $type_question->id !!} type-lesson-header" data-type-question-id="{!! $type_question->id !!}">
+            {!! $type_question->name !!}
+        </span>
+    @elseif ($type_lesson_id == 2)
+        <span class="badge badge-warning mix-test-header mix-test-header-{!! $type_lesson_id !!} type-lesson-header" data-type-lesson-id="{!! $type_lesson_id !!}">
+            Mix Test
+        </span>
+    @elseif ($type_lesson_id == 3)
+        <span class="badge badge-danger full-test-header full-test-header-{!! $type_lesson_id !!} type-lesson-header" data-type-lesson-id="{!! $type_lesson_id !!}">
+            Full Test
+        </span>
+    @endif
+@endsection
 
-    @section('readingPractice')
-        <div class="container reading-page page-custom">
-            <div class="list-reading-thumbnail">
-                <div class="row list-lesson-thumbnail">
-                    @foreach($practice_lessons as $practice_lesson)
-                        <?php
-                        $detailTypeQuestionOfQuiz =  $readingTypeQuestionOfQuizModel->getDetailQuizByQuizId($practice_lesson->id);
-                        $quiz_id = $practice_lesson->id;
-                        if (array_key_exists($practice_lesson->lesson_id, $highest_result)) {
-                            $highest_result_reading = $highest_result[$practice_lesson->lesson_id];
-                        }
-                        else {
-                            $highest_result_reading = 99999;
-                        }
-                        ?>
-                        @include('utils.contentGrid',['lesson' => $practice_lesson, 'detailTypeQuestionOfQuiz' => json_decode($detailTypeQuestionOfQuiz), 'quiz_id' => $quiz_id, 'highest_result_reading' => $highest_result_reading])
-                    @endforeach
-                </div>
+@section('readingPractice')
+    <div class="container reading-page page-custom">
+        <div class="list-reading-thumbnail">
+            <div class="row list-lesson-thumbnail">
+                @foreach($practice_lessons as $practice_lesson)
+                    <?php
+                    $detailTypeQuestionOfQuiz =  $readingTypeQuestionOfQuizModel->getDetailQuizByQuizId($practice_lesson->id);
+                    $quiz_id = $practice_lesson->id;
+                    if (array_key_exists($practice_lesson->lesson_id, $highest_result)) {
+                        $highest_result_reading = $highest_result[$practice_lesson->lesson_id];
+                    }
+                    else {
+                        $highest_result_reading = 99999;
+                    }
+                    ?>
+                    @include('utils.contentGrid',['lesson' => $practice_lesson, 'detailTypeQuestionOfQuiz' => json_decode($detailTypeQuestionOfQuiz), 'quiz_id' => $quiz_id, 'highest_result_reading' => $highest_result_reading])
+                @endforeach
             </div>
         </div>
-    @endsection
+    </div>
+@endsection
 
-    @section('readingTest')
-        <div class="container reading-page page-custom">
-            <div class="list-reading-thumbnail">
-                <div class="row list-lesson-thumbnail">
-                    @foreach($test_lessons as $test_lesson)
-                        <?php
-                        $detailTypeQuestionOfQuiz =  $readingTypeQuestionOfQuizModel->getDetailQuizByQuizId($test_lesson->id);
-                        $quiz_id = $test_lesson->id;
-                        if (array_key_exists($test_lesson->lesson_id, $highest_result)) {
-                            $highest_result_reading = $highest_result[$test_lesson->lesson_id];
-                        }
-                        else {
-                            $highest_result_reading = 99999;
-                        }
-                        ?>
-                        @include('utils.contentGrid',['lesson' => $test_lesson, 'detailTypeQuestionOfQuiz' => json_decode($detailTypeQuestionOfQuiz), 'quiz_id' => $quiz_id, 'highest_result_reading' => $highest_result_reading])
-                    @endforeach
-                </div>
+@section('readingTest')
+    <div class="container reading-page page-custom">
+        <div class="list-reading-thumbnail">
+            <div class="row list-lesson-thumbnail">
+                @foreach($test_lessons as $test_lesson)
+                    <?php
+                    $detailTypeQuestionOfQuiz =  $readingTypeQuestionOfQuizModel->getDetailQuizByQuizId($test_lesson->id);
+                    $quiz_id = $test_lesson->id;
+                    if (array_key_exists($test_lesson->lesson_id, $highest_result)) {
+                        $highest_result_reading = $highest_result[$test_lesson->lesson_id];
+                    }
+                    else {
+                        $highest_result_reading = 99999;
+                    }
+                    ?>
+                    @include('utils.contentGrid',['lesson' => $test_lesson, 'detailTypeQuestionOfQuiz' => json_decode($detailTypeQuestionOfQuiz), 'quiz_id' => $quiz_id, 'highest_result_reading' => $highest_result_reading])
+                @endforeach
             </div>
         </div>
-    @endsection
-
+    </div>
 @endsection
 
 @section('scripts')

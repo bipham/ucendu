@@ -13,13 +13,30 @@
 h4.reading-title-start {
     font-size: 40px;
     margin: 20px 0;
+    color: black;
+}
+
+.overlay-lesson .outer-banner-custom {
+    background-image: url(/public/imgs/original/cover-1.jpg);
 }
 
 .btn-reading-start-test {
     margin: 0 auto;
-    left: 25%;
+    /*left: 25%;*/
     position: relative;
     font-size: 30px;
+    font-weight: 600;
+}
+
+.overlay-lesson .content-breadcrumb-header {
+    background: transparent;
+}
+
+.breadcrumb-custom-area {
+    background: rgba(0, 0, 0, 0.77);
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
 }
 
 img.img-overlay-quiz {

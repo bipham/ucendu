@@ -29,7 +29,8 @@
                 <li class="menu-lesson-header">
                     <div class="btn-group btn-dropdown-products btn-lesson-menu">
                         <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            <i class="fa fa-bars" aria-hidden="true"></i>
+                            <i class="fa fa-folder icon-menu-lesson-dropdown icon-menu-lesson-dropdown-close" aria-hidden="true"></i>
+                            <i class="fa fa-folder-open icon-menu-lesson-dropdown icon-menu-lesson-dropdown-open" aria-hidden="true"></i>
                         </button>
                         <div class="dropdown-menu dropdowm-reading-header">
                             <div class="sub-menu-item-custom">
