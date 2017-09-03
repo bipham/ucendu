@@ -1293,8 +1293,8 @@ Action Center User
 }
 
 .outer-banner-custom {
-	height: calc(100vh - 205px);
-	/*height: 500px;*/
+	/*height: calc(100vh - 205px);*/
+	height: 300px;
 	text-align: center;
 	vertical-align: middle;
 	display: table;
