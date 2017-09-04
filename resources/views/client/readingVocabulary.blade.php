@@ -80,7 +80,7 @@
                     ?>
                     @if(sizeof($all_phrase_words) > 0 )
                         <div class="tab-pane tab-pane-vocabulary tab-pane-vocabulary-{!! $vocabulary->id !!}" id="vocabulary{!! $vocabulary->id !!}" role="tabpanel">
-                            <ul class="nav nav-tabs flex-column col-md-9 nav-tabs-vocabulary nav-tabs-vocabulary-{!! $vocabulary->id !!}">
+                            <ul class="nav nav-tabs flex-column col-md-8 nav-tabs-vocabulary nav-tabs-vocabulary-{!! $vocabulary->id !!}">
                                 @foreach($all_phrase_words as $phrase_word)
                                     <li class="nav-item tab-phrase-word-control">
                                         <a class="nav-link nav-link-phrase-word phrase-word-{!! $phrase_word->id !!}" data-toggle="tab" href="#phraseWord{!! $phrase_word->id !!}" role="tab">
@@ -94,7 +94,7 @@
                                     ?>
                                 @endforeach
                             </ul>
-                            <div class="tab-content col-md-3 content-phrase-word-area">
+                            <div class="tab-content col-md-4 content-phrase-word-area">
                                 @foreach($all_phrase_words as $phrase_word)
                                     <div class="tab-pane tab-pane-phrase-word tab-pane-phrase-word-{!! $phrase_word->id !!}" id="phraseWord{!! $phrase_word->id !!}" role="tabpanel">
                                         <div class="title-content-phrase-word">

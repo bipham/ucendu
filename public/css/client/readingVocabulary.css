@@ -72,6 +72,7 @@ ul#myTabVocabulary {
     border: 2px solid #f84545;
     /* padding: 5px; */
     height: 100%;
+    overflow: auto;
 }
 
 .name-phrase-word {
