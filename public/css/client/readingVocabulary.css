@@ -62,7 +62,7 @@ ul#myTabVocabulary {
     background: red;
     color: white;
     font-weight: 600;
-    margin-bottom: 20px;
+    /*margin-bottom: 20px;*/
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
 }
@@ -81,7 +81,7 @@ ul#myTabVocabulary {
 
 .inner-content-phrase-word {
     padding: 5px;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .tab-phrase-word-control {
