@@ -141,7 +141,10 @@
             $('#myTabReading a.reading-intro').tab('show');
             $('#myTabReading a.reading-test-quiz').addClass('hidden');
             $('#myTabReading a.reading-solution-quiz').addClass('hidden');
-        })
+        });
+        $(document).ready(function() {
+            $('#myTabLearningSection li.tab-learning-section-control a:first').tab('show');
+        });
     </script>
 @endsection
 
