@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateReadingVocabulariesTable extends Migration
+class CreateReadingPharseWordVocabulariesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateReadingVocabulariesTable extends Migration
      */
     public function up()
     {
-        Schema::create('reading_vocabularies', function (Blueprint $table) {
+        Schema::create('reading_pharse_word_vocabularies', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->unique();
-            $table->string('icon')->default('fa-star');
-//            $table->text('content')->nullable();
+            $table->integer('vocabulary_id')->unsigned();
+            $table->foreign('vocabulary_id')->references('id')->on('reading_vocabularies')->onDelete('cascade');
+            $table->string('phrase_word')->unique();
+            $table->text('content')->nullable();
             $table->boolean('status')->default(1);
             $table->timestamps();
         });
@@ -30,6 +31,6 @@ class CreateReadingVocabulariesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reading_vocabularies');
+        Schema::dropIfExists('reading_pharse_word_vocabularies');
     }
 }

@@ -3,25 +3,26 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class ReadingVocabulary extends Model
 {
     protected $table = 'reading_vocabularies';
 
-    protected $fillable = ['name', 'content', 'status'];
+    protected $fillable = ['name', 'icon', 'status'];
 
     public $timestamps = true;
 
-    public function createNewVocabulary ($type_name, $name_icon, $content) {
+    public function createNewVocabulary ($name, $icon) {
         $newVocabulary = new ReadingVocabulary();
-        $newVocabulary->name = $type_name;
-        $newVocabulary->icon = $name_icon;
-        $newVocabulary->content = $content;
+        $newVocabulary->name = $name;
+        $newVocabulary->icon = $icon;
+//        $newVocabulary->content = $content;
         $newVocabulary->save();
-        return 'success';
+        return $newVocabulary->id;
     }
 
     public function getAllVocabulary() {
-        return $this->get();
+        return $this->where('status', 1)->get();
     }
 }

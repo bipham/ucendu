@@ -167,8 +167,8 @@
     }
 
     .left-panel-custom {
-        width: 50%;
-        width: calc(50% - 18px);
+        /*width: 50%;*/
+        width: calc(60% - 18px);
         /* height: calc(100vh - 185px); */
         float: left;
         max-height: calc(100vh - 100px);

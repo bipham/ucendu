@@ -50,6 +50,7 @@ Route::group(['domain' => 'admin.{nameDomain}'], function () {
 
     Route::get('createNewVocabulary',['as'=>'getCreateNewVocabulary','uses'=>'Admin\ReadingVocabularyController@getCreateNewVocabulary']);
     Route::post('createNewVocabulary',['as'=>'postCreateNewVocabulary','uses'=>'Admin\ReadingVocabularyController@postCreateNewVocabulary']);
+    Route::post('createNewPhraseWord',['as'=>'postCreateNewPhraseWord','uses'=>'Admin\ReadingVocabularyController@postCreateNewPhraseWord']);
 
     Route::get('createNewUser',['as'=>'getCreateNewUser','uses'=>'Admin\UserController@getCreateNewUser']);
     Route::post('createNewUser',['as'=>'postCreateNewUser','uses'=>'Admin\UserController@postCreateNewUser']);
