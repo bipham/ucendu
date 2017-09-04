@@ -1,9 +1,8 @@
 ul#myTabVocabulary {
-    background: #5cb85c;
+    background: #464a4c;
     color: white;
     padding: 0;
     text-align: center;
-    font-size: 20px;
 }
 
 #myTabVocabulary.nav-tabs .nav-link {
@@ -11,6 +10,15 @@ ul#myTabVocabulary {
     border-top-right-radius: 0;
     border-top-left-radius: 0;
     /*opacity: 0.3;*/
+}
+
+.icon-type-voca {
+    font-size: 20px;
+}
+
+.name-type-voca {
+    font-size: 14px;
+    font-weight: 600;
 }
 
 #myTabVocabulary.nav-tabs .nav-item.show .nav-link, #myTabVocabulary.nav-tabs .nav-link.active {
@@ -31,25 +39,48 @@ ul#myTabVocabulary {
 
 .nav-tabs-vocabulary {
     padding: 0;
-    background: #5bc0de;
-}
-
-.nav-tabs-vocabulary {
-    padding: 0;
-    background: #5bc0de;
+    background: navajowhite;
     border-radius: 2%;
+    float: left;
+    height: calc(100vh - 113px);
 }
 
 .content-phrase-word-area {
     overflow: auto;
     height: calc(100vh - 113px);
     padding: 0 0 0 5px;
+    float: left;
+}
+
+.content-phrase-word-area.tab-content>.active {
+    display: block;
+}
+
+.title-content-phrase-word {
+    text-align: center;
+    font-size: 30px;
+    background: red;
+    color: white;
+    font-weight: 600;
+    margin-bottom: 20px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
 }
 
 .tab-pane-phrase-word {
-    border-radius: 2%;
+    border-radius: 7px;
     border: 2px solid #f84545;
+    /*padding: 5px;*/
+}
+
+.name-phrase-word {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.inner-content-phrase-word {
     padding: 5px;
+    font-size: 20px;
 }
 
 .tab-phrase-word-control {

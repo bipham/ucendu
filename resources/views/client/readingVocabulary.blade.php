@@ -97,7 +97,12 @@
                             <div class="tab-content col-md-4 content-phrase-word-area">
                                 @foreach($all_phrase_words as $phrase_word)
                                     <div class="tab-pane tab-pane-phrase-word tab-pane-phrase-word-{!! $phrase_word->id !!}" id="phraseWord{!! $phrase_word->id !!}" role="tabpanel">
-                                        {!! $phrase_word->content !!}
+                                        <div class="title-content-phrase-word">
+                                            DEFINITION
+                                        </div>
+                                        <div class="inner-content-phrase-word">
+                                            {!! $phrase_word->content !!}
+                                        </div>
                                     </div>
                                 @endforeach
                             </div>
