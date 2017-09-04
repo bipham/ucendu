@@ -70,7 +70,8 @@ ul#myTabVocabulary {
 .tab-pane-phrase-word {
     border-radius: 7px;
     border: 2px solid #f84545;
-    /*padding: 5px;*/
+    /* padding: 5px; */
+    height: 100%;
 }
 
 .name-phrase-word {
