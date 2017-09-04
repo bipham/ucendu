@@ -13,15 +13,15 @@ class ReadingTypeQuestion extends Model
     public $timestamps = true;
 
     public function getAllTypeQuestion() {
-        return $this->get();
+        return $this->where('status', 1)->get();
     }
 
-    public function createNewTypeQuestion ($type_name, $introduction) {
+    public function createNewTypeQuestion ($type_name) {
         $newTypeQuestion = new ReadingTypeQuestion();
         $newTypeQuestion->name = $type_name;
-        $newTypeQuestion->introduction = $introduction;
+//        $newTypeQuestion->introduction = $introduction;
         $newTypeQuestion->save();
-        return 'success';
+        return $newTypeQuestion->id;
     }
 
     public function getTypeQuestionById ($id) {

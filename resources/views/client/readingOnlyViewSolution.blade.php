@@ -14,7 +14,7 @@
 @endsection
 @section('css')
     <link rel="stylesheet" href="{{asset('public/css/client/readingSolution.css')}}">
-
+    <link rel="stylesheet" href="{{asset('public/css/client/readingNavtabsVertical.css')}}">
     <?php
     $bg = array('1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg', '9.jpg', '10.jpg', '11.jpg', '12.jpg', '13.jpg', '14.jpg', '15.jpg');
     $i = rand(0, count($bg)-1); // generate random number size of the array
@@ -89,14 +89,34 @@
 @endsection
 
 @section('readingIntro')
-    <?php
-    if ($type_lesson == 1):
-    ?>
-    {!! $type_question->introduction !!}
-
-    <?php
-    endif;
-    ?>
+    @if($type_lesson == 1):
+    <div class="row">
+        <ul class="nav nav-tabs nav-tabs-vertical-custom nav-tabs-learning-section flex-column col-md-2" id="myTabLearningSection" role="tablist">
+            @foreach($all_learning_sections as $learning_section)
+                <li class="nav-item nav-item-vertical-tab-custom tab-learning-section-control">
+                    <a class="nav-link learning-section-{!! $learning_section->id !!}" data-toggle="tab" href="#learningSection{!! $learning_section->id !!}" role="tab">
+                        <div class="icon-learning-section icon-section-custom">
+                            <i class="fa {!! $learning_section->icon !!}" aria-hidden="true"></i>
+                        </div>
+                        <div class="title-learning-section title-section-custom">
+                            {!! $learning_section->title_section !!}
+                        </div>
+                    </a>
+                </li>
+            @endforeach
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content col-md-10 content-learning-section-area tab-content-area-custom">
+            @foreach($all_learning_sections as $learning_section)
+                <div class="tab-pane tab-pane-learning-section tab-pane-learning-section-{!! $learning_section->id !!}" id="learningSection{!! $learning_section->id !!}" role="tabpanel">
+                    <div class="container content-learning-section">
+                        {!! $learning_section->content_section !!}
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div><!-- /row -->
+    @endif
 @endsection
 
 @section('readingPractice')

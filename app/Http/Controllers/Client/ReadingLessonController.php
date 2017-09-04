@@ -11,6 +11,7 @@ use App\Models\ReadingQuizz;
 use App\Models\ReadingTypeQuestion;
 use App\Models\ReadingTypeQuestionOfQuiz;
 use App\Models\ReadingResult;
+use App\Models\ReadingLearningTypeQuestion;
 use Illuminate\Support\Facades\Auth;
 
 class ReadingLessonController extends Controller
@@ -45,16 +46,19 @@ class ReadingLessonController extends Controller
         $type_lesson = $lesson_quiz->type_lesson;
         $readingTypeQuestionModel = new ReadingTypeQuestion();
         $readingTypeQuestionOfQuizModel = new ReadingTypeQuestionOfQuiz();
+        $readingLearningTypeQuestionModel = new ReadingLearningTypeQuestion();
         if ($type_lesson == 1) {
             $type_question_id = $readingTypeQuestionOfQuizModel->getTypeQuestionIdByQuizId($lesson_quiz->id);
             $practice_lessons = $readingLessonModel->getPracticeNewestOfTypeQuestion(8, $type_question_id);
             $test_lessons = $readingLessonModel->getTestNewestOfTypeQuestion(8, $type_question_id);
             $type_question = $readingTypeQuestionModel->getTypeQuestionById($type_question_id);
+            $all_learning_sections = $readingLearningTypeQuestionModel->getAllSectionByTypeQuestionId($type_question_id);
         }
         else {
             $practice_lessons = $readingLessonModel->getPracticeNewestOfTypeLesson(8, $type_lesson);
             $test_lessons = $readingLessonModel->getTestNewestOfTypeLesson(8, $type_lesson);
             $type_question = '';
+            $all_learning_sections = '';
         }
         $readingCategoryLessonModel = new ReadingCategoryLesson();
         $readingCategoryModel = new ReadingCategory();
@@ -65,13 +69,12 @@ class ReadingLessonController extends Controller
         foreach ($result_reading_users as $result_reading_user) {
             $highest_result[$result_reading_user->lesson_id] = $result_reading_user->highest_correct;
         }
-        return view('client.readingLessonDetail',compact('lesson_detail', 'lesson_quiz', 'practice_lessons','test_lessons', 'readingCategoryLessonModel', 'readingCategoryModel', 'type_lesson', 'type_question', 'readingTypeQuestionOfQuizModel', 'highest_result'));
+        return view('client.readingLessonDetail',compact('lesson_detail', 'lesson_quiz', 'practice_lessons','test_lessons', 'readingCategoryLessonModel', 'readingCategoryModel', 'type_lesson', 'type_question', 'readingTypeQuestionOfQuizModel', 'highest_result', 'all_learning_sections'));
     }
 
     public function readingTypeQuestion($domain, $link_type_question)
     {
         $type_question_id = getIdLessonFromLinkLesson($link_type_question);
-//        dd($type_question_id);
         $readingLessonModel = new ReadingLesson();
         $practice_lessons = $readingLessonModel->getPracticeNewestOfTypeQuestion(8, $type_question_id);
         $test_lessons = $readingLessonModel->getTestNewestOfTypeQuestion(8, $type_question_id);
@@ -80,12 +83,14 @@ class ReadingLessonController extends Controller
         $readingTypeQuestionOfQuizModel = new ReadingTypeQuestionOfQuiz();
         $readingResult = new ReadingResult();
         $result_reading_users = $readingResult->getResultReadingByUserId(Auth::id());
-//        dd($result_reading_users);
         $highest_result = [];
         foreach ($result_reading_users as $result_reading_user) {
             $highest_result[$result_reading_user->lesson_id] = $result_reading_user->highest_correct;
         }
-        return view('client.readingTypeQuestion',compact('practice_lessons', 'test_lessons', 'type_question', 'readingTypeQuestionOfQuizModel', 'highest_result'));
+        $readingLearningTypeQuestionModel = new ReadingLearningTypeQuestion();
+        $all_learning_sections = $readingLearningTypeQuestionModel->getAllSectionByTypeQuestionId($type_question_id);
+//        dd($all_learning_sections);
+        return view('client.readingTypeQuestion',compact('practice_lessons', 'test_lessons', 'type_question', 'readingTypeQuestionOfQuizModel', 'highest_result', 'all_learning_sections'));
     }
 
     public function readingTypeLesson($domain, $link_type_lesson)

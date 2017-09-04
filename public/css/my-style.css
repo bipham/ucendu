@@ -148,9 +148,9 @@ header#header .header-top {
 	color: blue;
 }
 
-.tab-content {
-	padding: 0 0 15px 0;
-}
+/*.tab-content {*/
+	/*padding: 0 0 15px 0;*/
+/*}*/
 
 .main.main-page {
 	height: 100%;
@@ -1396,9 +1396,9 @@ h2.title-post {
 }
 
 .container.introduction-container {
-	height: calc(100vh - 128px);
+	height: calc(100vh - 113px);
 	overflow: hidden;
-	padding-top: 15px;
+	/*padding-top: 15px;*/
 }
 
 .breadcrumb-header .breadcrumb a:focus, a:hover {

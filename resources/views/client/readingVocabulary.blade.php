@@ -13,6 +13,7 @@
     Vocabulary Reading
 @endsection
 @section('css')
+    <link rel="stylesheet" href="{{asset('public/css/client/readingNavtabsVertical.css')}}">
     <link rel="stylesheet" href="{{asset('public/css/client/readingVocabulary.css')}}">
     <?php
     $bg = array('1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg', '9.jpg', '10.jpg', '11.jpg', '12.jpg', '13.jpg', '14.jpg', '15.jpg');
@@ -54,14 +55,14 @@
     </div>
     <div class="container">
         <div class="row">
-            <ul class="nav nav-tabs flex-column col-md-2 nav-tabs-all-vocabulary" id="myTabVocabulary" role="tablist">
+            <ul class="nav nav-tabs nav-tabs-vertical-custom flex-column col-md-2 nav-tabs-all-vocabulary" id="myTabVocabulary" role="tablist">
                 @foreach($all_vocabularies as $vocabulary)
-                    <li class="nav-item tab-vocabulary-control">
+                    <li class="nav-item nav-item-vertical-tab-custom tab-vocabulary-control">
                         <a class="nav-link nav-link-vocabulary vocabulary-{!! $vocabulary->id !!}" data-toggle="tab" href="#vocabulary{!! $vocabulary->id !!}" role="tab">
-                            <div class="icon-type-voca">
+                            <div class="icon-type-voca icon-section-custom">
                                 <i class="fa {!! $vocabulary->icon !!}" aria-hidden="true"></i>
                             </div>
-                            <div class="name-type-voca">
+                            <div class="name-type-voca title-section-custom">
                                 {!! $vocabulary->name !!}
                             </div>
                         </a>
@@ -72,7 +73,7 @@
             <?php
             $readingPhraseWordVocabularyModel = new App\Models\ReadingPharseWordVocabulary();
             ?>
-            <div class="tab-content col-md-10 content-vocabulary-area">
+            <div class="tab-content col-md-10 content-vocabulary-area tab-content-area-custom">
                 @foreach($all_vocabularies as $vocabulary)
                     <?php
                     $all_phrase_words = $readingPhraseWordVocabularyModel->getAllPhraseWordByVocabularyId($vocabulary->id);

@@ -54,7 +54,7 @@ $('.btn-create-new-phrase-word').click(function () {
     var name_phrase_word = $('#name_phrase_word').val().trim();
     var vocabulary_id = $('#list_vocabularies').val().trim();
     var content_phrase_vocabulary = CKEDITOR.instances["content_phrase_vocabulary"].getData().trim();
-    if (content_phrase_vocabulary == '' || name_phrase_word == '') {
+    if (content_phrase_vocabulary == '' || name_phrase_word == '' || vocabulary_id == '') {
         bootbox.alert({
             message: "Please enter data!",
             backdrop: true
