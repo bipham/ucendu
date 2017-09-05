@@ -6,7 +6,7 @@
  * Time: 12:36 AM
  */
 ?>
-@extends('layout.master')
+@extends('layout.masterNoMenu')
 @section('meta-title')
     Reading List Lesson
 @endsection

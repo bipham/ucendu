@@ -7,7 +7,7 @@
  */
 ?>
 
-@extends('layout.master')
+@extends('layout.masterNoMenu')
 @section('meta-title')
     Reading - Create New Type Question
 @endsection

@@ -7,7 +7,7 @@
  */
 //var_dump($highest_result[1]);
 ?>
-@extends('layout.master_no_menu')
+@extends('layout.masterNoMenu')
 @section('meta-title')
     Welcome Ucendu
 @endsection

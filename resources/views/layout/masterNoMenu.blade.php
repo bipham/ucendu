@@ -6,7 +6,7 @@
  * Time: 00:20
  */
 ?>
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -29,8 +29,8 @@
 <a href="#" id="allownoti" class="hidden">Cho phép thông báo</a>
 <a href="#" id="shownoti" class="hidden">Hiển thị thông báo</a>
 <div class="overlay"></div>
-@include('layout.header')
-{{--@include('layout.menuHeaderReading')--}}
+@include('layout.headerAdmin')
+@include('layout.menuHeaderAdmin')
 <div role="main" class="main main-page">
     {{--@include('layout.tabContentReading')--}}
 
