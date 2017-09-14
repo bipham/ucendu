@@ -439,7 +439,7 @@ ul.primary-header-custom li.nav-item:before {
 	height: 250px;
 	padding: 5px;
 	text-align: center;
-	border-bottom: 1px solid #eee;
+	/*border-bottom: 1px solid #eee;*/
 	display: flex;
 	overflow: hidden;
 	position: relative;

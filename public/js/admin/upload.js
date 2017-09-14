@@ -18,6 +18,7 @@ var type_lesson = 1;
 var title_post = '';
 var img_url = '';
 var img_name = '';
+var img_name_no_ext = '';
 var img_extension = '';
 var listQ = [];
 var listAnswer = {};
@@ -371,7 +372,7 @@ $( document ).ready(function() {
             type: "POST",
             url: ajaxUploadFinish,
             dataType: "json",
-            data: { img_url: img_url, img_name: img_name, title_post: title_post, list_answer: listAnswer, cate_selected: cate_selected, content_post: content_post, content_highlight: content_highlight, content_quiz: content_quiz, content_answer_quiz: content_answer_quiz, list_type_questions: list_type_questions, listKeyword: listKeyword, type_lesson: type_lesson, limit_time: limit_time },
+            data: { img_url: img_url, img_name: img_name, img_name_no_ext: img_name_no_ext, img_extension: img_extension, title_post: title_post, list_answer: listAnswer, cate_selected: cate_selected, content_post: content_post, content_highlight: content_highlight, content_quiz: content_quiz, content_answer_quiz: content_answer_quiz, list_type_questions: list_type_questions, listKeyword: listKeyword, type_lesson: type_lesson, limit_time: limit_time },
             success: function (data) {
                 $('#loading').hide();
                 bootbox.alert({
@@ -423,6 +424,7 @@ $(document).on("change", ".enter-type-question select",function() {
 function readURL(input) {
     img_name = $('input[type=file]').val().split('\\').pop();
     img_extension = img_name.substr( (img_name.lastIndexOf('.') + 1) ).toLowerCase();
+    img_name_no_ext = img_name.split('.')[0];
     var allowedExtensions = ['png', 'jpg', 'jpeg', 'gif'];
     if( allowedExtensions.indexOf(img_extension) == -1 ) {
         bootbox.alert({
@@ -431,6 +433,7 @@ function readURL(input) {
         });
         $('#imgFeature').val('');
         img_name = '';
+        img_name_no_ext = '';
         $("#image-main-preview").attr('src', '#');
         $("#image-main-preview").addClass('hidden-class');
         i++;

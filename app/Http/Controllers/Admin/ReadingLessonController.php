@@ -45,7 +45,8 @@ class ReadingLessonController extends Controller
         if (Request::ajax()) {
             $img_url = $_POST['img_url'];
             $img_name = $_POST['img_name'];
-//            $img_extension = $_POST['img_extension'];
+            $img_name_no_ext = $_POST['img_name_no_ext'];
+            $img_extension = $_POST['img_extension'];
             $img_name = stripUnicode($img_name);
             $content_post = $_POST['content_post'];
             $content_highlight = $_POST['content_highlight'];
@@ -58,6 +59,9 @@ class ReadingLessonController extends Controller
             $listKeyword = $_POST['listKeyword'];
             $type_lesson = $_POST['type_lesson'];
             $limit_time = $_POST['limit_time'];
+            $img_name_no_ext = stripUnicode($img_name_no_ext);
+            $img_name_no_ext = str_replace(" ","_", $img_name_no_ext);
+
             $base_to_php = explode(',', $img_url);
             $data = base64_decode($base_to_php[1]);
 
@@ -71,22 +75,23 @@ class ReadingLessonController extends Controller
                 $current_lesson_id = $current_lesson_id->id + 1;
             }
 
+            $img_name_save = $current_lesson_id . '-' . $img_name_no_ext . '.' . $img_extension;
+
             $filepath = base_path() . '\storage\upload\images\img-feature';
 
             if (!File::exists($filepath)) {
                 File::makeDirectory($filepath, 0777, true, true);
             }
 
-            $filename_img = base_path() . '\storage\upload\images\img-feature\\' . $img_name . '-' . $current_lesson_id;
+            $filename_img = base_path() . '\storage\upload\images\img-feature\\' . $img_name_save;
 
             file_put_contents($filename_img, $data);
 
-            $destination = base_path() . '\storage\upload\images\img-feature\\' . $img_name . '-' . $current_lesson_id;
+            $destination = base_path() . '\storage\upload\images\img-feature\\' . $img_name_save;
 
             compressImage($filename_img, $destination);
 
-            $readingLessonModel = new ReadingLesson();
-            $post_id = $readingLessonModel->createNewPost($title_post, $content_post, $content_highlight, $img_name);
+            $post_id = $readingLessonModel->createNewPost($title_post, $content_post, $content_highlight, $img_name_save);
 
 //            $img_feature = new ImageFeature();
 //            $img_feature->addImageFeature($post_id, $img_name, $img_url);

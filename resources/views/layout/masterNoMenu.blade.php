@@ -29,6 +29,7 @@
 <a href="#" id="allownoti" class="hidden">Cho phép thông báo</a>
 <a href="#" id="shownoti" class="hidden">Hiển thị thông báo</a>
 <div class="overlay"></div>
+<div id="loading"></div>
 @include('layout.headerAdmin')
 @include('layout.menuHeaderAdmin')
 <div role="main" class="main main-page">

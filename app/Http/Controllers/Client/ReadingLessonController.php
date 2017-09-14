@@ -38,7 +38,7 @@ class ReadingLessonController extends Controller
     public function readingLessonDetail($domain, $link_lesson)
     {
 //        dd($link_lesson);
-        $lesson_id = getIdLessonFromLinkLesson($link_lesson);
+        $lesson_id = getIdFromLink($link_lesson);
         $readingLessonModel = new ReadingLesson();
         $lesson_detail = $readingLessonModel->getLessonById($lesson_id);
         $quizModel = new ReadingQuizz();
@@ -74,7 +74,7 @@ class ReadingLessonController extends Controller
 
     public function readingTypeQuestion($domain, $link_type_question)
     {
-        $type_question_id = getIdLessonFromLinkLesson($link_type_question);
+        $type_question_id = getIdFromLink($link_type_question);
         $readingLessonModel = new ReadingLesson();
         $practice_lessons = $readingLessonModel->getPracticeNewestOfTypeQuestion(8, $type_question_id);
         $test_lessons = $readingLessonModel->getTestNewestOfTypeQuestion(8, $type_question_id);
@@ -95,7 +95,7 @@ class ReadingLessonController extends Controller
 
     public function readingTypeLesson($domain, $link_type_lesson)
     {
-        $type_lesson_id = getIdLessonFromLinkLesson($link_type_lesson);
+        $type_lesson_id = getIdFromLink($link_type_lesson);
         $readingLessonModel = new ReadingLesson();
         $practice_lessons = $readingLessonModel->getPracticeNewestOfTypeLesson(8, $type_lesson_id);
         $test_lessons = $readingLessonModel->getTestNewestOfTypeLesson(8, $type_lesson_id);

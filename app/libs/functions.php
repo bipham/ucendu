@@ -34,7 +34,7 @@ function stripUnicode($str) {
     }
 }
 
-function getIdLessonFromLinkLesson ($str) {
+function getIdFromLink ($str) {
     preg_match_all('/\d+/', $str, $matches);
     return $matches[0][0];
 }

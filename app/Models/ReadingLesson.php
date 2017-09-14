@@ -109,7 +109,7 @@ class ReadingLesson extends Model
      }
 
     public function getLessonById($id) {
-        return $this->where('id',$id)->get()->first();
+        return $this->where('id',$id)->where('status', 1)->get()->first();
     }
 
     public function getInfoBasicLessonById($id) {
