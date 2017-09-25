@@ -31,6 +31,18 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{url('/listCommentReading')}}">Manager_comment</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url('/createNewLevelLesson')}}">New_level_lesson</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url('/createNewLevelStory')}}">New_level_story</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url('/createNewGenreStory')}}">New_genre_story</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url('/uploadReadingStory')}}">New_story</a>
+                </li>
             </ul>
         </div>
     </div>

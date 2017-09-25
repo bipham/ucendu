@@ -64,6 +64,9 @@ Route::group(['domain' => 'admin.{nameDomain}'], function () {
     Route::get('createNewUser',['as'=>'getCreateNewUser','uses'=>'Admin\UserController@getCreateNewUser']);
     Route::post('createNewUser',['as'=>'postCreateNewUser','uses'=>'Admin\UserController@postCreateNewUser']);
 
+    Route::get('createNewLevelLesson',['as'=>'getCreateNewLevelLesson','uses'=>'Admin\ReadingLevelController@getCreateNewLevelLesson']);
+    Route::post('createNewLevelLesson',['as'=>'postCreateNewLevelLesson','uses'=>'Admin\ReadingLevelController@postCreateNewLevelLesson']);
+
     Route::get('createNewLevelStory',['as'=>'getCreateNewLevelStory','uses'=>'Admin\ReadingEnglishStoryController@getCreateNewLevelStory']);
     Route::post('createNewLevelStory',['as'=>'postCreateNewLevelStory','uses'=>'Admin\ReadingEnglishStoryController@postCreateNewLevelStory']);
 
