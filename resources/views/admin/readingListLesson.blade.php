@@ -5,6 +5,7 @@
  * Date: 8/17/2017
  * Time: 12:36 AM
  */
+
 ?>
 @extends('layout.masterNoMenu')
 @section('meta-title')
@@ -68,6 +69,16 @@
                                                 <label>Hình Đại Diện</label>
                                                 <input type="file" name="image-main-{!! $lesson->id !!}" onchange="readURL(this);" required id="imgFeature{!! $lesson->id !!}" data-id="{!! $lesson->id !!}">
                                                 <img id="image-main-preview-{!! $lesson->id !!}" class="img-upload-product" src="{{ asset('storage/upload/images/img-feature/' . $lesson->image_feature) }}" alt="Ảnh" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="list-level-{!! $lesson->id !!}">
+                                                    Chon level!
+                                                </label>
+                                                <select class="form-control" id="list-level-{!! $lesson->id !!}" name="list-level-{!! $lesson->id !!}" >
+                                                    @foreach ($all_levels as $all_level)
+                                                            <option value="{!! $all_level->id !!}" @if($lesson->level_id == $all_level->id) selected="selected" @endif>{!! $all_level->level !!}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                         </form>
                                     </div>

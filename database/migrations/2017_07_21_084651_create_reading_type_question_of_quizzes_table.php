@@ -17,6 +17,7 @@ class CreateReadingTypeQuestionOfQuizzesTable extends Migration
             $table->increments('id');
             $table->integer('quiz_id')->unsigned();
             $table->integer('type_question_id')->unsigned();
+            $table->integer('level_id')->default(1);
             $table->integer('total_questions');
             $table->boolean('status')->default(1);
             $table->foreign('quiz_id')->references('id')->on('reading_quizzs')->onDelete('cascade');

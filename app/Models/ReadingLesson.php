@@ -10,7 +10,7 @@ class ReadingLesson extends Model
 {
     protected $table = 'reading_lessons';
 
-    protected $fillable = ['title', 'content_lesson', 'content_highlight', 'image_feature', 'status'];
+    protected $fillable = ['title', 'level_id', 'content_lesson', 'content_highlight', 'image_feature', 'status'];
 
     public $timestamps = true;
 
@@ -128,7 +128,7 @@ class ReadingLesson extends Model
     }
 
     public function getAllLessons() {
-        return $this->where('status',1)->orderBy('updated_at','desc')->select('id', 'title', 'image_feature')->get()->all();
+        return $this->where('status',1)->orderBy('updated_at','desc')->select('id', 'title', 'level_id', 'image_feature')->get()->all();
     }
 
     public function deleteLessonById($id) {
@@ -141,13 +141,13 @@ class ReadingLesson extends Model
                                             ->update(['content_lesson' => $content_lesson, 'content_highlight' => $content_highlight, 'updated_at' => Carbon::now()]);
     }
 
-    public function updateInfoBasicLessonReading($id, $title, $image_feature) {
+    public function updateInfoBasicLessonReading($id, $title, $level_id, $image_feature) {
         return DB::table('reading_lessons') ->where('id', $id)
-                                            ->update(['title' => $title, 'image_feature' => $image_feature, 'updated_at' => Carbon::now()]);
+                                            ->update(['title' => $title, 'level_id' => $level_id, 'image_feature' => $image_feature, 'updated_at' => Carbon::now()]);
     }
 
-    public function updateTitleLessonReading($id, $title) {
+    public function updateTitleLessonReading($id, $title, $level_id) {
         return DB::table('reading_lessons') ->where('id', $id)
-                                            ->update(['title' => $title, 'updated_at' => Carbon::now()]);
+                                            ->update(['title' => $title, 'level_id' => $level_id, 'updated_at' => Carbon::now()]);
     }
 }

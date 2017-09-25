@@ -17,12 +17,14 @@ $( document ).ready(function() {
     $('.btn-save-info-basic').click(function () {
         var lesson_id = $(this).parents('.modal').data('id');
         var title_lesson = $('#titleLesson' + lesson_id).val();
+        var level_id = $('#list-level-' + lesson_id).val();
+        console.log(level_id);
         var ajaxUrl = ajaxUpdateInfoBasic + lesson_id;
         $.ajax({
             type: "POST",
             url: ajaxUrl,
             dataType: "json",
-            data: { img_url: img_url, img_name: img_name, title_lesson: title_lesson },
+            data: { img_url: img_url, img_name: img_name, title_lesson: title_lesson, level_id: level_id },
             success: function (data) {
                 bootbox.alert({
                     message: "Update info basic success! " + data.result,

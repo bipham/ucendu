@@ -24,4 +24,8 @@ class ReadingCategory extends Model
             ->where('status', 1)
             ->first();
     }
+
+    public function getAllLevel() {
+        return $this->where('status', 1)->get();
+    }
 }

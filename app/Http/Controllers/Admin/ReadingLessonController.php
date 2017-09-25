@@ -11,6 +11,7 @@ use App\Models\ReadingQuizz;
 use App\Models\ReadingCategoryLesson;
 use App\Models\ReadingTypeQuestion;
 use App\Models\ReadingTypeQuestionOfQuiz;
+use App\Models\ReadingLevel;
 use DOMDocument;
 use Illuminate\Support\Facades\File;
 use Request;
@@ -118,8 +119,9 @@ class ReadingLessonController extends Controller
     public function listReadingLesson() {
         $readingLessonModel = new ReadingLesson();
         $list_lessons = $readingLessonModel->getAllLessons();
-//        dd($list_lessons);
-        return view('admin.readingListLesson', compact('list_lessons'));
+        $readingLevelModel = new ReadingLevel();
+        $all_levels = $readingLevelModel->getAllLevel();
+        return view('admin.readingListLesson', compact('list_lessons', 'all_levels'));
     }
 
     public function deleteLessonReading($domain, $lesson_id) {
@@ -213,6 +215,7 @@ class ReadingLessonController extends Controller
             $img_url = $_POST['img_url'];
             $img_name = $_POST['img_name'];
             $title_lesson = $_POST['title_lesson'];
+            $level_id = $_POST['level_id'];
             $readingLessonModel = new ReadingLesson();
             if ($img_name != '' && $img_url != '') {
                 $img_name = stripUnicode($img_name);
@@ -231,10 +234,10 @@ class ReadingLessonController extends Controller
 
                 file_put_contents($filename_img, $data);
 
-                $readingLessonModel->updateInfoBasicLessonReading($lesson_id, $title_lesson ,$img_name);
+                $readingLessonModel->updateInfoBasicLessonReading($lesson_id, $title_lesson, $level_id, $img_name);
             }
             else {
-                $readingLessonModel->updateTitleLessonReading($lesson_id, $title_lesson);
+                $readingLessonModel->updateTitleLessonReading($lesson_id, $title_lesson, $level_id);
             }
 
             return json_encode(['result' => $lesson_id]);

@@ -74,6 +74,8 @@ Route::group(['domain' => 'admin.{nameDomain}'], function () {
 //    Route::get('createNewTypeQuiz',['as'=>'createNewTypeQuiz','uses'=>'Admin\TypeQuestionController@createNewTypeQuiz']);
     Route::get('getTypeQuestion',['as'=>'getTypeQuestion','uses'=>'Admin\TypeQuestionController@getTypeQuestion']);
 
+    Route::get('getStepSection',['as'=>'getStepSection','uses'=>'Admin\TypeQuestionController@getStepSection']);
+
     Route::get('listReadingLesson',['as'=>'listReadingLesson','uses'=>'Admin\ReadingLessonController@listReadingLesson']);
 
     Route::get('listCommentReading',['as'=>'listCommentReading','uses'=>'Admin\ReadingCommentController@listCommentReading']);

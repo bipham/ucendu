@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateReadingLessonsTable extends Migration
+class CreateReadingQuestionLearningsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class CreateReadingLessonsTable extends Migration
      */
     public function up()
     {
-        Schema::create('reading_lessons', function (Blueprint $table) {
+        Schema::create('reading_question_learnings', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
+            $table->integer('type_question_id')->unsigned();
             $table->integer('level_id')->unsigned();
+            $table->integer('question_id_custom')->unsigned();
+            $table->string('answer');
+            $table->string('keyword')->nullable();
             $table->foreign('level_id')->references('id')->on('reading_levels')->onDelete('cascade');
-            $table->text('content_lesson');
-            $table->text('content_highlight');
-            $table->string('image_feature')->nullable();
+            $table->foreign('type_question_id')->references('id')->on('reading_type_questions')->onDelete('cascade');
             $table->boolean('status')->default(1);
             $table->timestamps();
         });
@@ -33,6 +34,6 @@ class CreateReadingLessonsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reading_lessons');
+        Schema::dropIfExists('reading_question_learnings');
     }
 }
